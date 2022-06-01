@@ -1,6 +1,6 @@
 <?php
 
-require 'connect.php';
+require $_SERVER['DOCUMENT_ROOT'].'/php/connect.php';
 
 // setup tables
 $users = "CREATE TABLE `gamebet`.`Users`(
@@ -51,7 +51,7 @@ foreach(array($users, $games, $streams, $bets) as $table) {
 }
 
 // fill tables
-require "static-data.php";
+require $_SERVER['DOCUMENT_ROOT']."/php/static-data.php";
 
 // fill Users table
 $result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Users) as `row_exists`;");

@@ -4,6 +4,8 @@
 
 Departamento de Electrónica, Telecomunicações e Informática - Universidade de Aveiro
 
+## [API Documentation](/api/README.md)
+
 ## Setup
 Initialize database
 ```
