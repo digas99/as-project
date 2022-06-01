@@ -45,7 +45,7 @@ foreach(array($users, $games, $streams, $bets) as $table) {
     $table_name = explode("`", $table)[3];
     $result = mysqli_query($conn, "SHOW TABLES LIKE '". $table_name . "';");
     if (mysqli_num_rows($result) == 0) { 
-        echo "Creating table " . $table_name . "<br>";
+        echo "- Creating table " . $table_name . "<br>";
         mysqli_query($conn, $table);
     }
 }
@@ -56,7 +56,7 @@ require "static-data.php";
 // fill Users table
 $result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Users) as `row_exists`;");
 if (mysqli_fetch_assoc($result)["row_exists"] == 0) { 
-    echo "Adding fake user data...<br>";
+    echo "Adding fake Users data...<br>";
     forEach($usernames as $username) {
         $sql = "INSERT INTO Users (email, pwd, streamer, username) VALUES ('".strtolower($username)."@fakemail.com', '123456', '".rand(0,1)."', '".$username."');";
         mysqli_query($conn, $sql);
@@ -66,7 +66,7 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
 // fill Games table
 $result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Games) as `row_exists`;");
 if (mysqli_fetch_assoc($result)["row_exists"] == 0) { 
-    echo "Adding fake game data...<br>";
+    echo "Adding fake Games data...<br>";
     forEach($games as $game) {
         $sql = "INSERT INTO Games (gameName, cover) VALUES ('".$game[1]."', '".$game[0]."');";
         mysqli_query($conn, $sql);
