@@ -49,3 +49,16 @@ foreach(array($users, $games, $streams, $bets) as $table) {
         mysqli_query($conn, $table);
     }
 }
+
+// fill tables
+require "static-data.php";
+
+// fill Users table
+$result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Users) as `row_exists`;");
+if (mysqli_fetch_assoc($result)["row_exists"] == 0) { 
+    echo "Adding fake users...<br>";
+    forEach($usernames as $username) {
+        $sql = "INSERT INTO Users (email, pwd, streamer, username) VALUES ('".strtolower($username)."@fakemail.com', '123456', '".rand(0,1)."', '".$username."');";
+        mysqli_query($conn, $sql);
+    }
+}
