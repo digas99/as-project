@@ -10,7 +10,7 @@ Initialize database
 $ sudo chmod +x init-db.sh
 $ ./init-db.sh db_host db_username db_password db_name
 ```
-Where,
+where:
 - **db_host:** host of MySQL *(localhost, etc)*
 - **db_username:** MySQL user *(root, etc)*
 - **db_password:** password to the above user
