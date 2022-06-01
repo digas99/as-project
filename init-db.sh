@@ -5,7 +5,7 @@ if [[ $# != 4 ]] ; then
     exit
 fi
 
-echo ""; echo "Creating secret.php file..."
+echo "Creating secret.php file..."
 
 SECRET_FILE=php/secret.php
 touch ${SECRET_FILE}
@@ -15,3 +15,13 @@ echo "\$db_host='$1';" >> ${SECRET_FILE}
 echo "\$db_username='$2';" >> ${SECRET_FILE}
 echo "\$db_password='$3';" >> ${SECRET_FILE}
 echo "\$db_name='$4';" >> ${SECRET_FILE}
+
+echo "Adding database $4...";
+
+sudo mkdir /opt/lampp/var/mysql/$4
+sudo chmod -R a+rwx /opt/lampp/var/mysql/$4
+
+echo "Adding tables...";
+curl -X GET localhost:80/php/setup-db.php
+
+echo "";

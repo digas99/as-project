@@ -5,8 +5,8 @@
 Departamento de Electrónica, Telecomunicações e Informática - Universidade de Aveiro
 
 ## Setup
-Create secrets file
+Initialize database
 ```
-$ sudo chmod +x create-secret.sh
-$ ./create-secret.sh db_host db_username db_password db_name
+$ sudo chmod +x init-db.sh
+$ ./init-db.sh db_host db_username db_password db_name
 ```
