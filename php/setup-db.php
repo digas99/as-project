@@ -56,9 +56,19 @@ require "static-data.php";
 // fill Users table
 $result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Users) as `row_exists`;");
 if (mysqli_fetch_assoc($result)["row_exists"] == 0) { 
-    echo "Adding fake users...<br>";
+    echo "Adding fake user data...<br>";
     forEach($usernames as $username) {
         $sql = "INSERT INTO Users (email, pwd, streamer, username) VALUES ('".strtolower($username)."@fakemail.com', '123456', '".rand(0,1)."', '".$username."');";
+        mysqli_query($conn, $sql);
+    }
+}
+
+// fill Games table
+$result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Games) as `row_exists`;");
+if (mysqli_fetch_assoc($result)["row_exists"] == 0) { 
+    echo "Adding fake game data...<br>";
+    forEach($games as $game) {
+        $sql = "INSERT INTO Games (gameName, cover) VALUES ('".$game[1]."', '".$game[0]."');";
         mysqli_query($conn, $sql);
     }
 }
