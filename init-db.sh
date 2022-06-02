@@ -18,8 +18,18 @@ echo "\$db_name='$4';" >> ${SECRET_FILE}
 
 echo "Adding database '$4'..."
 
-sudo mkdir /opt/lampp/var/mysql/$4
-sudo chmod -R a+rwx /opt/lampp/var/mysql/$4
+if [ -d "/opt/lampp" ] ; then
+    # if in linux
+    sudo mkdir /opt/lampp/var/mysql/$4
+    sudo chmod -R a+rwx /opt/lampp/var/mysql/$4
+elif [ -d "/mnt/c/xampp/" ] ; then
+    # if in windows
+    sudo mkdir /mnt/c/xampp/mysql/data/$4
+    sudo chmod -R a+rwx /mnt/c/xampp/mysql/data/$4
+else
+    echo "Couldn't find xampp. Database not added."
+    exit
+fi
 
 echo "Adding tables:"
 

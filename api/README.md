@@ -30,8 +30,8 @@ Example of the information fetched from users:
 #### **Fields**
 | ID | Name | Data Type | Description |
 |----|------|-----------|-------------|
-| **username** | Username | string | User's name identifier | 
-| **email** | Email | string | User's email | 
+| **username** | Username | string | User name identifier | 
+| **email** | Email | string | User email | 
 | **streamer** | Streamer | boolean | Whether or not the user is partnered with GameBET, therefore being a streamer |
 | **id** | User ID | string | User number identifier |
 
