@@ -145,6 +145,6 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
             $queryValues[] = "('".$title."', '".$thumbnail."', '".$viewers."', '".$userId."', '".$gameId."', '".$platforms[rand(0,1)]."', '".$matchFormats[rand(0,1)]."', '".$beginning."', '".$teams[rand(0, count($teams)-1)]."', '".$teams[rand(0, count($teams)-1)]."')";
         }
     }
-    $sql = "INSERT INTO Streams (title, thumbnail, viewers, gameId, userId, platform, matchFormat, matchBeginning, teamA, teamB) VALUES ". join(",", $queryValues) .";";
+    $sql = "INSERT INTO Streams (title, thumbnail, viewers, userId, gameId, platform, matchFormat, matchBeginning, teamA, teamB) VALUES ". join(",", $queryValues) .";";
     mysqli_query($conn, $sql);
 }

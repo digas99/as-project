@@ -12,6 +12,9 @@ API that handles data from GameBET's databases
     - 2.2 [Get All Games](#get-all-games)
     - 2.2 [Filter Games By Key](#filter-games-by-key)
 3. [Streams](#streams)
+    - 3.1 [Structure](#structure)
+    - 3.2 [Get All Streams](#get-all-streams)
+    - 3.2 [Filter Streams By Key](#filter-streams-by-key)
 4. [Bets](#bets)
 5. [Get Only Specific Keys](#get-only-specific-keys)
 
@@ -67,7 +70,7 @@ Fetch all users
 
 ### Filter Users by Key
 
-Filter the list of users by the keys available. Some keys can be combined.
+Filter the list of users by the keys available. Some keys can be combined. Most of the *string* **Fields** are valid.
 
 **Example HTTP Requests**
 
@@ -126,13 +129,86 @@ Fetch all games
 
 ### Filter Games by Key
 
-Filter the list of games by the keys available.
+Filter the list of games by the keys available.  Most of the *string* **Fields** are valid.
 
 **Example HTTP Requests**
 
 ```
 GET .../api/games?id=37
 GET .../api/users?name=tr
+```
+
+## Streams
+
+Streams contains information about the streams that had, have or will have bets on the app.
+
+### Structure
+
+Example of the information fetched from /streams:
+```json
+{
+    "title": "Swine pork id nulla sint, adipisicing anim ham",
+    "thumbnail": "https://picsum.photos/300/170?random=82",
+    "viewers": "10209",
+    "gameId": "38",
+    "userId": "26",
+    "platform": "Twitch",
+    "matchFormat": "Tournment",
+    "matchBeginning": "2022-06-02 19:07:34",
+    "teamA": "Black Newts",
+    "teamB": "Admirable Rabbits",
+    "id": "83",
+    "game": {
+        "name": "Fall Guys: Ultimate Knockout",
+        "cover": "https://static-cdn.jtvnw.net/ttv-boxart/512980-285x380.jpg",
+        "id": "38"
+    },
+    "user": {
+        "username": "EvasiveGuillemot",
+        "email": "evasiveguillemot@fakemail.com",
+        "streamer": "1",
+        "money": "148",
+        "points": "927",
+        "id": "26"
+    }
+}
+```
+
+#### **Fields**
+| ID | Name | Data Type | Description |
+|----|------|-----------|-------------|
+| **title** | Title | string | Stream title | 
+| **thumbnail** | Thumbnail | string | Stream thumbnail | 
+| **viewers** | Viewers | string | Amount of viewers of the stream |
+| **gameId** | Game ID | string | Game number identifier |
+| **userId** | User ID | string | User number identifier |
+| **platform** | Platform | string | Platform hosting the stream |
+| **matchFormat** | Match Format | string | If the match is a Tournment or just Casual |
+| **matchBeginning** | Match Beginning | ISO-8061 | Date of the beginning of the match |
+| **teamA** | Team A | string | One of the teams playing the match |
+| **teamB** | Team B | string | One of the teams playing the match |
+| **id** | Stream ID | string | Stream number identifier |
+| **game** | Game | Game | Game being streamed |
+| **user** | User | User | User streaming |
+
+### Get All Streams
+
+Fetch all streams
+
+**HTTP Request**
+
+``` GET .../api/streams```
+
+### Filter Streams by Key
+
+Filter the list of streams by the keys available. Some keys can be combined. Most of the *string* **Fields** are valid.
+
+**Example HTTP Requests**
+
+```
+GET .../api/users?id=83
+GET .../api/users?title=swine&matchFormat=Tournment&platform=Twitch
+GET .../api/users?platform=Youtube&team=Black Newts
 ```
 
 ## Get Only Specific Keys
