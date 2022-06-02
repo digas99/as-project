@@ -1,6 +1,9 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'].'/php/connect.php';
+$document_root=$_SERVER['DOCUMENT_ROOT'];
+
+require $document_root.'/php/connect.php';
+require $document_root.'/php/functions.php';
 
 // setup tables
 $tables = array(
@@ -75,5 +78,29 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
     forEach($games as $game) {
         $sql = "INSERT INTO Games (name, cover) VALUES ('".$game[1]."', '".$game[0]."');";
         mysqli_query($conn, $sql);
+    }
+}
+
+// fill UserGames table
+$result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM UserGames) as `row_exists`;");
+if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
+    echo "Randomly matching Users to Games...<br>";
+    // get all users ids that are streamers
+    $usersIds = array_map(function ($elem) {
+        return $elem["id"];
+    }, apiFetch("http://localhost/api/users?keys=id&streamer=true")["data"]);
+    // get all games ids
+    $gamesIds = array_map(function ($elem) {
+            return $elem["id"];
+    }, apiFetch("http://localhost/api/games?keys=id")["data"]);
+
+    foreach($usersIds as $userId) {
+        // get n random games
+        $userGames = array_rand(array_flip($gamesIds), rand(1,4));
+        $userGames = !is_array($userGames) ? array($userGames) : $userGames;
+        foreach($userGames as $game) {
+            $sql = "INSERT INTO UserGames (userId, gameId) VALUES ('".$userId."', '".$game."');";
+            mysqli_query($conn, $sql);
+        }
     }
 }

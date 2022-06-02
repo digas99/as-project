@@ -13,7 +13,7 @@ API that handles data from GameBET's databases
     - 2.2 [Filter Games By Key](#filter-games-by-key)
 3. [Streams](#streams)
 4. [Bets](#bets)
-5. [Get Only Specific Keys]("#get-only-specific-keys)
+5. [Get Only Specific Keys](#get-only-specific-keys)
 
 ## Users
 
@@ -102,7 +102,7 @@ GET .../api/users?name=tr
 
 ## Get Only Specific Keys
 
-When making any HTTP request, providing the URL Parameter *keys* will only show those specific keys.
+When making any HTTP request, providing the URL Parameter *"keys"* will only show those specific keys.
 
 As an example, the following HTTP Request
 
