@@ -1,0 +1,182 @@
+<head>
+  <!--Importing icons-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<div id="navbar">
+  <a href="#wallet">Wallet</a>
+  <a href="#points">Points</a>
+  <a href="#friends">Friends</a>
+  <a href="#profile">Profile</a>
+  <a href="#stats">Stats</a>
+  <a href="#settings">Settings</a>
+  <a href="#faq">FAQ</a>
+  <a href="#logout">Logout</a>
+  <a href="#friends">Friends</a>
+  <a href="#searchNavbar"><i class="fa fa-fw fa-search"></i></a>
+  <!-- DIOGO -->
+  <!-- Falta os ícones (sliders) do dinheiro e dos pontos entre o search e o ticket-->
+  <a href="#ticketNavbar"><img id="ticketNavbarImg" src="/Icons/ticket.png"></a>  
+</div>
+
+
+  <form style="max-width:200px; margin:20px; position:absolute; top:6%; left:55% ">
+      <div class="input-icons">
+          <i class="fa fa-search icon"></i>
+          <input class="input-field"
+                 type="text"
+                 placeholder="Game, streamer, ...">
+      </div>
+  </form>
+
+
+
+<input type="image" img id="sortRightSearchBar" src="/Icons/sort.png">
+<input type="image" img id="starRightSearchBar" src="/Icons/star.png">
+
+<hr id="purpleLine">
+
+<div class="panel1">
+  <a href="#"><img id="lolCover" src="/Icons/lolCover.jpg"></a>    <!-- image link to?-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+<script>
+// ----------------------------sticky navbar-----------------  
+
+  window.onscroll = function() {stickyBar()};
+
+  var navbar = document.getElementById("navbar");    
+  var sticky = navbar.offsetTop;
+
+  function stickyBar() {
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
+  }
+</script>
+
+
+<style> 
+    /* -----------------sticky navbar----------------- */
+  #navbar {
+    overflow: hidden;
+    background-color: #f50083;
+  }
+      
+  #navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+  }
+            
+  .content {
+    padding: 16px;
+  }
+      
+  .sticky {
+     position: fixed;
+     top: 0;
+     width: 100%;
+  }
+      
+  .sticky + .content {
+    padding-top: 60px;
+  }
+
+  /* ----------------------Search--------------------- */
+
+  .input-icons i {
+    position: absolute;
+  }
+         
+  .input-icons {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+         
+  .icon {
+    padding: 10px;
+    color: black;
+    min-width: 10px;
+    text-align: center;
+  }   
+
+  .input-field {
+    border-radius: 25px;
+    width: 150%;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    background-color: lightgrey;
+  }
+
+  /* ----------------------Ticket--------------------- */
+  #ticketNavbarImg{
+    width: 25px;
+    /* changing color of image. Algorithm from https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: invert(100%) sepia(0%) saturate(7434%) hue-rotate(353deg) brightness(113%) contrast(113%);
+  }
+
+  /* ----------------------Sort--------------------- */
+
+  #sortRightSearchBar{
+    position: absolute;
+    top: 8.5%;
+    left: 90%;
+    width: 30px;
+  }
+
+
+  /* ----------------------StarRightSearchBar--------------------- */
+
+ #starRightSearchBar{
+   position: absolute;
+   top: 8.5%;
+   left: 94%;
+   width: 25px;
+  }
+
+
+
+  /* -------------------Purple Line-------------------- */
+  #purpleLine {
+    color: #f50083;
+    margin-top: 70px;
+  }
+
+  /* -------------------Panel 1-------------------- */
+  .panel1{
+    /* the image will be called from db? */
+    background: 50% 50% no-repeat; /* 50% 50% center image in div */
+    width: 250px;
+    height: 250px;
+  }
+
+
+
+
+
+        
+</style>    
