@@ -26,8 +26,25 @@ Example of the information fetched from /users:
 {
     "username": "IdealCobra",
     "email": "idealcobra@fakemail.com",
-    "streamer": false,
-    "id": "4"
+    "streamer": true,
+    "id": "4",
+    "games": [
+        {
+            "name": "League of Legends",
+            "cover": "https://static-cdn.jtvnw.net/ttv-boxart/21779-285x380.jpg",
+            "id": "2"
+        },
+        {
+            "name": "Leap",
+            "cover": "https://static-cdn.jtvnw.net/ttv-boxart/391992674_IGDB-285x380.jpg",
+            "id": "34"
+        },
+        {
+            "name": "Chess",
+            "cover": "https://static-cdn.jtvnw.net/ttv-boxart/743-285x380.jpg",
+            "id": "41"
+        }
+    ]
 }
 ```
 
@@ -38,6 +55,7 @@ Example of the information fetched from /users:
 | **email** | Email | string | User email | 
 | **streamer** | Streamer | boolean | Whether or not the user is partnered with GameBET, therefore being a streamer |
 | **id** | User ID | string | User number identifier |
+| **games** | Games | Game | Games streamed by the user |
 
 ### Get All Users
 
@@ -70,7 +88,23 @@ Example of the information fetched from /games:
 {
     "name": "SMITE",
     "cover": "https://static-cdn.jtvnw.net/ttv-boxart/32507-285x380.jpg",
-    "id": "37"
+    "id": "37",
+    "users": [
+        {
+            "username": "OurVole",
+            "email": "ourvole@fakemail.com",
+            "pwd": "123456",
+            "streamer": "1",
+            "id": "7"
+        },
+        {
+            "username": "EvasiveGuillemot",
+            "email": "evasiveguillemot@fakemail.com",
+            "pwd": "123456",
+            "streamer": "1",
+            "id": "26"
+        }
+    ]
 }
 ```
 
@@ -80,6 +114,7 @@ Example of the information fetched from /games:
 | **name** | Name | string | Name of the game | 
 | **cover** | Cover | string | Link to the cover picture | 
 | **id** | User ID | string | Game number identifier |
+| **users** | Users | User | Users streaming the game |
 
 ### Get All Games
 
@@ -102,13 +137,13 @@ GET .../api/users?name=tr
 
 ## Get Only Specific Keys
 
-When making any HTTP request, providing the URL Parameter *"keys"* will only show those specific keys.
+When making any HTTP request, providing the URL Parameter *"keys"* will only show those specific keys (see **Fields** to know which keys are valid).
 
 As an example, the following HTTP Request
 
 ``` GET .../api/users?id=4&keys=id,username```
 
-responds with the following:
+responds with the following data:
 ```json
 {
     "username": "IdealCobra",
@@ -116,4 +151,4 @@ responds with the following:
 }
 ```
 
-Providing unexisting keys will cancel the effect of the parameter.
+Keys that don't exist will be ignored.

@@ -14,13 +14,52 @@ if ($method === 'GET') {
     if (isset($_GET["id"])) $filter = "id = '".$_GET["id"]."'";
     else if (isset($_GET["name"])) $filter = "name LIKE '%". $_GET["name"] ."%'";
 
-    if (isset($_GET["keys"])) $columns = $_GET["keys"]; 
+    if (isset($_GET["keys"])) {
+        // get Users columns
+        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Games' AND TABLE_SCHEMA = 'gamebet'";
+        $result = mysqli_query($conn, $query);
+        $usersColumns = array();
+        while($row = mysqli_fetch_assoc($result)) {
+            $usersColumns[] = $row["COLUMN_NAME"];
+        }
 
-    $query = "SELECT ". $columns ." FROM Games WHERE ". $filter;
-    $result = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_assoc($result)) {
-        $data[] = $row;
-    } 
+        // only keep columns that are from Users
+        $columns = join(",", array_intersect($usersColumns, explode(",", $_GET["keys"])));
+    }
+
+    $userGamesAssoc = array();
+    $userIds = array();
+    $users = array();
+    if (!isset($_GET["keys"]) || (isset($_GET["keys"]) && str_contains($_GET["keys"],"users"))) {
+        // get user<->games association
+        $query = "SELECT * FROM UserGames";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+            $userGamesAssoc[$row["gameId"]][] = $row["userId"];
+            $userIds[] = $row["userId"];
+        }
+
+        // get users info from the users that matter
+        $query = "SELECT * FROM Users WHERE id IN (" . join(",", $userIds) . ")";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+            $users[$row["id"]] = $row;
+        }
+    }
+
+	if (!str_contains($columns, "id")) $columns = $columns.($columns != "" ? "," : "")."id";
+
+	$query = "SELECT ". $columns ." FROM Games WHERE ". $filter;
+	$result = mysqli_query($conn, $query);
+	while($row = mysqli_fetch_assoc($result)) {
+	    if (isset($userGamesAssoc[$row["id"]])) {
+		foreach($userGamesAssoc[$row["id"]] as $userId) {
+		    $row["users"][] = $users[$userId];
+		}
+	    }
+
+	    $data[] = $row;
+	} 
     
     $response["data"] = $data;
     $response["size"] = count($data);
