@@ -12,7 +12,7 @@ $users = "CREATE TABLE `gamebet`.`Users`(
 )";
 
 $games = "CREATE TABLE `gamebet`.`Games`(
-	gameName VARCHAR(255) NOT NULL ,
+	name VARCHAR(255) NOT NULL ,
 	cover TEXT NOT NULL ,
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
 )";
