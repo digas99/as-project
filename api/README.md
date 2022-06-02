@@ -215,15 +215,38 @@ GET .../api/users?platform=Youtube&team=Black Newts
 
 When making any HTTP request, providing the URL Parameter *"keys"* will only show those specific keys (see **Fields** to know which keys are valid).
 
-As an example, the following HTTP Request
+An example, is the following: 
+**HTTP Request**
 
 ``` GET .../api/users?id=4&keys=id,username```
 
-responds with the following data:
+It responds with the following data:
 ```json
 {
     "username": "IdealCobra",
     "id": "4"
+}
+```
+
+Keys that don't represent *strings* will work too, as it shows in the following example:
+**HTTP Request**
+
+``` GET .../api/streams?team=Black%20Rabbits&keys=title,viewers,game,teamA,teamB```
+
+It responds with the following data:
+```json
+{
+    "title": "Ipsum salami short ribs reprehenderit sint landjaeger non capicola swine cillum shankle aute veniam",
+    "viewers": "78590",
+    "teamA": "Black Rabbits",
+    "teamB": "Blue Koalas",
+    "id": "23",
+    "gameId": "39",
+    "game": {
+        "name": "Resident Evil 2",
+        "cover": "https://static-cdn.jtvnw.net/ttv-boxart/8645_IGDB-285x380.jpg",
+        "id": "39"
+    }
 }
 ```
 
