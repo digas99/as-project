@@ -10,8 +10,9 @@ $tables = array(
     "CREATE TABLE `gamebet`.`Users`(
         username VARCHAR(255) NOT NULL ,
         email VARCHAR(255) NOT NULL ,
-        pwd VARCHAR(255) NOT NULL ,
         streamer BOOLEAN NOT NULL ,
+        money VARCHAR(255) NOT NULL ,
+        points VARCHAR(255) NOT NULL ,
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
     )",
     "CREATE TABLE `gamebet`.`Games`(
@@ -23,11 +24,10 @@ $tables = array(
         title VARCHAR(255) NOT NULL ,
         thumbnail TEXT NOT NULL ,
         viewers TEXT NOT NULL ,
-        link TEXT NOT NULL ,
         gameId VARCHAR(255) NOT NULL ,
         userId VARCHAR(255) NOT NULL ,
-        platform VARCHAR(255) NOT NULL ,
-        matchFormat SET('Youtube','Twitch') NOT NULL ,
+        platform SET('Youtube','Twitch') NOT NULL ,
+        matchFormat SET('Tournment','Casual') NOT NULL ,
         matchBeginning TIMESTAMP NOT NULL ,
         teamA VARCHAR(255) NOT NULL ,
         teamB VARCHAR(255) NOT NULL ,
@@ -48,6 +48,7 @@ $tables = array(
     )"
 );
 
+echo "Adding tables:<br>";
 foreach($tables as $table) {
     $table_name = explode("`", $table)[3];
     $result = mysqli_query($conn, "SHOW TABLES LIKE '". $table_name . "';");
@@ -58,7 +59,7 @@ foreach($tables as $table) {
 }
 
 // fill tables
-require $_SERVER['DOCUMENT_ROOT']."/php/static-data.php";
+require $document_root."/php/static-data.php";
 
 // fill Users table
 $result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Users) as `row_exists`;");
@@ -66,7 +67,7 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
     echo "Adding fake Users data...<br>";
     forEach($usernames as $username) {
         $streamer = rand(0,1);
-        $sql = "INSERT INTO Users (email, pwd, streamer, username) VALUES ('".strtolower($username)."@fakemail.com', '123456', '".rand(0,1)."', '".$username."');";
+        $sql = "INSERT INTO Users (email, streamer, username, money, points) VALUES ('".strtolower($username)."@fakemail.com', '".rand(0,1)."', '".$username."', '".rand(0,150)."', '".rand(0,2000)."');";
         mysqli_query($conn, $sql);
     }
 }
@@ -103,4 +104,47 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
             mysqli_query($conn, $sql);
         }
     }
+}
+
+// fill Streams table
+$result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Streams) as `row_exists`;");
+if (mysqli_fetch_assoc($result)["row_exists"] == 0) { 
+    echo "Adding fake Streams data...<br>";
+    $platforms = array("Youtube", "Twitch");
+    $matchFormats = array("Tournment", "Casual");
+    $queryValues = array();
+
+    $query = "SELECT userId,gameId FROM UserGames";
+    $result = mysqli_query($conn, $query);
+    $max_possible_streams = mysqli_num_rows($result)*5;
+    $max_streams_per_assoc = 5;
+
+    // fetch lorem ipsum for titles from baconipsum.com
+    $titles = array();
+    for ($i = 0; $i < ceil($max_possible_streams/100); $i++) {
+        $titles = array_merge($titles, explode(". ", apiFetch("https://baconipsum.com/api/?type=meat-and-filler&sentences=". $max_possible_streams)[0]));
+    }
+    shuffle($titles);
+    date_default_timezone_set("Europe/Lisbon");
+    $counter = 0;
+
+    $query = "SELECT userId,gameId FROM UserGames";
+    $result = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_assoc($result)) {
+        // n streams from this user on this game
+        $n_streams = rand(1, $max_streams_per_assoc);
+        for ($i = 0; $i < $n_streams; $i++) {
+            $title = array_pop($titles);
+            $thumbnail = 'https://picsum.photos/300/170?random='.$counter++;
+            $viewers = rand(100, 100000);
+            $userId = $row["userId"];
+            $gameId = $row["gameId"];
+            $timeMultiplier = rand(0, 10);
+            $timeOp = rand(0,1) == "0" ? "-" : "+";
+            $beginning = date('Y-m-d H:i:s', strtotime(" ". $timeOp ." ". $timeMultiplier*10 ." minutes"));
+            $queryValues[] = "('".$title."', '".$thumbnail."', '".$viewers."', '".$userId."', '".$gameId."', '".$platforms[rand(0,1)]."', '".$matchFormats[rand(0,1)]."', '".$beginning."', '".$teams[rand(0, count($teams)-1)]."', '".$teams[rand(0, count($teams)-1)]."')";
+        }
+    }
+    $sql = "INSERT INTO Streams (title, thumbnail, viewers, gameId, userId, platform, matchFormat, matchBeginning, teamA, teamB) VALUES ". join(",", $queryValues) .";";
+    mysqli_query($conn, $sql);
 }

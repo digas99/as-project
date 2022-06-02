@@ -63,6 +63,7 @@ if ($method === 'GET') {
     
     $response["data"] = $data;
     $response["size"] = count($data);
+    date_default_timezone_set("Europe/Lisbon");
     $response["timestamp"] = date('Y-m-d H:i:s');
     echo json_encode($response, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 }

@@ -23,8 +23,7 @@ if ($method === 'GET') {
         $result = mysqli_query($conn, $query);
         $usersColumns = array();
         while($row = mysqli_fetch_assoc($result)) {
-            if ($row["COLUMN_NAME"] !== "pwd")
-                $usersColumns[] = $row["COLUMN_NAME"];
+        	$usersColumns[] = $row["COLUMN_NAME"];
         }
 
         // only keep columns that are from Users
@@ -53,23 +52,24 @@ if ($method === 'GET') {
 
 	if (!str_contains($columns, "id")) $columns = $columns.($columns != "" ? "," : "")."id";
 	
-        $query = "SELECT ". $columns ."  FROM Users WHERE ". $filter;
-        $result = mysqli_query($conn, $query);
-        while($row = mysqli_fetch_assoc($result)) {
-            if (isset($row["streamer"]))    
-                $row["streamer"] = $row["streamer"] == "1";
-    
-            if (isset($userGamesAssoc[$row["id"]])) {
-                foreach($userGamesAssoc[$row["id"]] as $gameId) {
-                    $row["games"][] = $games[$gameId];
-                }
+    $query = "SELECT ". $columns ."  FROM Users WHERE ". $filter;
+    $result = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_assoc($result)) {
+        if (isset($row["streamer"]))    
+            $row["streamer"] = $row["streamer"] == "1";
+
+        if (isset($userGamesAssoc[$row["id"]])) {
+            foreach($userGamesAssoc[$row["id"]] as $gameId) {
+                $row["games"][] = $games[$gameId];
             }
-    
-            $data[] = $row;
         }
+
+        $data[] = $row;
+    }
     
     $response["data"] = $data;
     $response["size"] = count($data);
+    date_default_timezone_set("Europe/Lisbon");
     $response["timestamp"] = date('Y-m-d H:i:s');
     echo json_encode($response, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 }
