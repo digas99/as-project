@@ -9,11 +9,14 @@ if ($method === 'GET') {
     $response = array();
     $data = array();
     $filter = 1;
+    $columns = "*";
 
     if (isset($_GET["id"])) $filter = "id = '".$_GET["id"]."'";
     else if (isset($_GET["name"])) $filter = "name LIKE '%". $_GET["name"] ."%'";
 
-    $query = "SELECT * FROM Games WHERE ".$filter;
+    if (isset($_GET["keys"])) $columns = $_GET["keys"]; 
+
+    $query = "SELECT ". $columns ." FROM Games WHERE ". $filter;
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;

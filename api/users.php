@@ -9,6 +9,7 @@ if ($method === 'GET') {
     $response = array();
     $data = array();
     $filter = 1;
+    $columns = "username,email,streamer,id";
 
     if (isset($_GET["id"])) $filter = "id = '".$_GET["id"]."'";
     else if (isset($_GET["username"])) $filter = "username LIKE '%". $_GET["username"] ."%'";
@@ -16,10 +17,13 @@ if ($method === 'GET') {
     
     if (isset($_GET["streamer"])) $filter = $filter . " AND streamer = '". ($_GET["streamer"] == "true" ? "1" : "0") ."'";
 
-    $query = "SELECT username,email,streamer,id FROM Users WHERE ".$filter;
+    if (isset($_GET["keys"]) && !str_contains($_GET["keys"],"pwd")) $columns = $_GET["keys"]; 
+
+    $query = "SELECT ". $columns ."  FROM Users WHERE ". $filter;
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_assoc($result)) {
-        $row["streamer"] = $row["streamer"] == "1" ? true : false;
+        if (isset($row["streamer"]))    
+            $row["streamer"] = $row["streamer"] == "1" ? true : false;
         $data[] = $row;
     } 
     
