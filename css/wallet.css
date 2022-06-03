@@ -18,7 +18,8 @@ h1{
     color: white;
     width: 300px;
     height: 60px;
-    cursor:pointer;    
+    cursor: pointer;
+    border: none;    
 }
 
 #withdraw{
@@ -30,7 +31,8 @@ h1{
     color: white;
     width: 300px;
     height: 60px;
-    cursor:pointer;    
+    cursor: pointer;
+    border: none;    
 }
 
 #points{
@@ -42,14 +44,15 @@ h1{
     color: white;
     width: 400px;
     height: 60px;
-    cursor:pointer;
+    cursor: pointer;
+    border: none;
 }
 
 #line{
     color: #636363;
     display: block;
     margin: 600px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #balance{
@@ -61,7 +64,8 @@ h1{
     color: #696969;
     font-size: 25px;
     font-weight: bold;
-    cursor:pointer;   
+    cursor: pointer;
+    border: none;   
 }
 
 #account{
@@ -73,7 +77,8 @@ h1{
     color: #696969;
     font-size: 25px;
     font-weight: bold;
-    cursor:pointer;
+    cursor: pointer;
+    border: none;
 }
 
 #bets{
@@ -85,7 +90,8 @@ h1{
     color: #696969;
     font-size: 25px;
     font-weight: bold;
-    cursor:pointer;
+    cursor: pointer;
+    border: none;
 }
 
 #invite{
@@ -98,7 +104,8 @@ h1{
     font-size: 25px;
     text-align: left;
     font-weight: bold;
-    cursor:pointer;
+    cursor: pointer;
+    border: none;
 }
 
 #invite10{
@@ -109,7 +116,8 @@ h1{
     background-color: #F50083;
     color: white;
     font-size: 25px;
-    cursor:pointer;
+    cursor: pointer;
+    border: none;
 }
 
 

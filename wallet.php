@@ -13,7 +13,7 @@
 
   <!-- Diogo, mete os nºos sff, em cima de deposit e win points-->
 
-  <a href="#"><button type="button" id="deposit">Deposit</button>
+  <a href="deposit"><button type="button" id="deposit">Deposit</button>
   <a href="#"><button type="button" id="withdraw">Withdraw</button> 
   <a href="#"><button type="button" id="points">Win GameBet Points</button>
     
