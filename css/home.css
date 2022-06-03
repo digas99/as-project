@@ -25,13 +25,6 @@
   background-color: lightgrey;
 }
 
-/* ----------------------TicketImageNavbar--------------------- */
-#ticketNavbarImg{
-  width: 40px;
-  /* changing color of image. Algorithm from https://codepen.io/sosuke/pen/Pjoqqp */
-  filter: invert(100%) sepia(0%) saturate(7434%) hue-rotate(353deg) brightness(113%) contrast(113%);
-}
-
  /* ----------------------Sort--------------------- */
 
 #sortRightSearchBar{
