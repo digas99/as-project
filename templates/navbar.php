@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div id="navbar">
+<div id="navbar" class="sticky">
     <a href="home" style="font-size: 35px; padding: 10px;">Gamebet</a>
     <a href="wallet" style="font-size: 20px; padding: 20px;">Wallet</a>
     <a href="#points" style="font-size: 20px; padding: 20px;">Points</a>

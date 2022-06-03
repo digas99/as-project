@@ -21,16 +21,16 @@
 
 
 <div class="title-Game">
-  <p <a href="/pages/home.html"">home</a> /League Of Legends <p style="color:#f50083;font-weight: bold;"> 402 eventos</p></p>
+  <p <a href="home.html"">home</a> /League Of Legends <p style="color:#f50083;font-weight: bold;"> 402 eventos</p></p>
 </div>
 
 
-<input type="image" img id="starLeftSearchBar" src="/Icons/star.png">
+<input type="image" img id="starLeftSearchBar" src="/images/star.png">
 
 <hr size="4" width="95%" color="#f50083">  
 
 <div class="boxes">
-  <div class="box"> <input type="image" img id="FotoSearchBar" src="/Icons/player.jpg"> </div>
+  <div class="box"> <input type="image" img id="FotoSearchBar" src="/images/player.jpg"> </div>
   <div class="box"></div>
   <div class="box"></div>
 </div>
@@ -38,7 +38,7 @@
 
 
 <div class="vertical"></div>
-<input type="image" img id="FotoRiotEnd" src="/Icons/foto.jpg">
+<input type="image" img id="FotoRiotEnd" src="/images/foto.jpg">
 
 <script type="text/javascript" src="js/navbar.js"></script>
 <script type="text/javascript" src="js/home.js"></script>

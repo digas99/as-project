@@ -1,4 +1,8 @@
 /* -----------------sticky navbar----------------- */
+body {
+	margin-top: 65px;
+}
+
 #navbar {
   overflow: hidden;
   background-color: #f50083;  

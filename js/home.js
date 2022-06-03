@@ -28,6 +28,16 @@ const updateGamesList = (gamesWrapper, data) => {
 			const gameStreams = document.createElement("div");
 			gameNameWrapper.appendChild(gameStreams);
 			gameStreams.appendChild(document.createTextNode((game["streams"] +" events")));
+			
+			gameInfo.addEventListener("mouseover", e => {
+				gameInfo.style.filter = "opacity(0.7)";
+				gameCover.style.transform = "scale(1.05)";
+			});
+					
+			gameInfo.addEventListener("mouseout", e => {
+				gameInfo.style.removeProperty("filter");
+				gameCover.style.removeProperty("transform");
+			});
 		});
 		
 		// if no games found

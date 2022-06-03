@@ -165,6 +165,15 @@ a {
 
 .games-list .game {
 	width: fit-content;
+	transition: 0.3s;
+}
+
+.games-list .game li:first-child {
+	overflow: hidden;
+}
+
+.games-list .game li:first-child img {
+	transition: 0.3s;
 }
 
 .games-list .game li:nth-child(2) {
