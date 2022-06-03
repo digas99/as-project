@@ -19,7 +19,8 @@
 					top: 0;
 					bottom: 0;
 					margin: auto;
-					height: fit-content;">
+					height: fit-content;
+					padding-top: 10px;">
 		<div id="n-games" style="display: flex;
 					align-items: center;
 					font-size: 25px;
