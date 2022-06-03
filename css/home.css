@@ -23,6 +23,30 @@
   text-align: center;
   color: black;
   background-color: lightgrey;
+  font-size: medium;
+}
+
+.box{
+  width: 1650px;
+  height: 100px;
+  border: 1px solid #DCDCDC;
+  background-color: #DCDCDC;
+  margin: 45px;;
+  padding: 34px;
+  } 
+  
+.vertical {
+  position: absolute;
+  top: 24.5%;
+  border-left: 5px solid #f50083;
+  height: 169px;
+  left: 12%;
+}
+.title-Game {
+    
+  font-size: 15px; 
+  padding: 10px;
+  color:#686868
 }
 
 /* ----------------------TicketImageNavbar--------------------- */
@@ -48,6 +72,30 @@
   top: 9.7%;
   left: 97%;
   width: 25px;
+}
+
+/* ----------------------StarLeftSearchBar--------------------- */
+#starLeftSearchBar{
+  position: absolute;
+  top: 10%;
+  left: 12%;
+  width: 23px;
+}
+
+/* ----------------------FotoSearchBar--------------------- */
+#FotoSearchBar{
+  position: absolute;
+  top: 24.5%;
+  left: 2.9%;
+  width: 169px;
+}
+
+/* ----------------------FotoRiotEnd--------------------- */
+#FotoRiotEnd{
+  position: absolute;
+  top: 38.7%;
+  left: 2.9%;
+  width: 169px;
 }
 
 /* -------------------Purple Line-------------------- */
