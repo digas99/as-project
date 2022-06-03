@@ -271,10 +271,9 @@ Filter the list of bets by the keys available. Some keys can be combined. Most o
 **Example HTTP Requests**
 
 ```
-GET .../api/users?id=1580
-GET .../api/users?resultTeam=Australia Toads&resultType=5 Headshots
+GET .../api/bets?id=1580
+GET .../api/bets?resultTeam=Australia Toads&resultType=5 Headshots
 ```
-
 
 ## Get Only Specific Keys
 
