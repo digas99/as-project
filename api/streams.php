@@ -20,7 +20,11 @@ if ($method === 'GET') {
 
     if (isset($_GET["platform"])) $filter = $filter . " AND platform = '".$_GET["platform"]."'";
     
-    if (isset($_GET["format"])) $filter = $filter . " AND matchFormat = '".$_GET["format"]."'";
+    if (isset($_GET["matchFormat"])) $filter = $filter . " AND matchFormat = '".$_GET["matchFormat"]."'";
+    
+    if (isset($_GET["gameId"])) $filter = $filter . " AND gameId = '".$_GET["gameId"]."'";
+        
+    if (isset($_GET["userId"])) $filter = $filter . " AND userId = '".$_GET["userId"]."'";
 
     if (isset($_GET["team"])) $filter = $filter . " AND (teamA LIKE '%".$_GET["team"]."%' OR teamB LIKE '%".$_GET["team"]."%')";
     

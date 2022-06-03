@@ -1,3 +1,25 @@
+/* ---------------------General--------------------- */
+
+:root {
+	--font-gray: #636363;
+	--font-light-gray: #B0B0B0;
+	--pink: #F50083;
+}
+
+body {
+  margin: 0;
+  font-family: 'Avenir LT Std', sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
 /* ----------------------Search--------------------- */
 
 .input-icons i {
@@ -7,6 +29,8 @@
 .input-icons {
   width: 100%;
   margin-bottom: 5px;
+  display: flex;
+	align-items: center;
 }
          
 .icon {
@@ -20,9 +44,47 @@
   border-radius: 25px;
   width: 150%;
   padding: 10px;
-  text-align: center;
   color: black;
   background-color: lightgrey;
+  font-size: medium;
+  padding-left: 35px;
+  border: none;
+}
+
+.input-field:active, .input-field:focus, .input-field:focus-visible {
+	border: 2px solid var(--pink);
+	outline: none;
+}
+
+.box{
+  width: 1650px;
+  height: 100px;
+  border: 1px solid #DCDCDC;
+  background-color: #DCDCDC;
+  margin: 45px;;
+  padding: 34px;
+  } 
+  
+.vertical {
+  position: absolute;
+  top: 24.5%;
+  border-left: 5px solid var(--pink);
+  height: 169px;
+  left: 12%;
+}
+.title-Game {
+    
+  font-size: 15px; 
+  padding: 10px;
+  color:#686868
+}
+
+
+/* ----------------------TicketImageNavbar--------------------- */
+#ticketNavbarImg{
+  width: 40px;
+  /* changing color of image. Algorithm from https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(100%) sepia(0%) saturate(7434%) hue-rotate(353deg) brightness(113%) contrast(113%);
 }
 
  /* ----------------------Sort--------------------- */
@@ -43,44 +105,86 @@
   width: 25px;
 }
 
+/* ----------------------StarLeftSearchBar--------------------- */
+#starLeftSearchBar{
+  position: absolute;
+  top: 10%;
+  left: 12%;
+  width: 23px;
+}
+
+/* ----------------------FotoSearchBar--------------------- */
+#FotoSearchBar{
+  position: absolute;
+  top: 24.5%;
+  left: 2.9%;
+  width: 169px;
+}
+
+/* ----------------------FotoRiotEnd--------------------- */
+#FotoRiotEnd{
+  position: absolute;
+  top: 38.7%;
+  left: 2.9%;
+  width: 169px;
+}
+
 /* -------------------Purple Line-------------------- */
 #purpleLine {
-  color: #f50083;
-  margin-top: 70px;
+  color: var(--pink);
+  margin: 0;
 }
 
 /* -------------------Panels-------------------- */
-.panel1{
-  background: 50% 50% no-repeat; /* 50% 50% center image in div */
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 100px;
-  height: 100px;
-}
-
-.panel2{
-  background: 50% 50% no-repeat; 
-  width: 250px;
-  height: 250px;
-
-}
-
-.panel3{
-  background: 50% 50% no-repeat; 
-  width: 250px;
-  height: 250px;
+.games-list {
+	grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+	display: grid;
+	text-align: center;
+	position: relative;
     
 }
 
-.panel4{
-  background: 50% 50% no-repeat; 
-  width: 250px;
-  height: 250px;
+.games-list > p {
+	text-align: center;
+	width: 100%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	position: absolute;
+	font-size: 20px;
+	color: var(--font-gray);
+	font-weight: bold;
+	top: 25;
 }
 
-.panel5{
-  background: 50% 50% no-repeat; 
-  width: 250px;
-  height: 250px;
+.games-list > div {
+	width: fit-content;
+	display: block;
+	margin: auto;
+}
+
+.games-list .game {
+	width: fit-content;
+	transition: 0.3s;
+}
+
+.games-list .game li:first-child {
+	overflow: hidden;
+}
+
+.games-list .game li:first-child img {
+	transition: 0.3s;
+}
+
+.games-list .game li:nth-child(2) {
+	text-align: left;
+	font-weight: bold;
+}
+
+.games-list .game li:nth-child(2) div:first-child {
+	color: var(--font-gray);
+}
+
+.games-list .game li:nth-child(2) div:nth-child(2) {
+	color: var(--pink);
 }

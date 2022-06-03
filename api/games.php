@@ -46,6 +46,17 @@ if ($method === 'GET') {
             $users[$row["id"]] = $row;
         }
     }
+    
+    $streams = array();
+    if (!isset($_GET["keys"]) || (isset($_GET["keys"]) && str_contains($_GET["keys"],"streams"))) {
+        // get users info from the users that matter
+        $query = "SELECT * FROM Streams";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+            $streams[$row["gameId"]][] = $row;
+        }
+    }
+
 
 	if (!str_contains($columns, "id")) $columns = $columns.($columns != "" ? "," : "")."id";
 
@@ -57,6 +68,8 @@ if ($method === 'GET') {
                 $row["users"][] = $users[$userId];
             }
 	    }
+			
+	    $row["streams"] = (count($streams) > 0 && $streams[$row["id"]]) ? count($streams[$row["id"]]) : 0;
 
 	    $data[] = $row;
 	} 

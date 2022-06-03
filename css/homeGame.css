@@ -1,0 +1,16 @@
+/* ----------------------Search--------------------- */
+
+.title-Game {
+    
+    color: black;
+    background-color: lightgrey;
+  }
+
+  /* ----------------------StarLeftSearchBar--------------------- */
+#starLeftSearchBar{
+    position: absolute;
+    top: 10%;
+    left: 12%;
+    width: 23px;
+  }
+     
