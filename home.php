@@ -3,6 +3,8 @@
   <link rel="stylesheet" href="css/navbar.css"/> 
   <!--Importing icons-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link href="http://fonts.cdnfonts.com/css/avenir-lt-std" rel="stylesheet" as="style" onload="this.rel='stylesheet'">
 </head>
 
 <body>
@@ -26,28 +28,8 @@
 
 <hr id="purpleLine">
 
-<div class="panel1">
-  <a href="#"><img id="lolCover" src="/Icons/lolCover.jpg"></a>    
-</div>
+<div class="games-list">
 
-<div class="panel2">
-  <a href="#"><img id="lolCover" src="/Icons/lolCover.jpg"></a>    
-</div>
-
-<div class="panel3">
-  <a href="#"><img id="lolCover" src="/Icons/lolCover.jpg"></a>    
-</div>
-
-<div class="panel4">
-  <a href="#"><img id="lolCover" src="/Icons/lolCover.jpg"></a>    
-</div>
-
-<div class="panel5">
-  <a href="#"><img id="lolCover" src="/Icons/lolCover.jpg"></a>    
-</div>
-
-<div class="panel6">
-  <a href="#"><img id="lolCover" src="/Icons/lolCover.jpg"></a>    
 </div>
 
 <script type="text/javascript" src="js/navbar.js"></script>
