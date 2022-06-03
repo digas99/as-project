@@ -5,15 +5,15 @@
 <div id="navbar" class="sticky">
     <a href="home" style="font-size: 40px; padding: 10px; font-family: 'Inter', sans-serif;">Gamebet</a>
     <a href="wallet" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Wallet</a>
-    <a href="#points" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Points</a>
-    <a href="#friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
-    <a href="#profile" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Profile</a>
-    <a href="#stats" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Stats</a>
-    <a href="#settings" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif; ">Settings</a>
-    <a href="#faq" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;" >FAQ</a>
-    <a href="#logout" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Logout</a>
-    <a href="#friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
-    <a href="#searchNavbar"><i class="fa fa-fw fa-search" style="font-size: 25px; padding: 5px;"></i> </a>
+    <a href="points" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Points</a>
+    <a href="friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
+    <a href="profile" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Profile</a>
+    <a href="stats" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Stats</a>
+    <a href="settings" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif; ">Settings</a>
+    <a href="faq" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;" >FAQ</a>
+    <a href="logout" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Logout</a>
+    <a href="friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
+    <a href="searchNavbar"><i class="fa fa-fw fa-search" style="font-size: 25px; padding: 5px;"></i> </a>
     <a href="deposit">
     	<div class="balance-box">
     		<div>
