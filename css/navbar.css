@@ -1,28 +1,35 @@
 /* -----------------sticky navbar----------------- */
 #navbar {
-    overflow: hidden;
-    background-color: #f50083;
-  }
+  overflow: hidden;
+  background-color: #f50083;  
+}
         
-  #navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 15px;
-    text-decoration: none;
-  }
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+}
               
-  .content {
-    padding: 16px;
-  }
+.content {
+  padding: 16px;
+}
         
-  .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
         
-  .sticky + .content {
-    padding-top: 60px;
-  }
+.sticky + .content {
+  padding-top: 60px;
+}
+
+/* ----------------------TicketImageNavbar--------------------- */
+#ticketNavbarImg{
+  width: 40px;
+  /* changing color of image. Algorithm from https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(100%) sepia(0%) saturate(7434%) hue-rotate(353deg) brightness(113%) contrast(113%);
+}
