@@ -6,16 +6,19 @@ API that handles data from GameBET's databases
 1. [Users](#users)
     - 2.1 [Structure](#structure)
     - 2.2 [Get All Users](#get-all-users)
-    - 2.2 [Filter Users By Key](#filter-users-by-key)
+    - 2.3 [Filter Users By Key](#filter-users-by-key)
 2. [Games](#games)
     - 2.1 [Structure](#structure)
     - 2.2 [Get All Games](#get-all-games)
-    - 2.2 [Filter Games By Key](#filter-games-by-key)
+    - 2.3 [Filter Games By Key](#filter-games-by-key)
 3. [Streams](#streams)
     - 3.1 [Structure](#structure)
     - 3.2 [Get All Streams](#get-all-streams)
-    - 3.2 [Filter Streams By Key](#filter-streams-by-key)
+    - 3.3 [Filter Streams By Key](#filter-streams-by-key)
 4. [Bets](#bets)
+    - 4.1 [Structure](#structure)
+    - 4.2 [Get All Bets](#get-all-bets)
+    - 4.3 [Filter Bets By Key](#filter-bets-by-key)
 5. [Get Only Specific Keys](#get-only-specific-keys)
 
 ## Users
@@ -24,7 +27,7 @@ Users contains information about the users of the app
 
 ### Structure
 
-Example of the information fetched from /users:
+Example of the information fetched from **/users**:
 ```json
 {
     "username": "IdealCobra",
@@ -86,7 +89,7 @@ Games contains information about the games that contain streams with bets on the
 
 ### Structure
 
-Example of the information fetched from /games:
+Example of the information fetched from **/games**:
 ```json
 {
     "name": "SMITE",
@@ -144,7 +147,7 @@ Streams contains information about the streams that had, have or will have bets 
 
 ### Structure
 
-Example of the information fetched from /streams:
+Example of the information fetched from **/streams**:
 ```json
 {
     "title": "Swine pork id nulla sint, adipisicing anim ham",
@@ -210,6 +213,68 @@ GET .../api/users?id=83
 GET .../api/users?title=swine&matchFormat=Tournment&platform=Twitch
 GET .../api/users?platform=Youtube&team=Black Newts
 ```
+
+## Bets
+
+Bets contains information about the bets from every stream.
+
+### Structure
+
+Example of the information fetched from **/bets**:
+```json
+{
+    "streamId": "173",
+    "betGroup": "Objectives",
+    "resultType": "Gets 10 kill streak",
+    "resultTeam": "Australia Toads",
+    "odd": "9.86",
+    "id": "1580",
+    "stream": {
+        "title": "Lorem bacon drumstick culpa ad anim shoulder turkey sausage est",
+        "thumbnail": "https://picsum.photos/300/170?random=172",
+        "viewers": "90760",
+        "gameId": "3",
+        "userId": "37",
+        "platform": "Youtube",
+        "matchFormat": "Casual",
+        "matchBeginning": "2022-06-02 23:28:14",
+        "teamA": "Black Newts",
+        "teamB": "Australia Toads",
+        "id": "173"
+    }
+}
+```
+
+#### **Fields**
+| ID | Name | Data Type | Description |
+|----|------|-----------|-------------|
+| **streamId** | Stream ID | string | Stream number identifier | 
+| **betGroup** | Bet Group | string | Group that dictates the type of bet | 
+| **resultType** | Result Type | string | Bet small description |
+| **resultTeam** | Result Team | string | Team targeted by the bet |
+| **odd** | Odd | string | Value of the bet |
+| **id** | Bet ID | string | Bet number identifier |
+| **stream** | Stream | Stream | Stream that the bet refers to |
+
+### Get All Bets
+
+Fetch all bets
+
+**HTTP Request**
+
+``` GET .../api/bets```
+
+### Filter Bets by Key
+
+Filter the list of bets by the keys available. Some keys can be combined. Most of the *string* **Fields** are valid.
+
+**Example HTTP Requests**
+
+```
+GET .../api/users?id=1580
+GET .../api/users?resultTeam=Australia Toads&resultType=5 Headshots
+```
+
 
 ## Get Only Specific Keys
 

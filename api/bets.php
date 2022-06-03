@@ -12,11 +12,16 @@ if ($method === 'GET') {
     $columns = "*";
 
     if (isset($_GET["id"])) $filter = "id = '".$_GET["id"]."'";
-    else if (isset($_GET["name"])) $filter = "name LIKE '%". $_GET["name"] ."%'";
+
+    if (isset($_GET["betGroup"])) $filter = $filter . " AND betGroup = '".$_GET["betGroup"]."'";
+
+    if (isset($_GET["resultType"])) $filter = $filter . " AND resultType = '".$_GET["resultType"]."'";
+    
+    if (isset($_GET["resultTeam"])) $filter = $filter . " AND resultTeam LIKE '%". $_GET["resultTeam"] ."%'";
 
     if (isset($_GET["keys"])) {
         // get Users columns
-        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Games' AND TABLE_SCHEMA = 'gamebet'";
+        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Bets' AND TABLE_SCHEMA = 'gamebet'";
         $result = mysqli_query($conn, $query);
         $usersColumns = array();
         while($row = mysqli_fetch_assoc($result)) {
@@ -27,36 +32,25 @@ if ($method === 'GET') {
         $columns = join(",", array_intersect($usersColumns, explode(",", $_GET["keys"])));
     }
 
-    $userGamesAssoc = array();
-    $userIds = array();
-    $users = array();
-    if (!isset($_GET["keys"]) || (isset($_GET["keys"]) && str_contains($_GET["keys"],"users"))) {
-        // get user<->games association
-        $query = "SELECT * FROM UserGames";
+    $streams = array();
+    if (!isset($_GET["keys"]) || (isset($_GET["keys"]) && str_contains($_GET["keys"],"stream"))) {
+        // get all streams
+        $query = "SELECT * FROM Streams";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_assoc($result)) {
-            $userGamesAssoc[$row["gameId"]][] = $row["userId"];
-            $userIds[] = $row["userId"];
-        }
-
-        // get users info from the users that matter
-        $query = "SELECT * FROM Users WHERE id IN (" . join(",", $userIds) . ")";
-        $result = mysqli_query($conn, $query);
-        while($row = mysqli_fetch_assoc($result)) {
-            $users[$row["id"]] = $row;
+            $streams[$row["id"]] = $row;
         }
     }
 
 	if (!str_contains($columns, "id")) $columns = $columns.($columns != "" ? "," : "")."id";
 
-	$query = "SELECT ". $columns ." FROM Games WHERE ". $filter;
+    if (count($streams) > 0 && str_contains($_GET["keys"],"stream")) $columns = $columns .",streamId";
+
+	$query = "SELECT ". $columns ." FROM Bets WHERE ". $filter;
 	$result = mysqli_query($conn, $query);
 	while($row = mysqli_fetch_assoc($result)) {
-	    if (isset($userGamesAssoc[$row["id"]])) {
-            foreach($userGamesAssoc[$row["id"]] as $userId) {
-                $row["users"][] = $users[$userId];
-            }
-	    }
+	    if (count($streams) > 0)
+            $row["stream"] = $streams[$row["streamId"]];
 
 	    $data[] = $row;
 	} 
