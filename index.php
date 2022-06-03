@@ -10,13 +10,11 @@
 
 <body>
     <nav class="nav">
-        <a href="/pages/home.html" class="nav__link" link>Home</a>
+        <a href="home" class="nav__link" link>Home</a>
 
     </nav>
 
-
-    <!--script type="module" src="/js/index.js"></script-->
-    <!-- <link rel="shortcut icon" href="#"> -> favicon.cio-->
+    <!-- <link rel="shortcut icon" href="#"> -> favicon.cio error-->
     
   
 </body>
