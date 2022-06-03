@@ -3,7 +3,6 @@
   <link rel="stylesheet" href="css/navbar.css"/> 
   <!--Importing icons-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
   <link href="http://fonts.cdnfonts.com/css/avenir-lt-std" rel="stylesheet" as="style" onload="this.rel='stylesheet'">
 </head>
 
@@ -54,7 +53,6 @@
 
 </div>
 
-  <script type="text/javascript" src="js/navbar.js"></script>
   <script type="text/javascript" src="js/home.js"></script>
 </body>
 

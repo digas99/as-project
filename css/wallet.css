@@ -1,5 +1,116 @@
-#walletTitle{
-    text-align: center;
-    margin-bottom: 450px;
-    
+*{
+    font-family: 'Inter', sans-serif;
 }
+
+h1{
+    position: absolute;
+    top: 11%;
+    left:45%;
+    font-size: 50px;  
+}
+
+#deposit{
+    position: absolute;
+    top: 40%;
+    left: 23%;
+    font-size: 35px;
+    background-color: #F50083;
+    color: white;
+    width: 300px;
+    height: 60px;
+    cursor:pointer;    
+}
+
+#withdraw{
+    position: absolute;
+    top:48%;
+    left:23%;
+    font-size: 35px;
+    background-color: #636363;
+    color: white;
+    width: 300px;
+    height: 60px;
+    cursor:pointer;    
+}
+
+#points{
+    position: absolute;
+    top:40%;
+    left:60%;
+    font-size: 35px;
+    background-color: #65ca87;
+    color: white;
+    width: 400px;
+    height: 60px;
+    cursor:pointer;
+}
+
+#line{
+    color: #636363;
+    display: block;
+    margin: 600px;
+    cursor:pointer;
+}
+
+#balance{
+    position: absolute;
+    top:68%;
+    left: 42%;
+    width: 300px;
+    background-color: #d9d9d9;
+    color: #696969;
+    font-size: 25px;
+    font-weight: bold;
+    cursor:pointer;   
+}
+
+#account{
+    position: absolute;
+    top:73%;
+    left: 42%;
+    width: 300px;
+    background-color: #d9d9d9;
+    color: #696969;
+    font-size: 25px;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+#bets{
+    position: absolute;
+    top:78%;
+    left: 42%;
+    width: 300px;
+    background-color: #d9d9d9;
+    color: #696969;
+    font-size: 25px;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+#invite{
+    position: absolute;
+    top:83%;
+    left: 42%;
+    width: 300px;
+    background-color: #d9d9d9;
+    color: #696969;
+    font-size: 25px;
+    text-align: left;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+#invite10{
+    position: absolute;
+    top:83%;
+    left: 53.45%;
+    width: 90px;
+    background-color: #F50083;
+    color: white;
+    font-size: 25px;
+    cursor:pointer;
+}
+
+
+

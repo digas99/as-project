@@ -1,16 +1,18 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 <div id="navbar" class="sticky">
-    <a href="home" style="font-size: 35px; padding: 10px;">Gamebet</a>
-    <a href="wallet" style="font-size: 20px; padding: 20px;">Wallet</a>
-    <a href="#points" style="font-size: 20px; padding: 20px;">Points</a>
-    <a href="#friends" style="font-size: 20px; padding: 20px;">Friends</a>
-    <a href="#profile" style="font-size: 20px; padding: 20px;">Profile</a>
-    <a href="#stats" style="font-size: 20px; padding: 20px;">Stats</a>
-    <a href="#settings" style="font-size: 20px; padding: 20px";>Settings</a>
-    <a href="#faq" style="font-size: 20px; padding: 20px;" >FAQ</a>
-    <a href="#logout" style="font-size: 20px; padding: 20px;">Logout</a>
-    <a href="#friends" style="font-size: 20px; padding: 20px;">Friends</a>
+    <a href="home" style="font-size: 40px; padding: 10px; font-family: 'Inter', sans-serif;">Gamebet</a>
+    <a href="wallet" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Wallet</a>
+    <a href="#points" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Points</a>
+    <a href="#friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
+    <a href="#profile" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Profile</a>
+    <a href="#stats" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Stats</a>
+    <a href="#settings" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif; ">Settings</a>
+    <a href="#faq" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;" >FAQ</a>
+    <a href="#logout" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Logout</a>
+    <a href="#friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
     <a href="#searchNavbar"><i class="fa fa-fw fa-search" style="font-size: 25px; padding: 5px;"></i> </a>
     <a href="deposit">
     	<div class="balance-box">
@@ -40,3 +42,5 @@
     </a>
     <a href="#ticketNavbar"><img id="ticketNavbarImg" src="/images/ticket.png"></a>  
 </div>
+
+

@@ -1,6 +1,7 @@
 /* -----------------sticky navbar----------------- */
 body {
 	margin-top: 65px;
+	font-family: 'Inter', sans-serif;
 }
 
 #navbar {
