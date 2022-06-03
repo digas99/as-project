@@ -37,3 +37,56 @@
   /* changing color of image. Algorithm from https://codepen.io/sosuke/pen/Pjoqqp */
   filter: invert(100%) sepia(0%) saturate(7434%) hue-rotate(353deg) brightness(113%) contrast(113%);
 }
+
+/* ----------------------BalanceBox--------------------- */
+
+.balance-box {
+	position: relative;
+}
+
+.balance-box > div:first-child {
+	width: 85px;
+	background-color: #d7d6d6;
+	border-radius: 20px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+}
+
+.balance-box > div:first-child > div {
+	text-align: left;
+	padding-left: 6px;
+	color: black;
+}
+
+.balance-box > div:last-child {
+	background-color: white;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.balance-box > div:last-child > div {
+	background-color: black;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	left: 0;
+	right: 0;
+}
+
+.balance-box > div:last-child > div:first-child {
+	width: 65%;
+	height: 3px;
+}
+
+.balance-box > div:last-child > div:last-child {
+	height: 65%;
+	width: 3px;
+}

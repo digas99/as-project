@@ -12,19 +12,42 @@
 <?php include "templates/navbar.php"?>
 
 
-  <form style="max-width:300px; margin:20px; position:absolute; top:7%; left:75% ">
-      <div class="input-icons">
-          <i class="fa fa-search icon"></i>
-          <input class="input-field"
-                 type="text"
-                 placeholder="Game, streamer, ...">
-      </div>
-  </form>
+<div style="position: relative;
+				height: 70px;">
+	<div style="position: absolute;
+					left: 20px;
+					top: 0;
+					bottom: 0;
+					margin: auto;
+					height: fit-content;">
+		<div id="n-games" style="display: flex;
+					align-items: center;
+					font-size: 25px;
+					color: var(--font-light-gray);
+					font-weight: bold;">Games</div>
+	</div>
+	<div style="position: absolute;
+				right: 20px;
+				display: flex;
+				align-items: center;
+				margin: auto 15px;
+				column-gap: 10px;
+				top: 0;
+				bottom: 0;">
+		<div style="max-width: 300px;
+						height: 35px;">
+		  <div class="input-icons">
+		      <i class="fa fa-search icon"></i>
+		      <input class="input-field"
+		             type="text"
+		             placeholder="Game, streamer, ...">
+			</div>
+		</div>
 
-
-
-<input type="image" img id="sortRightSearchBar" src="/Icons/sort.png">
-<input type="image" img id="starRightSearchBar" src="/Icons/star.png">
+		<input style="width: 35px;" type="image" src="/images/sort.png">
+		<input style="width: 25px;" type="image" src="/images/star.png">	
+	</div>
+</div>
 
 <hr id="purpleLine">
 
