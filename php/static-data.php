@@ -287,3 +287,25 @@ $teams = array(
     "Brutal Newts",
     "Brutal Giants"
 );
+
+// bet groups
+$betGroups = array(
+    "Result",
+    "Accolades",
+    "Objectives",
+    "Timestamps",
+    "Scores"
+);
+
+$betsResultTypes = array(
+    "Winner",
+    "First Blood",
+    "Gets Jungle Monster",
+    "5 Headshots",
+    "Kills 20",
+    "No Deaths",
+    "Gets 10 kill streak",
+    "Scores 5 goals",
+    "No Goals Against",
+    "Get Last Kill",
+);
