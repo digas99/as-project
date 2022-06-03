@@ -148,3 +148,24 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
     $sql = "INSERT INTO Streams (title, thumbnail, viewers, userId, gameId, platform, matchFormat, matchBeginning, teamA, teamB) VALUES ". join(",", $queryValues) .";";
     mysqli_query($conn, $sql);
 }
+
+// fill Bets table
+$result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Bets) as `row_exists`;");
+if (mysqli_fetch_assoc($result)["row_exists"] == 0) { 
+    echo "Adding fake Bets data...<br>";
+    // get all streams
+    $streams = apiFetch("http://localhost/api/streams?keys=id,teamA,teamB")["data"];
+
+    $max_bets_per_stream = 12;
+    $queryValues = array();
+    foreach($streams as $stream) {
+        $bets_this_stream = rand(6, $max_bets_per_stream);
+        $teams = array($stream["teamA"], $stream["teamB"]);
+        for($i = 0; $i < $bets_this_stream; $i++) {
+            $odd = round(mt_rand() / mt_getrandmax() + rand(1, 10), 2);
+            $queryValues[] = "('".$stream["id"]."', '".$betGroups[rand(0, count($betGroups)-1)]."', '".$betsResultTypes[rand(0, count($betsResultTypes)-1)]."', '".$teams[rand(0, count($teams)-1)]."', '".$odd."')";
+        }
+    }
+    $sql = "INSERT INTO Bets (streamId, betGroup, resultType, resultTeam, odd) VALUES ". join(",", $queryValues) .";";
+    mysqli_query($conn, $sql);
+}

@@ -22,7 +22,7 @@ if ($method === 'GET') {
     
     if (isset($_GET["format"])) $filter = $filter . " AND matchFormat = '".$_GET["format"]."'";
 
-    if (isset($_GET["team"])) $filter = $filter . " AND (teamA = '".$_GET["team"]."' OR teamB = '".$_GET["team"]."')";
+    if (isset($_GET["team"])) $filter = $filter . " AND (teamA LIKE '%".$_GET["team"]."%' OR teamB LIKE '%".$_GET["team"]."%')";
     
     if (isset($_GET["keys"])) {
         // get Users columns
