@@ -97,7 +97,7 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
 
     foreach($usersIds as $userId) {
         // get n random games
-        $userGames = array_rand(array_flip($gamesIds), rand(1,4));
+        $userGames = array_rand(array_flip($gamesIds), rand(1,7));
         $userGames = !is_array($userGames) ? array($userGames) : $userGames;
         foreach($userGames as $game) {
             $sql = "INSERT INTO UserGames (userId, gameId) VALUES ('".$userId."', '".$game."');";
@@ -117,7 +117,7 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
     $query = "SELECT userId,gameId FROM UserGames";
     $result = mysqli_query($conn, $query);
     $max_possible_streams = mysqli_num_rows($result)*5;
-    $max_streams_per_assoc = 5;
+    $max_streams_per_assoc = 15;
 
     // fetch lorem ipsum for titles from baconipsum.com
     $titles = array();

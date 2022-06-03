@@ -52,8 +52,9 @@
 
 <hr id="purpleLine">
 
-<div class="games-list">
-
+<?php include("templates/loading.php"); ?>
+<div style="display: none;" class="games-list">
+	
 </div>
 
 <script type="text/javascript" src="js/navbar.js"></script>

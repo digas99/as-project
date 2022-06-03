@@ -46,6 +46,16 @@ const updateGamesList = (gamesWrapper, data) => {
 			gamesWrapper.appendChild(noGames);
 			noGames.appendChild(document.createTextNode("No games found!"));
 		}
+
+		// wait until all game covers are loaded
+		Promise.all(Array.from(gamesWrapper.getElementsByTagName("img"))
+				.filter(img => !img.complete)
+				.map(img => new Promise(resolve => { img.onload = img.onerror = resolve; })))
+			.then(() => {
+				const loading = document.getElementsByClassName("loading-cover")[0];
+				if (loading) loading.remove();
+				gamesWrapper.style.removeProperty("display");
+			});
 }
 
 // number of games
