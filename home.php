@@ -42,7 +42,7 @@
 		<div style="max-width: 300px;
 						height: 35px;">
 		  <div class="input-icons">
-		      <i class="fa fa-search icon"></i>
+		      <i style="opacity: 0.5;" class="fa fa-search icon"></i>
 		      <input class="input-field"
 		             type="text"
 		             placeholder="Game, streamer, ...">
@@ -61,7 +61,46 @@
 	
 </div>
 
-  <script type="text/javascript" src="js/home.js"></script>
+<div class="ticket-button">
+	<img src="images/cart.png">
+</div>
+  <!-- 
+<div class="ticket-popup">
+  <div><div>
+    
+  <div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+    <div>Ticket (2)</div>
+    <div>
+  <ul>
+    <li>Simple</li>
+        <li>Multiple</li>
+        <li>Group</li>
+    
+    
+  </ul>
+    </div>
+	<div class="no-bets">No bets yet!</div>
+</div>
+  
+  <div>
+  <div>
+    <div>
+      <div>Odds: 3.03</div><div>10€</div>
+    </div>
+  <div></div>
+    <div>
+      <div>Possible Wins:</div><div>30.3€</div>
+    </div>
+  </div>
+  <div>BET NOW</div>
+</div>
+</div>  -->
+
+<script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>
 
