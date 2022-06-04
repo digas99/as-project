@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="css/home.css"/>
-  <link rel="stylesheet" href="css/navbar.css"/> 
-  <link rel="stylesheet" href="css/essentials.css"/>
-  <!--Importing icons-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/home.css"/>
+	<link rel="stylesheet" href="css/navbar.css"/> 
+	<link rel="stylesheet" href="css/essentials.css"/>
+	<!--Importing icons-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
 		<div style="max-width: 300px;
 						height: 35px;">
 		  <div class="input-icons">
-		      <i class="fa fa-search icon"></i>
+		      <i style="opacity: 0.5;" class="fa fa-search icon"></i>
 		      <input class="input-field"
 		             type="text"
 		             placeholder="Game, streamer, ...">
@@ -61,13 +61,12 @@
 	
 </div>
 
-  <script type="text/javascript" src="js/home.js"></script>
+<div class="ticket-button">
+	<img src="images/cart.png">
+</div>
+
+<script> const userSession = <?php echo json_encode($_SESSION); ?>; </script>
+
+<script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

@@ -106,3 +106,116 @@ if (input) {
 		searchGames("api/games?name="+value);
 	}); 
 }
+
+const ticketPopup = (data) => {
+	const wrapper = document.createElement("div");
+	wrapper.classList.add("ticket-popup", "ticket-popup-closed");
+
+	// upper part
+	const upperContainer = document.createElement("div");
+	wrapper.appendChild(upperContainer);
+	// close
+	const closeWrapper = document.createElement("div");
+	upperContainer.appendChild(closeWrapper);
+	closeWrapper.classList.add("clickable");
+	closeWrapper.addEventListener("click", () => {
+		wrapper.classList.add("ticket-popup-closed");
+		setTimeout(() => wrapper.remove(), 500);
+	});
+	const close = document.createElement("div");
+	closeWrapper.appendChild(close);
+	const xBar1 = document.createElement("div");
+	close.appendChild(xBar1);
+	const xBar2 = document.createElement("div");
+	close.appendChild(xBar2);
+	// ticket title
+	const ticketTitle = document.createElement("div");
+	upperContainer.appendChild(ticketTitle);
+	ticketTitle.appendChild(document.createTextNode("Ticket (0)"));
+	// ticket type chooser
+	const typeChooserWrapper = document.createElement("div");
+	upperContainer.appendChild(typeChooserWrapper);
+	const typeChooser = document.createElement("ul");
+	typeChooserWrapper.appendChild(typeChooser);
+	["Simple", "Multiple", "Group"].forEach(typeText => {
+		const type = document.createElement("li");
+		typeChooser.appendChild(type);
+		type.appendChild(document.createTextNode(typeText));
+		if (typeText == data["ticketType"]) type.style.backgroundColor = "var(--pink)";
+	});
+	// no bets yet
+	const noBets = document.createElement("div");
+	upperContainer.appendChild(noBets);
+	noBets.classList.add("no-bets");
+	noBets.appendChild(document.createTextNode("No bets yet!"));
+
+	// lower part
+	const lowerContainer = document.createElement("div");
+	wrapper.appendChild(lowerContainer);
+	// values
+	const valuesWrapper = document.createElement("div");
+	lowerContainer.appendChild(valuesWrapper);
+	// values first layer
+	const valuesFirstLayer = document.createElement("div");
+	valuesWrapper.appendChild(valuesFirstLayer);
+	const valuesOdds = document.createElement("div");
+	valuesFirstLayer.appendChild(valuesOdds);
+	valuesOdds.appendChild(document.createTextNode("Odds: "+data["odds"]));
+	const valuesPayWrapper = document.createElement("div");
+	valuesFirstLayer.appendChild(valuesPayWrapper);
+	valuesPayWrapper.classList.add("money-input");
+	const valueInput = document.createElement("input");
+	valuesPayWrapper.appendChild(valueInput);
+	valueInput.type = "text";
+	valueInput.value = data["ticketValue"];
+	const currencyButton = document.createElement("div");
+	valuesPayWrapper.appendChild(currencyButton);
+	const valueCurrency = document.createElement("div");
+	currencyButton.appendChild(valueCurrency);
+	valueCurrency.appendChild(document.createTextNode("€"));
+	const imgArrow = document.createElement("img");
+	currencyButton.appendChild(imgArrow);
+	imgArrow.src = "images/arrow.png";
+	// values middle white space
+	valuesWrapper.appendChild(document.createElement("div"));
+	// values second layer
+	const valuesSecondLayer = document.createElement("div");
+	valuesWrapper.appendChild(valuesSecondLayer);
+	const valuesPossibleWins = document.createElement("div");
+	valuesSecondLayer.appendChild(valuesPossibleWins);
+	valuesPossibleWins.appendChild(document.createTextNode("Possible Wins:"));
+	const valuesWin = document.createElement("div");
+	valuesSecondLayer.appendChild(valuesWin);
+	valuesWin.appendChild(document.createTextNode(data["wins"]+"€"));
+	// button
+	const buttonWrapper = document.createElement("div");
+	lowerContainer.appendChild(buttonWrapper);
+	buttonWrapper.classList.add("clickable");
+	buttonWrapper.appendChild(document.createTextNode("BET NOW"));
+
+	return wrapper;
+}
+
+const ticketButton = document.getElementsByClassName("ticket-button")[0];
+if (ticketButton) {
+	ticketButton.addEventListener("click", () => {
+		fetch("api/tickets?ticketType=Multiple&userId="+userSession["userId"])
+			.then(response => response.json())
+			.then(data => {
+				const popup = ticketPopup(data["data"][0]);
+				document.body.appendChild(popup);
+				setTimeout(() => popup.classList.remove("ticket-popup-closed"), 50);
+			});
+	});
+}
+
+window.addEventListener("click", e => {
+	const target = e.target;
+
+	// click outside to close cart popup
+	const ticketPopup = document.getElementsByClassName("ticket-popup")[0];
+	if (ticketPopup && !target.closest(".ticket-popup") && !target.closest(".ticket-button")) {
+		ticketPopup.classList.add("ticket-popup-closed");
+		setTimeout(() => ticketPopup.remove(), 500);
+	}
+});
