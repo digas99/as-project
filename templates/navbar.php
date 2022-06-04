@@ -11,7 +11,7 @@
     <a href="stats" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Stats</a>
     <a href="settings" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif; ">Settings</a>
     <a href="faq" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;" >FAQ</a>
-    <a href="logout" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Logout</a>
+    <a href="login" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Logout</a>
     <a href="friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
     <a href="searchNavbar"><i class="fa fa-fw fa-search" style="font-size: 25px; padding: 5px;"></i> </a>
     <a href="deposit">
