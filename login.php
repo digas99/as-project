@@ -141,7 +141,7 @@ if ($method === 'POST') {
         ?>
 
         <!-- não encontrei a imagem que está no prototipo-->
-        <img src="images/AS-logo.png" id="logo">
+        <img src="images/GameBetLogo.png" id="logo">
 
         <form class="auth-form" method="post" action="login">
             <div>
