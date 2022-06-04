@@ -40,7 +40,14 @@
     		</div>
     	</div>
     </a>
-    <a href="#ticketNavbar"><img id="ticketNavbarImg" src="/images/ticket.png"></a>  
+    <a href="#ticketNavbar"><img id="ticketNavbarImg" src="/images/ticket.png"></a>
+		<a style="font-size: 16px;">
+  	<?php 
+  		require $_SERVER['DOCUMENT_ROOT']."/php/functions.php";
+  		$userData = apiFetch("http://localhost/api/users?keys=username&id=".rand(1,50));
+  		echo $userData["data"][0]["username"];
+  	?>
+  	</a>
 </div>
 
 

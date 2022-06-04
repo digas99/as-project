@@ -7,13 +7,21 @@ Departamento de Electrónica, Telecomunicações e Informática - Universidade d
 ## [API Documentation](/api/README.md)
 
 ## Setup
-Initialize database
+- Configure the database on **db-config.json** (this file must be present)
+```json
+{
+    "db_credentials": {
+        "host": "<host of MySQL>", // (localhost, etc)
+        "username": "<MySQL user>", // (root, etc)
+        "password": "<password of user>",
+        "name": "<name of database to create>" // (gamebet, etc)
+    },
+    "db_size": "<size of data set>" // (small, medium or large)
+}
 ```
-$ sudo chmod +x init-db.sh
-$ ./init-db.sh db_host db_username db_password db_name
+
+- Initialize database
 ```
-where:
-- **db_host:** host of MySQL *(localhost, etc)*
-- **db_username:** MySQL user *(root, etc)*
-- **db_password:** password to the above user
-- **db_name:** name of the database to be created *(gamebet, etc)*
+$ sudo chmod +x db-init.sh
+$ ./db-init.sh
+```

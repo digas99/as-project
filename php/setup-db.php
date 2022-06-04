@@ -5,6 +5,19 @@ $document_root=$_SERVER['DOCUMENT_ROOT'];
 require $document_root.'/php/connect.php';
 require $document_root.'/php/functions.php';
 
+// setup data size variables
+$size_sets = [
+    "small" => [1, 7, 10],
+    "medium" => [15, 20, 20],
+    "large" => [25, 40, 30]
+];
+
+$data_size = isset($_GET["size"]) && array_key_exists($_GET["size"], $size_sets) ? $_GET["size"] : "small";
+$min_games_per_user = $size_sets[$data_size][0];
+$max_games_per_user = $size_sets[$data_size][1];
+$max_streams_per_assoc = $size_sets[$data_size][2];
+echo "Data set size: ". $data_size ."<br>";
+
 // setup tables
 $tables = array(
     "CREATE TABLE `gamebet`.`Users`(
@@ -44,6 +57,19 @@ $tables = array(
     "CREATE TABLE `gamebet`.`UserGames`(
         userId VARCHAR(255) NOT NULL ,
         gameId VARCHAR(255) NOT NULL ,
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+    )",
+    "CREATE TABLE `gamebet`.`Tickets`(
+        userId VARCHAR(255) NOT NULL ,
+        ticketType SET('Simple','Multiple','Group') NOT NULL ,
+        odds VARCHAR(255) NOT NULL ,
+        ticketValue VARCHAR(255) NOT NULL ,
+        wins VARCHAR(255) NOT NULL ,
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+    )",
+    "CREATE TABLE `gamebet`.`TicketBets`(
+        betId VARCHAR(255) NOT NULL ,
+        ticketId VARCHAR(255) NOT NULL ,
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
     )"
 );
@@ -117,7 +143,6 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
     $query = "SELECT userId,gameId FROM UserGames";
     $result = mysqli_query($conn, $query);
     $max_possible_streams = mysqli_num_rows($result)*5;
-    $max_streams_per_assoc = 15;
 
     // fetch lorem ipsum for titles from baconipsum.com
     $titles = array();

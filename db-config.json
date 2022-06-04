@@ -1,0 +1,9 @@
+{
+    "db_credentials": {
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "name": "gamebet"
+    },
+    "db_size": "large"
+}
