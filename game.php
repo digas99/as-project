@@ -1,5 +1,8 @@
+<!DOCTYPE html>
+<html>
 <head>
   <link rel="stylesheet" href="css/home.css"/>
+  <link rel="stylesheet" href="css/essentials.css"/>
   <link rel="stylesheet" href="css/navbar.css"/> 
   <linl rel="stylesheet" href="css/homeGame.css"/>
   <!--Importing icons-->
@@ -46,3 +49,4 @@
 <script type="text/javascript" src="js/navbar.js"></script>
 <script type="text/javascript" src="js/home.js"></script>
 </body>
+</html>

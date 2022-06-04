@@ -2,7 +2,7 @@
 
 # check if db-config json file exists
 if [ ! -f db-config.json ] ; then
-    echo "Missing file 'db-config.json'"
+    echo "Missing configuration file 'db-config.json'"
     exit
 fi
 

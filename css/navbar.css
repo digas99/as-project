@@ -1,15 +1,15 @@
 /* -----------------sticky navbar----------------- */
 body {
-  margin: 0;
+	margin: 0;
 	margin-top: 65px;
 	font-family: 'Inter', sans-serif;
 }
 
 #navbar {
-  overflow: hidden;
-  background-color: #f50083;  
-  z-index: 2;
-  display: flex;
+	overflow: hidden;
+	background-color: #f50083;  
+	z-index: 2;
+	display: flex;
 	align-items: center;
 }
         
@@ -22,21 +22,20 @@ body {
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
-    font-family: "Monaco",monospace;
   }
               
 .content {
-  padding: 16px;
+  	padding: 16px;
 }
         
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
         
 .sticky + .content {
-  padding-top: 60px;
+  	padding-top: 60px;
 }
 
 /* ----------------------TicketImageNavbar--------------------- */

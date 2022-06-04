@@ -1,24 +1,3 @@
-/* ---------------------General--------------------- */
-
-:root {
-	--font-gray: #636363;
-	--font-light-gray: #B0B0B0;
-	--pink: #F50083;
-}
-
-body {
-  margin: 0;
-}
-
-ul {
-  list-style: none;
-  padding: 0px;
-}
-
-a {
-  text-decoration: none;
-}
-
 /* ----------------------Search--------------------- */
 
 .input-icons i {
