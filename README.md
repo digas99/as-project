@@ -8,7 +8,7 @@ Departamento de Electrónica, Telecomunicações e Informática - Universidade d
 
 ## Setup
 - Configure the database on **db-config.json** (this file must be present)
-```json
+```json5
 {
     "db_credentials": {
         "host": "<host of MySQL>", // (localhost, etc)
