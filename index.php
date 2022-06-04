@@ -1,3 +1,5 @@
+<?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
+
 <!doctype html>
 
 <html lang="pt">

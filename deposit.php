@@ -1,3 +1,5 @@
+<?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
+
 <head>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

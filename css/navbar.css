@@ -1,7 +1,7 @@
 /* -----------------sticky navbar----------------- */
 body {
 	margin: 0;
-	margin-top: 65px;
+	margin-top: 65px !important;
 	font-family: 'Inter', sans-serif;
 }
 
@@ -52,7 +52,7 @@ body {
 }
 
 .balance-box > div:first-child {
-	width: 85px;
+	width: 100px;
 	background-color: #d7d6d6;
 	border-radius: 20px;
 	height: 35px;
@@ -62,8 +62,9 @@ body {
 
 .balance-box > div:first-child > div {
 	text-align: left;
-	padding-left: 6px;
-	color: black;
+	padding-left: 10px;
+	color: var(--font-gray);
+	font-size: 17px;
 }
 
 .balance-box > div:last-child {
