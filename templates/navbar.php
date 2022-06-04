@@ -46,7 +46,10 @@
 		  		</div>
 		  	</div>
 		  </a>
-		  <a href="#ticketNavbar"><img id="ticketNavbarImg" src="/images/ticket.png"></a>
+		  <a style="position: relative;" href="#ticketNavbar">
+			<img id="ticketNavbarImg" src="/images/ticket.png">
+			<div class="ticketNavbar-counter"><div>0</div></div>
+		  </a>
 			<a style="font-size: 16px;"><?php echo $_SESSION["userUsername"] ?></a>
   	</div>
 </div>

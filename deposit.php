@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/navbar.css"/>
   <link rel="stylesheet" href="css/deposit.css"/>
   <link rel="stylesheet" href="css/essentials.css"/>
+  <link rel="icon" href="/images/GameBetLogo-square.png">
 </head>
 
 <body>

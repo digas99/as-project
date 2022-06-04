@@ -24,7 +24,7 @@ const ticketPopup = data => {
 	// ticket title
 	const ticketTitle = document.createElement("div");
 	upperContainer.appendChild(ticketTitle);
-	ticketTitle.appendChild(document.createTextNode("Ticket (0)"));
+	ticketTitle.appendChild(document.createTextNode(`Ticket (${data["bets"].length})`));
 	// ticket type chooser
 	const typeChooserWrapper = document.createElement("div");
 	upperContainer.appendChild(typeChooserWrapper);
