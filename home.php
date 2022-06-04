@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="css/home.css"/>
-  <link rel="stylesheet" href="css/navbar.css"/> 
-  <link rel="stylesheet" href="css/essentials.css"/>
-  <!--Importing icons-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/home.css"/>
+	<link rel="stylesheet" href="css/navbar.css"/> 
+	<link rel="stylesheet" href="css/essentials.css"/>
+	<!--Importing icons-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -64,49 +64,9 @@
 <div class="ticket-button">
 	<img src="images/cart.png">
 </div>
-  <!-- 
-<div class="ticket-popup">
-  <div><div>
-    
-  <div>
-    <div></div>
-    <div></div>
-  </div>
-</div>
-    <div>Ticket (2)</div>
-    <div>
-  <ul>
-    <li>Simple</li>
-        <li>Multiple</li>
-        <li>Group</li>
-    
-    
-  </ul>
-    </div>
-	<div class="no-bets">No bets yet!</div>
-</div>
-  
-  <div>
-  <div>
-    <div>
-      <div>Odds: 3.03</div><div>10€</div>
-    </div>
-  <div></div>
-    <div>
-      <div>Possible Wins:</div><div>30.3€</div>
-    </div>
-  </div>
-  <div>BET NOW</div>
-</div>
-</div>  -->
+
+<script> const userSession = <?php echo json_encode($_SESSION); ?>; </script>
 
 <script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

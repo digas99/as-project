@@ -141,6 +141,7 @@ const ticketPopup = (data) => {
 		const type = document.createElement("li");
 		typeChooser.appendChild(type);
 		type.appendChild(document.createTextNode(typeText));
+		if (typeText == data["ticketType"]) type.style.backgroundColor = "var(--pink)";
 	});
 	// no bets yet
 	const noBets = document.createElement("div");
@@ -159,14 +160,14 @@ const ticketPopup = (data) => {
 	valuesWrapper.appendChild(valuesFirstLayer);
 	const valuesOdds = document.createElement("div");
 	valuesFirstLayer.appendChild(valuesOdds);
-	valuesOdds.appendChild(document.createTextNode("Odds: 0"));
+	valuesOdds.appendChild(document.createTextNode("Odds: "+data["odds"]));
 	const valuesPayWrapper = document.createElement("div");
 	valuesFirstLayer.appendChild(valuesPayWrapper);
 	valuesPayWrapper.classList.add("money-input");
 	const valueInput = document.createElement("input");
 	valuesPayWrapper.appendChild(valueInput);
 	valueInput.type = "text";
-	valueInput.value = "10";
+	valueInput.value = data["ticketValue"];
 	const currencyButton = document.createElement("div");
 	valuesPayWrapper.appendChild(currencyButton);
 	const valueCurrency = document.createElement("div");
@@ -185,7 +186,7 @@ const ticketPopup = (data) => {
 	valuesPossibleWins.appendChild(document.createTextNode("Possible Wins:"));
 	const valuesWin = document.createElement("div");
 	valuesSecondLayer.appendChild(valuesWin);
-	valuesWin.appendChild(document.createTextNode("0€"));
+	valuesWin.appendChild(document.createTextNode(data["wins"]+"€"));
 	// button
 	const buttonWrapper = document.createElement("div");
 	lowerContainer.appendChild(buttonWrapper);
@@ -198,9 +199,13 @@ const ticketPopup = (data) => {
 const ticketButton = document.getElementsByClassName("ticket-button")[0];
 if (ticketButton) {
 	ticketButton.addEventListener("click", () => {
-		const popup = ticketPopup();
-		document.body.appendChild(popup);
-		setTimeout(() => popup.classList.remove("ticket-popup-closed"), 50);
+		fetch("api/tickets?ticketType=Multiple&userId="+userSession["userId"])
+			.then(response => response.json())
+			.then(data => {
+				const popup = ticketPopup(data["data"][0]);
+				document.body.appendChild(popup);
+				setTimeout(() => popup.classList.remove("ticket-popup-closed"), 50);
+			});
 	});
 }
 
