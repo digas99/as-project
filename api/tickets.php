@@ -1,10 +1,10 @@
 <?php
 
-$method = $_SERVER['REQUEST_METHOD']; 
+require $_SERVER['DOCUMENT_ROOT'].'/php/connect.php';
+
+$method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'GET') {
     header('Content-type: application/json; charset=utf-8');
-
-    require $_SERVER['DOCUMENT_ROOT'].'/php/connect.php';
     
     $response = array();
     $data = array();
@@ -20,13 +20,13 @@ if ($method === 'GET') {
         // get Tickets columns
         $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Tickets' AND TABLE_SCHEMA = 'gamebet'";
         $result = mysqli_query($conn, $query);
-        $usersColumns = array();
+        $ticketsColumns = array();
         while($row = mysqli_fetch_assoc($result)) {
-            $usersColumns[] = $row["COLUMN_NAME"];
+            $ticketsColumns[] = $row["COLUMN_NAME"];
         }
 
         // only keep columns that are from Tickets
-        $columns = join(",", array_intersect($usersColumns, explode(",", $_GET["keys"])));
+        $columns = join(",", array_intersect($ticketsColumns, explode(",", $_GET["keys"])));
     }
 
     $users = array();
@@ -36,6 +36,16 @@ if ($method === 'GET') {
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_assoc($result)) {
             $users[$row["id"]] = $row;
+        }
+    }
+
+    $ticketBetsAssoc = array();
+    if (!isset($_GET["keys"]) || (isset($_GET["keys"]) && str_contains($_GET["keys"],"bets"))) {
+        // get ticker<->bets association
+        $query = "SELECT * FROM TicketBets";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+            $ticketBetsAssoc[$row["ticketId"]][] = $row["betId"];
         }
     }
 
@@ -49,6 +59,10 @@ if ($method === 'GET') {
 	    if (count($users) > 0) {
             $row["user"] = $users[$row["userId"]];
 	    }
+
+        $row["bets"] = array();
+        if (isset($ticketBetsAssoc[$row["id"]]))
+            $row["bets"] = $ticketBetsAssoc[$row["id"]];
 			
 	    $data[] = $row;
 	} 
@@ -58,4 +72,25 @@ if ($method === 'GET') {
     date_default_timezone_set("Europe/Lisbon");
     $response["timestamp"] = date('Y-m-d H:i:s');
     echo json_encode($response, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+}
+else if ($method === 'POST') {
+    $newData = json_decode(file_get_contents('php://input'), true);
+    if ($newData["id"]) {
+        $unmutableKeys = array("userId", "ticketType", "id");
+
+        // get Tickets columns
+        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Tickets' AND TABLE_SCHEMA = 'gamebet'";
+        $result = mysqli_query($conn, $query);
+        $ticketsColumns = array();
+        while($row = mysqli_fetch_assoc($result)) {
+            $ticketsColumns[] = $row["COLUMN_NAME"];
+        }
+
+        foreach($newData as $key => $value) {
+            if (in_array($key, $ticketsColumns) && !in_array($key, $unmutableKeys)) {
+                $query = "UPDATE Tickets SET ".$key." = '".$value."' WHERE id = '".$newData["id"]."'";
+                $result = mysqli_query($conn, $query);
+            }
+        }
+    }
 }
