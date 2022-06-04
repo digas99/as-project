@@ -1,0 +1,98 @@
+*{
+    font-family: 'Inter', sans-serif;
+}
+
+#signup{
+    position: absolute;
+    top: 5%;
+    left: 46%;
+    width: 13%;
+    height: 5%;
+    border-radius: 20px;
+    font-weight: bold;
+    background-color: #f2f2f2;
+    border: none;
+}
+
+h1{
+    position:absolute;
+    top: 10%;
+    left: 48%;
+    font-size: 50px;
+    color: #a1a1a1;
+}
+
+#line{
+   margin: 220px;
+   width: 450px;
+   margin-left: 725px;
+   color: #a1a1a1;
+}
+
+#logo{
+    position:absolute;
+    top: 27%;
+    left: 43%;
+    width: 20%;
+    height: 40%;
+}
+
+#Uname{
+    position:absolute;
+    top: 71%;
+    left: 43%;
+    width: 20%;
+    border: 1px solid #F50083;
+    float: left;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    outline: none;
+}
+
+#Pass{
+    position:absolute;
+    top: 76%;
+    left: 43%;
+    width: 20%;
+    border: 1px solid #F50083;
+    float: left;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    outline: none;
+}
+
+#log{
+    position:absolute;
+    top: 85%;
+    left: 47%;
+    width: 11%;
+    height: 7%;
+    border-radius: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    background-color: #F50083;
+    color: white;
+    border: none;
+}
+
+#email{
+    position:absolute;
+    top: 70.5%;
+    left: 41%;
+    width: 1.5%;
+    height: 3%;
+    filter: invert(35%) sepia(100%) saturate(7046%) 
+            hue-rotate(316deg) brightness(90%) contrast(114%);
+}
+
+#lock{
+    position:absolute;
+    top: 75.5%;
+    left: 41%;
+    width: 1.5%;
+    height: 3%;
+    filter: invert(35%) sepia(100%) saturate(7046%) 
+            hue-rotate(316deg) brightness(90%) contrast(114%);
+}

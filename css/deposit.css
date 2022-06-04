@@ -1,0 +1,161 @@
+*{
+    font-family: 'Inter', sans-serif;
+    border: none;
+}
+
+h1{
+    position: absolute;
+    top: 11%;
+    left:44%;
+    font-size: 50px;  
+}
+
+#ten{
+    position: absolute;
+    top: 25%;
+    left:38%;
+    width: 200px;
+    height: 80px;
+    border-radius: 15px;
+    color:black;
+    background-color: #d9d9d9;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button#ten:focus{
+    background:#F50083;
+    color: white;
+}
+
+#twenty{
+    position: absolute;
+    top: 25%;
+    left:50%;
+    width: 200px;
+    height: 80px;
+    border-radius: 15px;
+    color:black;
+    background-color: #d9d9d9;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button#twenty:focus{
+    background:#F50083;
+    color: white;
+}
+
+#fifty{
+    position: absolute;
+    top: 36%;
+    left:38%;
+    width: 200px;
+    height: 80px;
+    border-radius: 15px;
+    color:black;
+    background-color: #d9d9d9;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button#fifty:focus{
+    background:#F50083;
+    color: white;
+}
+
+#hundred{
+    position: absolute;
+    top: 36%;
+    left:50%;
+    width: 200px;
+    height: 80px;
+    border-radius: 15px;
+    color:black;
+    background-color: #d9d9d9;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button#hundred:focus{
+    background:#F50083;
+    color: white;
+}
+
+#thundred{
+    position: absolute;
+    top: 47%;
+    left:38%;
+    width: 200px;
+    height: 80px;
+    border-radius: 15px;
+    color:black;
+    background-color: #d9d9d9;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button#thundred:focus{
+    background:#F50083;
+    color: white;
+}
+
+#fhundred{
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    width: 200px;
+    height: 80px;
+    border-radius: 15px;
+    color:black;
+    background-color: #d9d9d9;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button#fhundred:focus{
+    background:#F50083;
+    color: white;
+}
+
+.input-field {
+    position: absolute;
+    top: 60%;
+    left: 38%;
+    border-radius: 15px;
+    width: 23%;
+    height: 6%;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    background-color: lightgrey;
+    font-weight: bold;
+}
+
+#pagamento{
+    position: absolute;
+    top: 69%; /* ;) */
+    left: 35%;
+    width: 28%;
+
+}
+
+#pay{
+    position: absolute;
+    top: 87%;
+    left: 39%;
+    width: 400px;
+    height: 50px;
+    border-radius: 25px;
+    color: white;
+    background-color: #F50083;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
