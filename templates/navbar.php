@@ -8,46 +8,52 @@
     <a href="points" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Points</a>
     <a href="friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
     <a href="profile" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Profile</a>
+    <a href="friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
     <a href="stats" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Stats</a>
     <a href="settings" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif; ">Settings</a>
     <a href="faq" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;" >FAQ</a>
     <a href="login" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Logout</a>
-    <a href="friends" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Friends</a>
-    <a href="searchNavbar"><i class="fa fa-fw fa-search" style="font-size: 25px; padding: 5px;"></i> </a>
-    <a href="deposit">
-    	<div class="balance-box">
-    		<div>
-    			<div>0€</div>
-    		</div>
-    		<div>
-    			<div></div>
-    			<div></div>
-    		</div>
-    	</div>
-    </a>
-    <a href="points">
-    	<div class="balance-box">
-    		<div>
-    			<div>0</div>
-    			 <img style="width: 22px;
-									filter: invert(1);
-									margin-left: 5px;"
-								src="/images/gp-logo.png">
-    		</div>
-    		<div>
-    			<div></div>
-    			<div></div>
-    		</div>
-    	</div>
-    </a>
-    <a href="#ticketNavbar"><img id="ticketNavbarImg" src="/images/ticket.png"></a>
-		<a style="font-size: 16px;">
-  	<?php 
-  		require $_SERVER['DOCUMENT_ROOT']."/php/functions.php";
-  		$userData = apiFetch("http://localhost/api/users?keys=username&id=".rand(1,50));
-  		echo $userData["data"][0]["username"];
-  	?>
-  	</a>
+    <div style="
+				display: flex;
+				align-items: center;
+				position: absolute;
+				right: 10px;">
+		  <a href="searchNavbar"><i class="fa fa-fw fa-search" style="font-size: 25px; padding: 5px;"></i> </a>
+		  <a href="deposit">
+		  	<div class="balance-box">
+		  		<div>
+		  			<div>0€</div>
+		  		</div>
+		  		<div>
+		  			<div></div>
+		  			<div></div>
+		  		</div>
+		  	</div>
+		  </a>
+		  <a href="points">
+		  	<div class="balance-box">
+		  		<div>
+		  			<div>0</div>
+		  			 <img style="width: 22px;
+										filter: invert(1);
+										margin-left: 5px;"
+									src="/images/gp-logo.png">
+		  		</div>
+		  		<div>
+		  			<div></div>
+		  			<div></div>
+		  		</div>
+		  	</div>
+		  </a>
+		  <a href="#ticketNavbar"><img id="ticketNavbarImg" src="/images/ticket.png"></a>
+			<a style="font-size: 16px;">
+			<?php 
+				require $_SERVER['DOCUMENT_ROOT']."/php/functions.php";
+				$userData = apiFetch("http://localhost/api/users?keys=username&id=".rand(1,50));
+				echo $userData["data"][0]["username"];
+			?>
+			</a>
+  	</div>
 </div>
 
 
