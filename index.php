@@ -1,3 +1,5 @@
+<?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
+
 <!doctype html>
 
 <html lang="pt">
@@ -5,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/essentials.css"/>
+    <link rel="icon" href="/images/GameBetLogo-square.png">
 
     <title>Gamebet</title>
 </head>

@@ -12,7 +12,7 @@
     <a href="stats" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Stats</a>
     <a href="settings" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif; ">Settings</a>
     <a href="faq" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;" >FAQ</a>
-    <a href="login" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Logout</a>
+    <a href="login?submit=logout" style="font-size: 20px; padding: 20px; font-family: 'Inter', sans-serif;">Logout</a>
     <div style="
 				display: flex;
 				align-items: center;
@@ -22,7 +22,7 @@
 		  <a href="deposit">
 		  	<div class="balance-box">
 		  		<div>
-		  			<div>0€</div>
+		  			<div><?php echo $_SESSION["userMoney"] ?> €</div>
 		  		</div>
 		  		<div>
 		  			<div></div>
@@ -33,10 +33,11 @@
 		  <a href="points">
 		  	<div class="balance-box">
 		  		<div>
-		  			<div>0</div>
+		  			<div><?php echo $_SESSION["userPoints"] ?></div>
 		  			 <img style="width: 22px;
 										filter: invert(1);
-										margin-left: 5px;"
+										margin-left: 5px;
+										opacity: 0.4;"
 									src="/images/gp-logo.png">
 		  		</div>
 		  		<div>
@@ -45,15 +46,11 @@
 		  		</div>
 		  	</div>
 		  </a>
-		  <a href="#ticketNavbar"><img id="ticketNavbarImg" src="/images/ticket.png"></a>
-			<a style="font-size: 16px;">
-			<?php 
-				require $_SERVER['DOCUMENT_ROOT']."/php/functions.php";
-				$userData = apiFetch("http://localhost/api/users?keys=username&id=".rand(1,50));
-				echo $userData["data"][0]["username"];
-			?>
-			</a>
+		  <a style="position: relative;" href="#ticketNavbar">
+			<img id="ticketNavbarImg" src="/images/ticket.png">
+			<div class="ticketNavbar-counter"><div>0</div></div>
+		  </a>
+			<a style="font-size: 16px;"><?php echo $_SESSION["userUsername"] ?></a>
   	</div>
 </div>
-
-
+<script type="text/javascript" src="js/navbar.js"></script>

@@ -1,3 +1,5 @@
+<?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
+
 <head>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -5,6 +7,7 @@
   <link rel="stylesheet" href="css/navbar.css"/>
   <link rel="stylesheet" href="css/wallet.css"/>
   <link rel="stylesheet" href="css/essentials.css"/>
+  <link rel="icon" href="/images/GameBetLogo-square.png">
 </head>
 
 <body>

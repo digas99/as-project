@@ -28,6 +28,11 @@ $tables = array(
         points VARCHAR(255) NOT NULL ,
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
     )",
+    "CREATE TABLE `gamebet`.`UserAuth`(
+        email VARCHAR(255) NOT NULL ,
+        pwd TEXT NOT NULL ,
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+    )",
     "CREATE TABLE `gamebet`.`Games`(
         name VARCHAR(255) NOT NULL ,
         cover TEXT NOT NULL ,
@@ -91,10 +96,26 @@ require $document_root."/php/static-data.php";
 $result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Users) as `row_exists`;");
 if (mysqli_fetch_assoc($result)["row_exists"] == 0) { 
     echo "Adding fake Users data...<br>";
-    forEach($usernames as $username) {
+    forEach($usernames as $userId=>$username) {
         $streamer = rand(0,1);
-        $sql = "INSERT INTO Users (email, streamer, username, money, points) VALUES ('".strtolower($username)."@fakemail.com', '".rand(0,1)."', '".$username."', '".rand(0,150)."', '".rand(0,2000)."');";
+        $email = strtolower($username) ."@fakemail.com";
+        $sql = "INSERT INTO Users (email, streamer, username, money, points) VALUES ('".$email."', '".rand(0,1)."', '".$username."', '".rand(0,150)."', '".rand(0,2000)."');";
         mysqli_query($conn, $sql);
+
+        // add credentials
+        $pwd = "123456";
+        $sql = "INSERT INTO UserAuth (email, pwd) VALUES (?, ?);";
+        $stmt = mysqli_stmt_init($conn);
+        mysqli_stmt_prepare($stmt, $sql);
+        mysqli_stmt_bind_param($stmt, 'ss', $email, password_hash($pwd, PASSWORD_DEFAULT));
+        mysqli_stmt_execute($stmt);
+
+        // create empty ticket
+        $defaultTicketPrice = 10;
+        forEach(array("Simple", "Multiple", "Group") as $ticketType) {
+            $sql = "INSERT INTO Tickets (userId, ticketType, odds, ticketValue, wins) VALUES ('".($userId+1)."', '".$ticketType."', '0', '".$defaultTicketPrice."', '0');";
+            mysqli_query($conn, $sql);
+        }
     }
 }
 
