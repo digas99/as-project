@@ -46,8 +46,9 @@ const streamBox = data => {
     topBar.appendChild(date);
     date.appendChild(document.createTextNode(data["matchBeginning"]));
     if (new Date()-new Date(data["matchBeginning"]) >= 0) {
-        topBar.appendChild(document.createElement("span"));
-        topBar.title = "Live match";
+        const span = document.createElement("span");
+        topBar.appendChild(span);
+        span.title = "Live match";
     }
     const topBarRight = document.createElement("div");
     topBar.appendChild(topBarRight);

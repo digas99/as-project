@@ -27,3 +27,14 @@ a, a:visited {
 .clickable:hover {
   opacity: 0.8;
 }
+
+.absolute-centered {
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  position: absolute;
+}

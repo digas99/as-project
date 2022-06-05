@@ -65,6 +65,9 @@
 
 <div class="ticket-button">
 	<img src="images/cart.png">
+	<div>
+    	<div class="absolute-centered"></div>
+  	</div>
 </div>
 
 <script> const userSession = <?php echo json_encode($_SESSION); ?>; </script>

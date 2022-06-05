@@ -121,3 +121,31 @@
 .games-list .game li:nth-child(2) div:nth-child(2) {
 	color: var(--pink);
 }
+
+@media only screen and (max-width: 1499px) {
+  .games-list {
+    grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
+  }
+
+  .games-list .game li:first-child img {
+    width: 220px;;
+  }
+
+  .games-list .game li:nth-child(2) {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 1149px) {
+  .games-list {
+    grid-template-columns: repeat(auto-fill,minmax(190px,1fr));
+  }
+
+  .games-list .game li:first-child img {
+    width: 180px;;
+  }
+
+  .games-list .game li:nth-child(2) {
+    font-size: 11px;
+  }
+}

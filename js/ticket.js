@@ -16,7 +16,7 @@ const ticketPopup = data => {
 		setTimeout(() => wrapper.remove(), 500);
 		// extend list of streams
 		const streams = document.getElementById("streams");
-		if (streams) streams.classList.remove("shrinked-streams");
+		if (streams) document.body.classList.remove("shrinked-streams");
 	});
 	const close = document.createElement("div");
 	closeWrapper.appendChild(close);
@@ -208,7 +208,7 @@ if (ticketButton) {
 				setTimeout(() => popup.classList.remove("ticket-popup-closed"), 50);
 
 				const streams = document.getElementById("streams");
-				if (streams) streams.classList.add("shrinked-streams");
+				if (streams) document.body.classList.add("shrinked-streams");
 			});
 	});
 }
@@ -224,6 +224,17 @@ window.addEventListener("click", e => {
 
 		// extend list of streams
 		const streams = document.getElementById("streams");
-		if (streams) streams.classList.remove("shrinked-streams");
+		if (streams) document.body.classList.remove("shrinked-streams");
 	}
 });
+
+// update value on ticket button
+fetch("api/tickets?keys=bets&id="+userSession["userTickets"]["Multiple"])
+	.then(response => response.json())
+	.then(data => {
+		const ticketButton = document.getElementsByClassName("ticket-button")[0];
+		if (ticketButton) {
+			const ticketButtonNumber = ticketButton.getElementsByClassName("absolute-centered")[0];
+			if (ticketButtonNumber) ticketButtonNumber.innerHTML = data["data"][0]["bets"].length;
+		}
+	});
