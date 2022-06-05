@@ -85,19 +85,10 @@ if (urlParams.has('q')) {
 	if (input)
   	input.value = urlParams.get('q');
   	searchGames("api/games?name="+input.value);
-
 }
 else {
 	searchGames("api/games");
-}
-	
-const insertUrlParam = (key, value) => {
-	let searchParams = new URLSearchParams(window.location.search);
-	searchParams.set(key, value);
-	let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + searchParams.toString();
-	window.history.replaceState({}, '', newurl);
-}
-	
+}	
 
 if (input) {
 	input.addEventListener("input", e => {

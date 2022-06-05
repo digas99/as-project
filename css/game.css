@@ -16,10 +16,11 @@
     border-radius: 25px;
     width: 150%;
     padding: 10px;
+    padding-left: 10px;
     color: black;
     background-color: lightgrey;
     font-size: medium;
-    padding-left: 50px;
+    padding-left: 35px;
     border: none;
   }
 

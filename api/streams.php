@@ -68,6 +68,17 @@ if ($method === 'GET') {
             $users[$row["id"]] = $row;
         }
     }
+
+    $bets = array();
+    if (!isset($_GET["keys"]) || (isset($_GET["keys"]) && str_contains($_GET["keys"],"bets"))) {
+        // get bets
+        $query = "SELECT streamId,id FROM Bets";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+            $bets[$row["streamId"]][] = $row["id"];
+        }
+    }
+
   
 	if (!str_contains($columns, "id")) $columns = $columns.($columns != "" ? "," : "")."id";
 	
@@ -82,6 +93,10 @@ if ($method === 'GET') {
 
         if (!isset($_GET["keys"]) || (count($users) > 0 && str_contains($_GET["keys"],"user")))
             $row["user"] = $users[$row["userId"]];
+
+        $row["bets"] = array();
+        if (isset($bets[$row["id"]]))
+            $row["bets"] = $bets[$row["id"]];
 
         $data[] = $row;
     }

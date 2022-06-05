@@ -47,7 +47,7 @@
 		      <i style="opacity: 0.5;" class="fa fa-search icon"></i>
 		      <input class="input-field"
 		             type="text"
-		             placeholder="Game, streamer, ...">
+		             placeholder="Game...">
 			</div>
 		</div>
 

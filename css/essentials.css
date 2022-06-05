@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+a, a:visited {
+  color: unset;
+}
+
 .clickable:hover {
   opacity: 0.8;
 }
