@@ -4,6 +4,24 @@ body {
 
 #streams {
     transition: 0.3s;
+    position: relative;
+}
+
+#streams > p {
+	text-align: center;
+	width: 100%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	position: absolute;
+	font-size: 20px;
+	color: var(--font-gray);
+	font-weight: bold;
+	top: 25px;
+}
+
+#streams > p:not(:first-child) {
+    display: none;
 }
 
 .stream-box {

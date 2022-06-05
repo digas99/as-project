@@ -28,6 +28,18 @@ const updateGamesList = (gamesWrapper, data) => {
 			const gameStreams = document.createElement("div");
 			gameNameWrapper.appendChild(gameStreams);
 			gameStreams.appendChild(document.createTextNode((game["streams"] +" events")));
+			const gameStar = document.createElement("img");
+			gameNameWrapper.appendChild(gameStar);
+			gameStar.title = "Favorite game!";
+			gameStar.src = "images/star.png";
+			gameStar.addEventListener("mouseover", () => {
+				if (gameStar.src.includes("filled")) gameStar.src = "images/star.png";
+				else gameStar.src = "images/star-filled.png";
+			});
+			gameStar.addEventListener("mouseout", () => {
+				if (gameStar.src.includes("filled")) gameStar.src = "images/star.png";
+				else gameStar.src = "images/star-filled.png";
+			});
 			
 			gameInfo.addEventListener("mouseover", e => {
 				gameInfo.style.filter = "opacity(0.7)";

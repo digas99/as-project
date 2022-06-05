@@ -87,7 +87,11 @@
 	font-size: 20px;
 	color: var(--font-gray);
 	font-weight: bold;
-	top: 25;
+	top: 25px;
+}
+
+.games-list > p:not(:first-child) {
+  display: none;
 }
 
 .games-list > div {
@@ -112,6 +116,7 @@
 .games-list .game li:nth-child(2) {
 	text-align: left;
 	font-weight: bold;
+  position: relative;
 }
 
 .games-list .game li:nth-child(2) div:first-child {
@@ -120,6 +125,16 @@
 
 .games-list .game li:nth-child(2) div:nth-child(2) {
 	color: var(--pink);
+}
+
+.games-list .game li:nth-child(2) img {
+	width: 25px;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  height: fit-content;
+  margin: auto;
 }
 
 @media only screen and (max-width: 1499px) {

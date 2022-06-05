@@ -36,6 +36,13 @@ const searchStreamers = endpoint => {
             loading = document.getElementsByClassName("loading-cover")[0];
             if (loading) loading.remove();
             streamsWrapper.style.removeProperty("display");
+
+            // if no streams found
+            if (streams["data"].length == 0) {
+                const noStreams = document.createElement("p");
+                streamsWrapper.appendChild(noStreams);
+                noStreams.appendChild(document.createTextNode("No streams found!"));
+            }
         });
 }
 
