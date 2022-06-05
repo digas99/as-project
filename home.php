@@ -6,11 +6,13 @@
 	<link rel="stylesheet" href="css/home.css"/>
 	<link rel="stylesheet" href="css/navbar.css"/> 
 	<link rel="stylesheet" href="css/essentials.css"/>
+	<link rel="stylesheet" href="css/ticket.css"/>
 	<!--Importing icons-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+	<link rel="icon" href="/images/GameBetLogo-square.png">
 </head>
 
 <body>
@@ -45,7 +47,7 @@
 		      <i style="opacity: 0.5;" class="fa fa-search icon"></i>
 		      <input class="input-field"
 		             type="text"
-		             placeholder="Game, streamer, ...">
+		             placeholder="Game...">
 			</div>
 		</div>
 
@@ -54,7 +56,7 @@
 	</div>
 </div>
 
-<hr id="purpleLine">
+<hr size="4" width="96%" color="#f50083"> 
 
 <?php include("templates/loading.php"); ?>
 <div style="display: none;" class="games-list">
@@ -63,10 +65,16 @@
 
 <div class="ticket-button">
 	<img src="images/cart.png">
+	<div>
+    	<div class="absolute-centered"></div>
+  	</div>
 </div>
 
 <script> const userSession = <?php echo json_encode($_SESSION); ?>; </script>
 
+<script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/home.js"></script>
+<script type="text/javascript" src="js/ticket.js"></script>
+
 </body>
 </html>

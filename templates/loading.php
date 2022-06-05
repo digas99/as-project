@@ -72,6 +72,21 @@
     }
 </style>
 
+<script>
+    const makeLoading = () => {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("loading-cover");
+        const loading = document.createElement("div");
+        wrapper.appendChild(loading);
+        loading.classList.add("loader", "absolute-centered");
+        for (let i = 0; i < 3; i++) {
+            loading.appendChild(document.createElement("div"));
+        }
+
+        return wrapper;
+    }
+</script>
+
 <div class="loading-cover">
     <div class="loader absolute-centered">
         <div></div>

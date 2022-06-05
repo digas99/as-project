@@ -50,6 +50,16 @@ if ($method === 'GET') {
         }
     }
 
+    $tickets = array();
+    if (!isset($_GET["keys"]) || (isset($_GET["keys"]) && str_contains($_GET["keys"],"tickets"))) {
+        // get all ticket ids
+        $query = "SELECT userId,id,ticketType FROM Tickets";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+            $tickets[$row["userId"]][$row["ticketType"]] = $row["id"];
+        }
+    }
+
 	if (!str_contains($columns, "id")) $columns = $columns.($columns != "" ? "," : "")."id";
 	
     $query = "SELECT ". $columns ."  FROM Users WHERE ". $filter;
@@ -63,6 +73,10 @@ if ($method === 'GET') {
                 $row["games"][] = $games[$gameId];
             }
         }
+
+        $row["tickets"] = array();
+        if (isset($tickets[$row["id"]]))
+            $row["tickets"] = $tickets[$row["id"]];
 
         $data[] = $row;
     }

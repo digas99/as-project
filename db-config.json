@@ -5,5 +5,5 @@
         "password": "",
         "name": "gamebet"
     },
-    "db_size": "large"
+    "db_size": "small"
 }
