@@ -16,8 +16,6 @@ if ($method === 'GET') {
     
     if (isset($_GET["game"])) $filter = $filter . " AND gameId = '".$_GET["game"]."'";
 
-    if (isset($_GET["user"])) $filter = $filter . " AND userId = '".$_GET["user"]."'";
-
     if (isset($_GET["platform"])) $filter = $filter . " AND platform = '".$_GET["platform"]."'";
     
     if (isset($_GET["matchFormat"])) $filter = $filter . " AND matchFormat = '".$_GET["matchFormat"]."'";
@@ -98,7 +96,8 @@ if ($method === 'GET') {
         if (isset($bets[$row["id"]]))
             $row["bets"] = $bets[$row["id"]];
 
-        $data[] = $row;
+        if (!isset($_GET["user"]) || (isset($_GET["user"]) && count($users) > 0 && stripos($row["user"]["username"], $_GET["user"]) !== false))
+            $data[] = $row;
     }
     
     $response["data"] = $data;

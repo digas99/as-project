@@ -74,19 +74,3 @@ const streamBox = data => {
 
     return wrapper;
 }
-
-const streamsWrapper = document.getElementById("streams");
-if (streamsWrapper && gameId) {
-    fetch("api/streams?gameId="+gameId)
-        .then(response => response.json())
-        .then(streams =>  {
-            const nEvents = document.getElementById("n-events");
-            if (nEvents) nEvents.innerText = streams["size"]+" events";
-            streams["data"].sort((a, b) => new Date(a["matchBeginning"]) - new Date(b["matchBeginning"]))
-                .forEach(stream => streamsWrapper.appendChild(streamBox(stream)));        
-    
-            const loading = document.getElementsByClassName("loading-cover")[0];
-            if (loading) loading.remove();
-            streamsWrapper.style.removeProperty("display");
-        });
-}

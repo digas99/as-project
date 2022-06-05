@@ -50,40 +50,21 @@
 		      <i style="opacity: 0.5;" class="fa fa-search icon"></i>
 		      <input class="input-field"
 		             type="text"
-		             placeholder="Stream...">
+		             placeholder="Streamer...">
 			</div>
 		</div>
 
 		<input style="width: 35px;" type="image" src="/images/sort.png">
-		<input style="width: 25px;" type="image" src="/images/star.png">	
 	</div>
 </div>
 
 <hr size="4" width="96%" color="#f50083"> 
 
 <?php include("templates/loading.php"); ?>
-<div stlye="display:none;" id="streams"></div>
+<div style="display:none;" id="streams"></div>
 
 <script type="text/javascript" src="js/functions.js"></script>
-
-<script>
-  let gameId = 1;
-  urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.has('id')) {
-    gameId = urlParams.get('id')
-  }
-  else
-    insertUrlParam("id", 1);
-
-  const gameName = document.getElementById("game-name");
-  if (gameName) {
-    fetch("api/games?keys=name&id="+gameId)
-      .then(response => response.json())
-      .then(gameData => gameName.innerHTML = gameData["data"][0]["name"]);
-  }
-</script>
-
-<script type="text/javascript" src="js/home.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
 <script type="text/javascript" src="js/stream.js"></script>
 
 </body>

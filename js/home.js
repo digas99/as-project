@@ -82,9 +82,10 @@ const searchGames = endpoint => {
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has('q')) {
-	if (input)
-  	input.value = urlParams.get('q');
-  	searchGames("api/games?name="+input.value);
+	if (input) {
+  		input.value = urlParams.get('q');
+  		searchGames("api/games?name="+input.value);
+	}
 }
 else {
 	searchGames("api/games");
