@@ -5,25 +5,41 @@ body {
 	font-family: 'Inter', sans-serif;
 }
 
+#gamebet > img {
+	display: none;
+}
+
 #navbar {
 	overflow: hidden;
 	background-color: #f50083;  
 	z-index: 2;
 	display: flex;
 	align-items: center;
+	height: 70px;
 }
         
-  #navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 15px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-  }
-              
+#navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 15px;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+	
+#navbar > a:not(:first-child) {
+	padding: 20px;	
+}
+
+#navbar > a:first-child {
+	padding: 10px;
+	font-size: 40px;
+	display: flex;
+}
+
 .content {
   	padding: 16px;
 }
@@ -43,6 +59,31 @@ body {
   width: 54px;
   /* changing color of image. Algorithm from https://codepen.io/sosuke/pen/Pjoqqp */
   filter: invert(100%) sepia(0%) saturate(7434%) hue-rotate(353deg) brightness(113%) contrast(113%);
+  transition: 0.3s;
+}
+
+.ticketNavbar-counter {
+	color: var(--pink);
+	background-color: white;
+	border-radius: 50%;
+	position: absolute;
+	top: 0px;
+	right: -8px;
+	width: 25px;
+	height: 25px;
+	border: 4px solid var(--pink);
+}
+
+.ticketNavbar-counter > div {
+	position: absolute;
+	left: 0;
+	right: -1px;
+	top: 1px;
+	bottom: 0;
+	width: fit-content;
+	height: fit-content;
+	margin: auto;
+	font-size: 18px;
 }
 
 /* ----------------------BalanceBox--------------------- */
@@ -64,7 +105,7 @@ body {
 	text-align: left;
 	padding-left: 10px;
 	color: var(--font-gray);
-	font-size: 17px;
+	font-size: 14px;
 }
 
 .balance-box > div:last-child {
@@ -97,4 +138,80 @@ body {
 .balance-box > div:last-child > div:last-child {
 	height: 65%;
 	width: 3px;
+}
+
+.burger-menu {
+	width: 32px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	margin: 10px;
+	display: none;
+}
+
+.burger-menu > div {
+	background-color: white;
+	height: 3px;
+}
+
+@media only screen and (max-width: 1615px) {
+	#navbar a:not(:first-child) {
+		padding-left: 15px;
+		padding-right: 15px;	
+	}
+}
+
+@media only screen and (max-width: 1525px) {
+	#navbar a:not(:first-child) {
+		padding-left: 10px;
+		padding-right: 10px;	
+	}
+}
+
+@media only screen and (max-width: 1400px) {
+	#gamebet > span {
+		display: none;
+	}
+
+	#gamebet > img {
+		display: unset;
+	}
+}
+
+@media only screen and (max-width: 1270px) {
+	#ticketNavbarImg {
+		width: 44px;
+	}
+
+	.ticketNavbar-counter {
+		width: 20px;
+		height: 20px;
+	}
+
+	.ticketNavbar-counter > div {
+		font-size: 15px;
+	}
+
+	.balance-box > div:first-child {
+		height: 30px;
+	}
+
+	.balance-box > div:last-child {
+		width: 30px;
+		height: 30px;
+	}
+
+	#navbar > a:not(:first-child) {
+		display: none;	
+	}
+
+	.burger-menu {
+		display: flex;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	#username {
+		display: none !important;
+	}
 }

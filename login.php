@@ -55,6 +55,7 @@ if ($method === 'POST') {
                         $_SESSION['userStreamer'] = $userData["streamer"];
                         $_SESSION['userPoints'] = $userData["points"];
                         $_SESSION['userMoney'] = $userData["money"];
+                        $_SESSION['userTickets'] = $userData["tickets"];
 
                         header("Location: login?submit=login");
                         exit();
@@ -90,6 +91,7 @@ if ($method === 'POST') {
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/GameBetLogo-square.png">
 </head>
 
 <body>

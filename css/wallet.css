@@ -1,124 +1,163 @@
-*{
-    font-family: 'Inter', sans-serif;
+.title{
+    position: absolute;
+    top: 110px;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    font-size: 30px;
 }
 
-h1{
+.middle-buttons{
     position: absolute;
-    top: 11%;
-    left:45%;
-    font-size: 50px;  
+    top: 0;
+    bottom: 150px;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
 }
 
-#deposit{
-    position: absolute;
-    top: 40%;
-    left: 23%;
-    font-size: 35px;
-    background-color: #F50083;
-    color: white;
-    width: 300px;
-    height: 60px;
-    cursor: pointer;
-    border: none;    
+
+.middle-buttons > div{
+    align-items: top;
+    display: flex;
+    flex-direction: table-column;
+    column-gap: 250px; 
 }
 
-#withdraw{
-    position: absolute;
-    top:48%;
-    left:23%;
-    font-size: 35px;
-    background-color: #636363;
-    color: white;
-    width: 300px;
-    height: 60px;
-    cursor: pointer;
-    border: none;    
+/* Deposit && Withdraw div */
+.middle-buttons > div:nth-child(1) > div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    text-align: center;
+    
 }
 
-#points{
-    position: absolute;
-    top:40%;
-    left:60%;
-    font-size: 35px;
-    background-color: #65ca87;
-    color: white;
-    width: 400px;
-    height: 60px;
+/* money, above deposit */
+.middle-buttons > div:nth-child(1) > div:nth-child(1) > div:nth-child(1){
+    font-size:60px;
+    font-weight: bold;
+    color: var(--pink);
+}
+
+/* Deposit && Withdraw buttons */
+.middle-buttons > div:nth-child(1) > div:nth-child(1) > a > button{ 
+    width: 350px;
+    height: 50px;
+    font-size: 40px;
     cursor: pointer;
     border: none;
+    color: white;
+    border-radius: 10px;
+}
+/* button deposit */
+.middle-buttons > div:nth-child(1) > div:nth-child(1) > a:nth-child(2) > button{
+    background-color: var(--pink);
+}
+/* button Withdraw */
+.middle-buttons > div:nth-child(1) > div:nth-child(1) > a:nth-child(3) > button{
+    background-color: var(--font-gray);
+}
+
+/* Points div */
+.middle-buttons > div:nth-child(1) > div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    text-align: center;
+}
+
+/* Points above win GB points */
+.middle-buttons > div:nth-child(1) > div:nth-child(2) > div:nth-child(1){
+    font-size:60px;
+    font-weight: bold;
+    color: var(--light-green);
+}
+
+/* Points button */
+.middle-buttons > div:nth-child(1) > div:nth-child(2) > a > button{
+    width: 350px;
+    height: 50px;
+    font-size: 35px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 10px;;
+    background-color: var(--light-green);
 }
 
 #line{
-    color: #636363;
-    display: block;
-    margin: 600px;
-    cursor: pointer;
+    position: absolute;
+    top: 160px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 40%;
+    height: 0;
+    margin: auto;
+
+    color: var(--font-gray);
 }
 
-#balance{
+.bottom-buttons{
     position: absolute;
-    top:68%;
-    left: 42%;
-    width: 300px;
-    background-color: #d9d9d9;
-    color: #696969;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;   
-}
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    text-align: center; 
 
-#account{
-    position: absolute;
-    top:73%;
-    left: 42%;
-    width: 300px;
+}
+/* 1st three buttons */
+.bottom-buttons > a > button{
+    width: 350px; 
+    height: 40px;
     background-color: #d9d9d9;
-    color: #696969;
-    font-size: 25px;
+    color: var(--font-gray);
     font-weight: bold;
-    cursor: pointer;
+    font-size: 25px;
+    border-radius: 5px;
     border: none;
 }
 
-#bets{
-    position: absolute;
-    top:78%;
-    left: 42%;
-    width: 300px;
-    background-color: #d9d9d9;
-    color: #696969;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
+.bottom-buttons > a{
+    position:relative;
 }
 
-#invite{
+.bottom-buttons > a > a{
     position: absolute;
-    top:83%;
-    left: 42%;
-    width: 300px;
-    background-color: #d9d9d9;
-    color: #696969;
-    font-size: 25px;
-    text-align: left;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    margin: auto;
 }
 
-#invite10{
-    position: absolute;
-    top:83%;
-    left: 53.45%;
-    width: 90px;
-    background-color: #F50083;
+.bottom-buttons > a > a > button{
+    height: 38px;
     color: white;
-    font-size: 25px;
-    cursor: pointer;
+    background-color: var(--pink);
     border: none;
+    font-size: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-weight: bold;
+    width: 75px;
+
 }
+
+
+
+
+
 
 
 

@@ -11,7 +11,7 @@ if ($method === 'GET') {
     $filter = 1;
     $columns = "*";
 
-    if (isset($_GET["id"])) $filter = "id = '".$_GET["id"]."'";
+    if (isset($_GET["id"])) $filter = "id IN (".$_GET["id"].")";
 
     if (isset($_GET["betGroup"])) $filter = $filter . " AND betGroup = '".$_GET["betGroup"]."'";
 

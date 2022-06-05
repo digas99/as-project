@@ -16,8 +16,6 @@ if ($method === 'GET') {
     
     if (isset($_GET["game"])) $filter = $filter . " AND gameId = '".$_GET["game"]."'";
 
-    if (isset($_GET["user"])) $filter = $filter . " AND userId = '".$_GET["user"]."'";
-
     if (isset($_GET["platform"])) $filter = $filter . " AND platform = '".$_GET["platform"]."'";
     
     if (isset($_GET["matchFormat"])) $filter = $filter . " AND matchFormat = '".$_GET["matchFormat"]."'";
@@ -68,6 +66,17 @@ if ($method === 'GET') {
             $users[$row["id"]] = $row;
         }
     }
+
+    $bets = array();
+    if (!isset($_GET["keys"]) || (isset($_GET["keys"]) && str_contains($_GET["keys"],"bets"))) {
+        // get bets
+        $query = "SELECT streamId,id FROM Bets";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+            $bets[$row["streamId"]][] = $row["id"];
+        }
+    }
+
   
 	if (!str_contains($columns, "id")) $columns = $columns.($columns != "" ? "," : "")."id";
 	
@@ -83,7 +92,12 @@ if ($method === 'GET') {
         if (!isset($_GET["keys"]) || (count($users) > 0 && str_contains($_GET["keys"],"user")))
             $row["user"] = $users[$row["userId"]];
 
-        $data[] = $row;
+        $row["bets"] = array();
+        if (isset($bets[$row["id"]]))
+            $row["bets"] = $bets[$row["id"]];
+
+        if (!isset($_GET["user"]) || (isset($_GET["user"]) && count($users) > 0 && stripos($row["user"]["username"], $_GET["user"]) !== false))
+            $data[] = $row;
     }
     
     $response["data"] = $data;
