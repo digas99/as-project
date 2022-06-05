@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/essentials.css"/>
   <link rel="stylesheet" href="css/navbar.css"/>
   <link rel="stylesheet" href="css/stream.css"/> 
+  <link rel="stylesheet" href="css/ticket.css"/>
   <!--Importing icons-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,9 +64,16 @@
 <?php include("templates/loading.php"); ?>
 <div style="display:none;" id="streams"></div>
 
+<div class="ticket-button">
+	<img src="images/cart.png">
+</div>
+
+<script> const userSession = <?php echo json_encode($_SESSION); ?>; </script>
+
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/game.js"></script>
 <script type="text/javascript" src="js/stream.js"></script>
+<script type="text/javascript" src="js/ticket.js"></script>
 
 </body>
 </html>

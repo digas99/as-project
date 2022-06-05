@@ -1,3 +1,7 @@
+#streams {
+    transition: 0.3s;
+}
+
 .stream-box {
     display: flex;
     margin: 30px 50px;
@@ -134,6 +138,7 @@
     padding: 8px;
     border-radius: 10px 0px 0px 10px;
     font-weight: bold;
+    pointer-events: none;
 }
 
 .stream-box > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > :nth-child(1) > b {
@@ -159,3 +164,13 @@
     width: fit-content;
     height: fit-content;
 }
+
+.shrinked-streams {
+    margin-right: 400px;
+}
+
+@media only screen and (max-width: 1230px) {
+    .shrinked-streams {
+        margin-right: unset;
+    }
+  }

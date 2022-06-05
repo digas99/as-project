@@ -75,22 +75,36 @@ if ($method === 'GET') {
 }
 else if ($method === 'POST') {
     $newData = json_decode(file_get_contents('php://input'), true);
-    if ($newData["id"]) {
-        $unmutableKeys = array("userId", "ticketType", "id");
-
-        // get Tickets columns
-        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Tickets' AND TABLE_SCHEMA = 'gamebet'";
-        $result = mysqli_query($conn, $query);
-        $ticketsColumns = array();
-        while($row = mysqli_fetch_assoc($result)) {
-            $ticketsColumns[] = $row["COLUMN_NAME"];
-        }
-
-        foreach($newData as $key => $value) {
-            if (in_array($key, $ticketsColumns) && !in_array($key, $unmutableKeys)) {
-                $query = "UPDATE Tickets SET ".$key." = '".$value."' WHERE id = '".$newData["id"]."'";
-                $result = mysqli_query($conn, $query);
+    if ($_GET["mode"] == "update") {
+        if ($newData["id"]) {
+            $unmutableKeys = array("userId", "ticketType", "id");
+    
+            // get Tickets columns
+            $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Tickets' AND TABLE_SCHEMA = 'gamebet'";
+            $result = mysqli_query($conn, $query);
+            $ticketsColumns = array();
+            while($row = mysqli_fetch_assoc($result)) {
+                $ticketsColumns[] = $row["COLUMN_NAME"];
             }
+    
+            foreach($newData as $key => $value) {
+                if (in_array($key, $ticketsColumns) && !in_array($key, $unmutableKeys)) {
+                    $query = "UPDATE Tickets SET ".$key." = '".$value."' WHERE id = '".$newData["id"]."'";
+                    $result = mysqli_query($conn, $query);
+                }
+            }
+        }
+    }
+    else if ($_GET["mode"] == "increase") {
+        if ($newData["betId"] && $newData["ticketId"]) {
+            $query = "INSERT INTO TicketBets (betId, ticketId) VALUES ('".$newData["betId"]."', '".$newData["ticketId"]."');";
+            $result = mysqli_query($conn, $query);
+        }
+    }
+    else if ($_GET["mode"] == "decrease") {
+        if ($newData["betId"] && $newData["ticketId"]) {
+            $query = "DELETE FROM TicketBets WHERE betID = '".$newData["betId"]."' AND ticketId = '".$newData["ticketId"]."' ;";
+            $result = mysqli_query($conn, $query);
         }
     }
 }

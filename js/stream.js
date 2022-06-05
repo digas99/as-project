@@ -2,6 +2,30 @@ const streamBox = data => {
     const wrapper = document.createElement("div");
     wrapper.classList.add("stream-box");
 
+    // click event listener
+    wrapper.addEventListener("click", e => {
+        const target = e.target;
+        if (target.dataset.id) {
+            postRequest("api/tickets?mode=increase", {
+                "betId": target.dataset.id,
+                "ticketId": userSession["userTickets"]["Multiple"]
+            });
+            const oldPopup = document.getElementsByClassName("ticket-popup")[0];
+            if (oldPopup) {
+                fetch(`api/tickets?ticketType=Multiple&userId=${userSession["userId"]}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const ticketData = data["data"][0];
+                        const popup = ticketPopup(ticketData);
+                        document.body.insertBefore(popup, oldPopup);
+                        popup.classList.remove("ticket-popup-closed");
+                        // remove old popup
+                        setTimeout(() => oldPopup.remove(), 50);   
+                    });
+            }
+        }
+    });
+
     // left container
     const leftContainer = document.createElement("div");
     wrapper.appendChild(leftContainer);
@@ -58,6 +82,7 @@ const streamBox = data => {
                 odd.appendChild(document.createTextNode(betData["odd"]));
                 const betButton = document.createElement("div");
                 betRight.appendChild(betButton);
+                betButton.dataset.id = betData["id"];
                 const betButtonText = document.createElement("div");
                 betButton.appendChild(betButtonText);
                 betButtonText.appendChild(document.createTextNode("BET"));

@@ -14,6 +14,9 @@ const ticketPopup = data => {
 	closeWrapper.addEventListener("click", () => {
 		wrapper.classList.add("ticket-popup-closed");
 		setTimeout(() => wrapper.remove(), 500);
+		// extend list of streams
+		const streams = document.getElementById("streams");
+		if (streams) streams.classList.remove("shrinked-streams");
 	});
 	const close = document.createElement("div");
 	closeWrapper.appendChild(close);
@@ -41,12 +44,13 @@ const ticketPopup = data => {
 			fetch(`api/tickets?ticketType=${typeText}&userId=${userSession["userId"]}`)
 				.then(response => response.json())
 				.then(data => {
+					const oldPopup = document.getElementsByClassName("ticket-popup")[0];
                     ticketData = data["data"][0];
 					const popup = ticketPopup(ticketData);
-					document.body.appendChild(popup);
+					document.body.insertBefore(popup, oldPopup);
 					popup.classList.remove("ticket-popup-closed");
 					// remove old popup
-					wrapper.remove();
+                        setTimeout(() => oldPopup.remove(), 50);   
 				});
 		});
 	});
@@ -57,7 +61,7 @@ const ticketPopup = data => {
 		upperContainer.appendChild(betsContainer);
 		fetch("api/bets?id="+data["bets"].join(","))
 			.then(response => response.json())
-			.then(data => data["data"].forEach(bet => betsContainer.appendChild(ticketBet(bet))));
+			.then(betData => betData["data"].forEach(bet => betsContainer.appendChild(ticketBet(bet, data["ticketType"]))));
 	}
 	else {
 		// no bets yet
@@ -104,7 +108,6 @@ const ticketPopup = data => {
 	valuesPossibleWins.appendChild(document.createTextNode("Possible Wins:"));
 	const valuesWin = document.createElement("div");
 	valuesSecondLayer.appendChild(valuesWin);
-	console.log(data);
 	valuesWin.appendChild(document.createTextNode((Number(data["ticketValue"])*Number(data["odds"])).toFixed(2)+"€"));
 	// button
 	const buttonWrapper = document.createElement("div");
@@ -121,8 +124,7 @@ const ticketPopup = data => {
 
     valueInput.addEventListener("input", () => {
         ticketData["ticketValue"] = !isNaN(valueInput.value) ? valueInput.value : ticketData["ticketValue"];
-        console.log(ticketData);
-        postRequest("api/tickets", ticketData);
+        postRequest("api/tickets?mode=update", ticketData);
 
 		valuesWin.innerText = (Number(ticketData["ticketValue"])*Number(ticketData["odds"])).toFixed(2)+"€";
     });
@@ -130,7 +132,7 @@ const ticketPopup = data => {
 	return wrapper;
 }
 
-const ticketBet = data => {
+const ticketBet = (data, ticketType) => {
 	const wrapper = document.createElement("div");
 	wrapper.classList.add("ticket-bet");
 	
@@ -172,6 +174,24 @@ const ticketBet = data => {
 	const bin = document.createElement("img");
 	binWrapper.appendChild(bin);
 	bin.src="images/bin.png";
+	binWrapper.addEventListener("click", () => {
+		postRequest("api/tickets?mode=decrease", {
+			"betId": data["id"],
+			"ticketId": userSession["userTickets"][ticketType]
+		});
+
+		fetch(`api/tickets?ticketType=Multiple&userId=${userSession["userId"]}`)
+			.then(response => response.json())
+			.then(data => {
+				const oldPopup = document.getElementsByClassName("ticket-popup")[0];
+				const ticketData = data["data"][0];
+				const popup = ticketPopup(ticketData);
+				document.body.insertBefore(popup, oldPopup);
+				popup.classList.remove("ticket-popup-closed");
+				// remove old popup
+				setTimeout(() => oldPopup.remove(), 50);   
+			});
+	});
 	
 	return wrapper;
 }
@@ -186,6 +206,9 @@ if (ticketButton) {
 				const popup = ticketPopup(ticketData);
 				document.body.appendChild(popup);
 				setTimeout(() => popup.classList.remove("ticket-popup-closed"), 50);
+
+				const streams = document.getElementById("streams");
+				if (streams) streams.classList.add("shrinked-streams");
 			});
 	});
 }
@@ -195,8 +218,12 @@ window.addEventListener("click", e => {
 
 	// click outside to close cart popup
 	const ticketPopup = document.getElementsByClassName("ticket-popup")[0];
-	if (ticketPopup && !target.closest(".ticket-popup") && !target.closest(".ticket-button")) {
+	if (ticketPopup && !target.closest(".ticket-popup") && !target.closest(".ticket-button") && window.getComputedStyle(target)["cursor"] !== "pointer") {
 		ticketPopup.classList.add("ticket-popup-closed");
 		setTimeout(() => ticketPopup.remove(), 500);
+
+		// extend list of streams
+		const streams = document.getElementById("streams");
+		if (streams) streams.classList.remove("shrinked-streams");
 	}
 });

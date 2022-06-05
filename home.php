@@ -56,7 +56,7 @@
 	</div>
 </div>
 
-<hr id="purpleLine">
+<hr size="4" width="96%" color="#f50083"> 
 
 <?php include("templates/loading.php"); ?>
 <div style="display: none;" class="games-list">
