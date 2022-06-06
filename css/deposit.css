@@ -1,161 +1,104 @@
-*{
-    font-family: 'Inter', sans-serif;
+.title{
+    position: absolute;
+    top: 110px;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    font-size: 30px;
+}
+
+.deposit-values{
+    position: absolute;
+    top: 0;
+    bottom: 150px;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    
+}
+
+.deposit-values > div > button{
+    width: 220px;
+    height: 80px;
+    font-size: 32px;
+    font-weight: bold;
+    border-radius: 10px;
     border: none;
-}
-
-h1{
-    position: absolute;
-    top: 11%;
-    left:44%;
-    font-size: 50px;  
-}
-
-#ten{
-    position: absolute;
-    top: 25%;
-    left:38%;
-    width: 200px;
-    height: 80px;
-    border-radius: 15px;
-    color:black;
-    background-color: #d9d9d9;
-    font-size: 25px;
-    font-weight: bold;
+    background-color: var(--background-light-gray);
     cursor: pointer;
 }
 
-button#ten:focus{
-    background:#F50083;
+.deposit-values > div > button:focus{
+    background:var(--pink);
     color: white;
 }
 
-#twenty{
+.input-field{
     position: absolute;
-    top: 25%;
-    left:50%;
-    width: 200px;
-    height: 80px;
-    border-radius: 15px;
-    color:black;
-    background-color: #d9d9d9;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
+    top: 250px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    
 }
 
-button#twenty:focus{
-    background:#F50083;
-    color: white;
-}
-
-#fifty{
-    position: absolute;
-    top: 36%;
-    left:38%;
-    width: 200px;
-    height: 80px;
-    border-radius: 15px;
-    color:black;
-    background-color: #d9d9d9;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-button#fifty:focus{
-    background:#F50083;
-    color: white;
-}
-
-#hundred{
-    position: absolute;
-    top: 36%;
-    left:50%;
-    width: 200px;
-    height: 80px;
-    border-radius: 15px;
-    color:black;
-    background-color: #d9d9d9;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-button#hundred:focus{
-    background:#F50083;
-    color: white;
-}
-
-#thundred{
-    position: absolute;
-    top: 47%;
-    left:38%;
-    width: 200px;
-    height: 80px;
-    border-radius: 15px;
-    color:black;
-    background-color: #d9d9d9;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-button#thundred:focus{
-    background:#F50083;
-    color: white;
-}
-
-#fhundred{
-    position: absolute;
-    top: 47%;
-    left: 50%;
-    width: 200px;
-    height: 80px;
-    border-radius: 15px;
-    color:black;
-    background-color: #d9d9d9;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-button#fhundred:focus{
-    background:#F50083;
-    color: white;
-}
-
-.input-field {
-    position: absolute;
-    top: 60%;
-    left: 38%;
-    border-radius: 15px;
-    width: 23%;
-    height: 6%;
+.input-field > input{
+    width: 450px;
+    height: 55px;
+    background-color: var(--background-light-gray);
+    color: #2e2e2e;
     text-align: center;
+    border: none;
+    border-radius: 10px;
     font-size: 20px;
-    color: black;
-    background-color: lightgrey;
-    font-weight: bold;
+    font-weight: bold;   
 }
 
-#pagamento{
+.image{
     position: absolute;
-    top: 69%; /* ;) */
-    left: 35%;
-    width: 28%;
-
+    top: 520px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
 }
 
-#pay{
+.image > img{
+    width: 550px;
+}
+
+.pay{
     position: absolute;
-    top: 87%;
-    left: 39%;
-    width: 400px;
-    height: 50px;
-    border-radius: 25px;
+    top: 750px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+.pay > button{
+    width: 300px;
+    height: 40px;
+    background-color: var(--pink);
     color: white;
-    background-color: #F50083;
-    font-size: 25px;
+    border: none;
+    border-radius: 15px;
     font-weight: bold;
+    font-size: 20px;
     cursor: pointer;
+    
 }
