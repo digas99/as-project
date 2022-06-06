@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/wallet.css"/>
   <link rel="stylesheet" href="css/essentials.css"/>
   <link rel="icon" href="/images/GameBetLogo-square.png">
+  <title>Wallet - Gamebet</title>
 </head>
 
 <body>

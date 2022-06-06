@@ -14,6 +14,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="/images/GameBetLogo-square.png">
+  <title>Gamebet</title>
 </head>
 
 <body>
@@ -48,7 +49,7 @@
 		<div style="max-width: 300px;
 						height: 35px;">
 		  <div class="input-icons">
-		      <i style="opacity: 0.5;" class="fa fa-search icon"></i>
+		      <i style="margin-left: 10px;opacity: 0.5;" class="fa fa-search icon"></i>
 		      <input class="input-field"
 		             type="text"
 		             placeholder="Streamer...">

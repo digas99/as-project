@@ -7,17 +7,17 @@ const updateGamesList = (gamesWrapper, data) => {
 		.forEach(game => {
 			const wrapper = document.createElement("div");
 			gamesWrapper.appendChild(wrapper);
-			const gameLink = document.createElement("a");
-			wrapper.appendChild(gameLink);
-			gameLink.href = "game?id="+game["id"];
 			const gameInfo = document.createElement("ul");
-			gameLink.appendChild(gameInfo);
+			wrapper.appendChild(gameInfo);
 			gameInfo.classList.add("game");
 			
 			const gameCoverWrapper = document.createElement("li");
 			gameInfo.appendChild(gameCoverWrapper);
+			const link = document.createElement("a");
+			gameCoverWrapper.appendChild(link);
+			link.href = "game?id="+game["id"];
 			const gameCover = document.createElement("img");
-			gameCoverWrapper.appendChild(gameCover);
+			link.appendChild(gameCover);
 			gameCover.src = game["cover"];
 			
 			const gameNameWrapper = document.createElement("li");
@@ -30,24 +30,50 @@ const updateGamesList = (gamesWrapper, data) => {
 			gameStreams.appendChild(document.createTextNode((game["streams"] +" events")));
 			const gameStar = document.createElement("img");
 			gameNameWrapper.appendChild(gameStar);
-			gameStar.title = "Favorite game!";
-			gameStar.src = "images/star.png";
+			if (userFavoriteGames.includes(game["id"])) {
+				gameStar.src = "images/star-filled.png";
+				gameStar.classList.add("favorited");
+				gameStar.title = "Remove game from Favorites!";
+			}
+			else {
+				gameStar.src = "images/star.png";
+				gameStar.title = "Favorite game!";
+			}
+			gameStar.addEventListener("click", () => {
+				if (gameStar.classList.contains("favorited")) {
+					postRequest("api/users?mode=favorite&action=delete", {
+						"userId": userSession["userId"],
+						"gameId": game["id"]
+					});
+					gameStar.src = "images/star.png";
+					gameStar.classList.remove("favorited");
+					userFavoriteGames = userFavoriteGames.filter(gameId => Number(gameId) != game["id"]);
+				}
+				else {
+					console.log(userSession["userId"], game["id"]);
+					postRequest("api/users?mode=favorite&action=add", {
+						"userId": userSession["userId"],
+						"gameId": game["id"]
+					});
+					gameStar.src = "images/star-filled.png";
+					gameStar.classList.add("favorited");
+					userFavoriteGames.push(game["id"]);
+				}
+			});
 			gameStar.addEventListener("mouseover", () => {
-				if (gameStar.src.includes("filled")) gameStar.src = "images/star.png";
-				else gameStar.src = "images/star-filled.png";
+				if (!gameStar.classList.contains("favorited")) gameStar.src = "images/star-filled.png";
 			});
 			gameStar.addEventListener("mouseout", () => {
-				if (gameStar.src.includes("filled")) gameStar.src = "images/star.png";
-				else gameStar.src = "images/star-filled.png";
+				if (!gameStar.classList.contains("favorited")) gameStar.src = "images/star.png";
 			});
 			
-			gameInfo.addEventListener("mouseover", e => {
-				gameInfo.style.filter = "opacity(0.7)";
+			gameCoverWrapper.addEventListener("mouseover", e => {
+				gameCoverWrapper.style.filter = "opacity(0.7)";
 				gameCover.style.transform = "scale(1.05)";
 			});
 					
-			gameInfo.addEventListener("mouseout", e => {
-				gameInfo.style.removeProperty("filter");
+			gameCoverWrapper.addEventListener("mouseout", e => {
+				gameCoverWrapper.style.removeProperty("filter");
 				gameCover.style.removeProperty("transform");
 			});
 		});
@@ -99,6 +125,10 @@ if (urlParams.has('q')) {
   		searchGames("api/games?name="+input.value);
 	}
 }
+else if (window.location.hash == "#favorites") {
+	const favorites = document.getElementById("favorites-filter");
+	if (favorites) setTimeout(() => favorites.click(), 50);
+}
 else {
 	searchGames("api/games");
 }	
@@ -109,4 +139,33 @@ if (input) {
 		insertUrlParam("q", value);
 		searchGames("api/games?name="+value);
 	}); 
+}
+
+const favorites = document.getElementById("favorites-filter");
+if (favorites) {
+	favorites.addEventListener("click", () => {
+		if (!favorites.classList.contains("favorited")) {
+			window.location.hash = "favorites";
+			searchGames("api/games?id="+userFavoriteGames.join(","));
+			favorites.classList.add("favorited");
+			favorites.src = "images/star-filled.png";
+			document.title = "Favorite Games - Gamebet";
+		}
+		else {
+			history.replaceState(null, null, ' ');
+			if (input)
+				searchGames("api/games?name="+input.value);
+			else
+				searchGames("api/games");
+			favorites.classList.remove("favorited");
+			favorites.src = "images/star.png";
+			document.title = "Games - Gamebet";
+		}
+	});
+	favorites.addEventListener("mouseover", () => {
+		if (!favorites.classList.contains("favorited")) favorites.src = "images/star-filled.png";
+	});
+	favorites.addEventListener("mouseout", () => {
+		if (!favorites.classList.contains("favorited")) favorites.src = "images/star.png";
+	});
 }

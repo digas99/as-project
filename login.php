@@ -92,6 +92,7 @@ if ($method === 'POST') {
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="icon" href="/images/GameBetLogo-square.png">
+    <title>Login - Gamebet</title>
 </head>
 
 <body>

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/deposit.css"/>
   <link rel="stylesheet" href="css/essentials.css"/>
   <link rel="icon" href="/images/GameBetLogo-square.png">
+  <title>Deposit - Gamebet</title>
 </head>
 
 <body>
