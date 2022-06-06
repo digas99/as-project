@@ -1,6 +1,7 @@
 <?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
 
 <!DOCTYPE html>
+<html>
 <head>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +16,9 @@
 <body>
   <?php include "templates/navbar.php"?>
 
-  <h1>Deposit</h1>
+  <div class="title">
+    <h1>Deposit</h1>
+  </div>
 
   <div class="deposit-values">
     <div>
@@ -32,21 +35,17 @@
     </div>
   </div>
 
-  <input class="input-field" type="text" 
-                placeholder="Outro Valor (min. 5€)">
+  <div class="input-field">
+    <input type="text" placeholder="Outro Valor (min. 5€)">
+  </div>
 
-  <img id="pagamento" src="images/pagamento.png">
+  <div class="image">
+    <img src="images/pagamento.png">
+  </div>
 
-  <!-- href? depois de carregar em pay now,
-             o que acontece?-->
-  <button type="button" id="pay">Pay Now</button>
-  
-
-   
-
-    
-
-
+  <div class="pay">
+    <button type="button" id="pay">Pay Now</button>
+  </div>
 
   <script type="text/javascript" src="js/deposit.js"></script>
 </body>

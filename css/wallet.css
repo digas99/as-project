@@ -20,7 +20,6 @@
     margin: auto;
 }
 
-
 .middle-buttons > div{
     align-items: top;
     display: flex;
@@ -113,7 +112,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    text-align: center; 
+    text-align: center;
+     
 
 }
 /* 1st three buttons */
@@ -126,6 +126,7 @@
     font-size: 25px;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
 }
 
 .bottom-buttons > a{
@@ -151,6 +152,7 @@
     border-bottom-right-radius: 5px;
     font-weight: bold;
     width: 75px;
+    cursor: pointer;
 
 }
 
