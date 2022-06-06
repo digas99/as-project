@@ -1,5 +1,6 @@
 <?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
 
+<!DOCTYPE html>
 <head>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,22 +14,39 @@
 
 <body>
   <?php include "templates/navbar.php"?>
-    
-  <h1>Wallet</h1>
+   
+  <div class="title">
+    <h1>Wallet</h1>
+  </div>
 
-  <!-- Diogo, mete os nºos sff, em cima de deposit e win points-->
+  <div class="middle-buttons">
+    <div>
+      <div>
+        <div> 0,00€</div> <!-- Diogo, backend aqui sff (mostrar €) -->
+        <a href="deposit"><button type="button">Deposit</button></a>
+        <a href="withdraw"><button type="button">Withdraw</button></a>
+      </div>
+      <!-- Diogo, backend aqui sff (mostrar pontos) -->
+      <div> 
+        <div> 0 <img src="/images/gp-logo.png" 
+          style="width: 42px; filter: invert(78%) sepia(23%) 
+          saturate(811%) hue-rotate(86deg) brightness(88%) contrast(87%);"></div>
+          <!-- O invert não dá a cor exata, mas os valores são esses, não sei -->
+        <a href="points"><button type="button">Win GameBet Points</button></a>
+      </div>
+    </div>
+  </div> 
 
-  <a href="deposit"><button type="button" id="deposit">Deposit</button>
-  <a href="#"><button type="button" id="withdraw">Withdraw</button> 
-  <a href="#"><button type="button" id="points">Win GameBet Points</button>
-    
   <hr id="line">
 
-  <a href="#"><button type="button" id="balance">Balance History</button>
-  <a href="#"><button type="button" id="account">My Account</button>
-  <a href="#"><button type="button" id="bets">Bets</button>
-  <a href="#"><button type="button" id="invite">Invite Friend</button>
-  <a href="#"><button type="button" id="invite10">+ 10€</button>
-    
+  <div class="bottom-buttons">
+    <a href="balance"><button type="button">Balance History</button></a>
+    <a href="account"><button type="button">My Account</button></a>
+    <a href="bets"><button type="button">Bets</button></a>
+    <a href="#"><button type="button">Invite Friend</button>
+    <a href="#"><button type="button">+ 10€</button></a></a>
+  </div>
+
   <script type="text/javascript" src="js/home.js"></script>
 </body>
+</html>
