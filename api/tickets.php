@@ -96,9 +96,14 @@ else if ($method === 'POST') {
         }
     }
     else if ($_GET["mode"] == "increase") {
-        if ($newData["betId"] && $newData["ticketId"]) {
-            $query = "INSERT INTO TicketBets (betId, ticketId) VALUES ('".$newData["betId"]."', '".$newData["ticketId"]."');";
-            $result = mysqli_query($conn, $query);
+        // check if it exists
+        $query = "SELECT * FROM TicketBets WHERE betID = '".$newData["betId"]."' AND ticketId = '".$newData["ticketId"]."';";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) == 0) {
+            if ($newData["betId"] && $newData["ticketId"]) {
+                $query = "INSERT INTO TicketBets (betId, ticketId) VALUES ('".$newData["betId"]."', '".$newData["ticketId"]."');";
+                $result = mysqli_query($conn, $query);
+            }
         }
     }
     else if ($_GET["mode"] == "decrease") {

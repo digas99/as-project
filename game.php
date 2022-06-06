@@ -1,4 +1,7 @@
-<?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
+<?php 
+	require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; 
+	require $_SERVER['DOCUMENT_ROOT'].'/php/functions.php';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -72,7 +75,10 @@
   </div>
 </div>
 
-<script> const userSession = <?php echo json_encode($_SESSION); ?>; </script>
+<script>
+	const userSession = <?php echo json_encode($_SESSION); ?>;
+	const userBets = <?php echo json_encode(apiFetch("http://localhost/api/tickets?keys=bets&userId=".$_SESSION["userId"])["data"]); ?>;
+</script>
 
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/game.js"></script>

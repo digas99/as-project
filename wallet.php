@@ -29,7 +29,7 @@
       <!-- Diogo, backend aqui sff (mostrar pontos) -->
       <div> 
         <div> 0 <img src="/images/gp-logo.png" 
-          style="width: 42px; filter: invert(78%) sepia(23%) 
+          style="width: 42px; filter: invert(27%) sepia(33%) 
           saturate(811%) hue-rotate(86deg) brightness(88%) contrast(87%);"></div>
           <!-- O invert não dá a cor exata, mas os valores são esses, não sei -->
         <a href="points"><button type="button">Win GameBet Points</button></a>

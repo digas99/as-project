@@ -189,11 +189,32 @@ const ticketBet = (data, ticketType) => {
 				document.body.insertBefore(popup, oldPopup);
 				popup.classList.remove("ticket-popup-closed");
 				// remove old popup
-				setTimeout(() => oldPopup.remove(), 50);   
+				setTimeout(() => oldPopup.remove(), 50);
+				// update number in ticket button
+				updateTicketButton(-1, false);
 			});
+			
+			const betButtons = document.getElementsByClassName("bet-button-inactive");
+			if (betButtons) {
+				Array.from(betButtons).filter(bet => Number(bet.dataset.id) == data["id"])[0].classList.remove("bet-button-inactive");
+			}
 	});
 	
 	return wrapper;
+}
+
+const updateTicketButton = (value, fixed) => {
+	console.log("a");
+	const ticketButton = document.getElementsByClassName("ticket-button")[0];
+	if (ticketButton) {
+		console.log("b");
+		const ticketButtonValue = ticketButton.getElementsByClassName("absolute-centered")[0];
+		if (ticketButtonValue) {
+			console.log("c");
+			if (fixed) ticketButtonValue.innerText = value;
+			else ticketButtonValue.innerText = Number(ticketButtonValue.innerText) + value;
+		}
+	}
 }
 
 const ticketButton = document.getElementsByClassName("ticket-button")[0];
@@ -231,10 +252,4 @@ window.addEventListener("click", e => {
 // update value on ticket button
 fetch("api/tickets?keys=bets&id="+userSession["userTickets"]["Multiple"])
 	.then(response => response.json())
-	.then(data => {
-		const ticketButton = document.getElementsByClassName("ticket-button")[0];
-		if (ticketButton) {
-			const ticketButtonNumber = ticketButton.getElementsByClassName("absolute-centered")[0];
-			if (ticketButtonNumber) ticketButtonNumber.innerHTML = data["data"][0]["bets"].length;
-		}
-	});
+	.then(data => updateTicketButton(data["data"][0]["bets"].length, true));
