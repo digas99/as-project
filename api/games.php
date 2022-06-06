@@ -11,7 +11,7 @@ if ($method === 'GET') {
     $filter = 1;
     $columns = "*";
 
-    if (isset($_GET["id"])) $filter = "id = '".$_GET["id"]."'";
+    if (isset($_GET["id"])) $filter = "id IN (".$_GET["id"].")";
     else if (isset($_GET["name"])) $filter = "name LIKE '%". $_GET["name"] ."%'";
 
     if (isset($_GET["keys"])) {

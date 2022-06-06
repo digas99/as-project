@@ -1,4 +1,7 @@
-<?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
+<?php 
+	require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; 
+	require $_SERVER['DOCUMENT_ROOT'].'/php/functions.php';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -13,6 +16,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 	<link rel="icon" href="/images/GameBetLogo-square.png">
+	<title>Games - Gamebet</title>
 </head>
 
 <body>
@@ -52,7 +56,7 @@
 		</div>
 
 		<input style="width: 35px;" type="image" src="/images/sort.png">
-		<input style="width: 25px;" type="image" src="/images/star.png">	
+		<input id="favorites-filter" style="width: 25px;" type="image" src="/images/star.png">	
 	</div>
 </div>
 
@@ -70,7 +74,10 @@
   	</div>
 </div>
 
-<script> const userSession = <?php echo json_encode($_SESSION); ?>; </script>
+<script> 
+	const userSession = <?php echo json_encode($_SESSION); ?>;
+	let userFavoriteGames = <?php echo json_encode(apiFetch("http://localhost/api/users?keys=favoriteGames&id=".$_SESSION["userId"])["data"][0]["favoriteGames"]); ?>;
+</script>
 
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/home.js"></script>

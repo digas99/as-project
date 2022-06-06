@@ -103,7 +103,7 @@ else if ($method === 'POST') {
     }
     else if ($_GET["mode"] == "decrease") {
         if ($newData["betId"] && $newData["ticketId"]) {
-            $query = "DELETE FROM TicketBets WHERE betID = '".$newData["betId"]."' AND ticketId = '".$newData["ticketId"]."' ;";
+            $query = "DELETE FROM TicketBets WHERE betID = '".$newData["betId"]."' AND ticketId = '".$newData["ticketId"]."';";
             $result = mysqli_query($conn, $query);
         }
     }

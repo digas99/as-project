@@ -1,10 +1,10 @@
 <?php
 
+require $_SERVER['DOCUMENT_ROOT'].'/php/connect.php';
+
 $method = $_SERVER['REQUEST_METHOD']; 
 if ($method === 'GET') {
     header('Content-type: application/json; charset=utf-8');
-
-    require $_SERVER['DOCUMENT_ROOT'].'/php/connect.php';
     
     $response = array();
     $data = array();
@@ -60,6 +60,16 @@ if ($method === 'GET') {
         }
     }
 
+    $favorites = array();
+    if (!isset($_GET["keys"]) || (isset($_GET["keys"]) && str_contains($_GET["keys"],"favoriteGames"))) {
+        // get all favorite games
+        $query = "SELECT userId,gameId FROM UserFavoriteGames";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_assoc($result)) {
+            $favorites[$row["userId"]][] = $row["gameId"];
+        }
+    }
+
 	if (!str_contains($columns, "id")) $columns = $columns.($columns != "" ? "," : "")."id";
 	
     $query = "SELECT ". $columns ."  FROM Users WHERE ". $filter;
@@ -78,6 +88,10 @@ if ($method === 'GET') {
         if (isset($tickets[$row["id"]]))
             $row["tickets"] = $tickets[$row["id"]];
 
+        $row["favoriteGames"] = array();
+        if (isset($favorites[$row["id"]]))
+            $row["favoriteGames"] = $favorites[$row["id"]];
+
         $data[] = $row;
     }
     
@@ -86,4 +100,18 @@ if ($method === 'GET') {
     date_default_timezone_set("Europe/Lisbon");
     $response["timestamp"] = date('Y-m-d H:i:s');
     echo json_encode($response, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+}
+else if ($method === 'POST') {
+    $newData = json_decode(file_get_contents('php://input'), true);
+    if ($_GET["mode"] == "favorite") {
+        if ($newData["userId"] && $newData["gameId"]) {
+            if ($_GET["action"] == "add")
+                $query = "INSERT INTO UserFavoriteGames (userId, gameId) VALUES ('".$newData["userId"]."', '".$newData["gameId"]."');";
+
+            else if ($_GET["action"] == "delete")
+                $query = "DELETE FROM UserFavoriteGames WHERE userId = '".$newData["userId"]."' AND gameId = '".$newData["gameId"]."';";
+            
+            $result = mysqli_query($conn, $query);
+        }
+    }
 }

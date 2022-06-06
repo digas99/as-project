@@ -132,7 +132,7 @@
     position:relative;
 }
 
-.bottom-buttons > a > a{
+.bottom-buttons > a > div{
     position: absolute;
     right: 0;
     top: 0;
@@ -141,7 +141,7 @@
     margin: auto;
 }
 
-.bottom-buttons > a > a > button{
+.bottom-buttons > a > div > button{
     height: 38px;
     color: white;
     background-color: var(--pink);

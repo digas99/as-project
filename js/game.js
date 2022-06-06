@@ -11,7 +11,10 @@ const gameName = document.getElementById("game-name");
 if (gameName) {
     fetch("api/games?keys=name&id="+gameId)
         .then(response => response.json())
-        .then(gameData => gameName.innerHTML = gameData["data"][0]["name"]);
+        .then(gameData => {
+            document.title = gameData["data"][0]["name"]+" - Gamebet";
+            gameName.innerHTML = gameData["data"][0]["name"];
+        });
 }
 
 const input = document.getElementsByClassName("input-field")[0];

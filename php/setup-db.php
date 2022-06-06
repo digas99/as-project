@@ -76,6 +76,11 @@ $tables = array(
         betId VARCHAR(255) NOT NULL ,
         ticketId VARCHAR(255) NOT NULL ,
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+    )",
+    "CREATE TABLE `gamebet`.`UserFavoriteGames`(
+        userId VARCHAR(255) NOT NULL ,
+        gameId VARCHAR(255) NOT NULL ,
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
     )"
 );
 

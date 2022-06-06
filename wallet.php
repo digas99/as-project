@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/wallet.css"/>
   <link rel="stylesheet" href="css/essentials.css"/>
   <link rel="icon" href="/images/GameBetLogo-square.png">
+  <title>Wallet - Gamebet</title>
 </head>
 
 <body>
@@ -42,8 +43,10 @@
     <a href="balance"><button type="button">Balance History</button></a>
     <a href="account"><button type="button">My Account</button></a>
     <a href="bets"><button type="button">Bets</button></a>
-    <a href="#"><button type="button">Invite Friend</button>
-    <a href="#"><button type="button">+ 10€</button></a></a>
+    <a href="#">
+      <button type="button">Invite Friend</button>
+      <div><button type="button">+ 10€</button></div>
+    </a>
   </div>
 
   <script type="text/javascript" src="js/home.js"></script>
