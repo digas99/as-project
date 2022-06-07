@@ -1,22 +1,11 @@
 .title{
-    position: absolute;
-    top: 110px;
-    left: 0;
-    right: 0;
     width: fit-content;
-    height: fit-content;
     margin: auto;
     font-size: 30px;
 }
 
 .deposit-values{
-    position: absolute;
-    top: 0;
-    bottom: 150px;
-    left: 0;
-    right: 0;
     width: fit-content;
-    height: fit-content;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -42,14 +31,9 @@
 
 
 .input-field{
-    position: absolute;
-    top: 250px;
-    bottom: 0;
-    left: 0;
-    right: 0;
     width: fit-content;
-    height: fit-content;
     margin: auto;
+    margin-top: 20px;
     
 }
 
@@ -66,14 +50,9 @@
 }
 
 .image{
-    position: absolute;
-    top: 520px;
-    bottom: 0;
-    left: 0;
-    right: 0;
     width: fit-content;
-    height: fit-content;
     margin: auto;
+    margin-top: 20px;
 }
 
 .image > img{
@@ -81,14 +60,9 @@
 }
 
 .pay{
-    position: absolute;
-    top: 750px;
-    bottom: 0;
-    left: 0;
-    right: 0;
     width: fit-content;
-    height: fit-content;
     margin: auto;
+    margin-top: 20px;
 }
 
 .pay > button{
