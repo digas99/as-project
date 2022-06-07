@@ -25,6 +25,7 @@
 	const userSession = <?php echo json_encode($_SESSION); ?>;
 	const userBets = <?php echo json_encode(apiFetch("http://localhost/api/tickets?keys=bets&userId=".$_SESSION["userId"])["data"]); ?>;
 </script>
+
 <?php include "templates/navbar.php"?>
 
 <div style="position: relative;

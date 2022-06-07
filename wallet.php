@@ -1,4 +1,7 @@
-<?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
+<?php 
+	require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; 
+	require $_SERVER['DOCUMENT_ROOT'].'/php/functions.php';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +17,10 @@
 </head>
 
 <body>
+	<script>
+		const userSession = <?php echo json_encode($_SESSION); ?>;
+	</script>
+	
   <?php include "templates/navbar.php"?>
    
   <div class="title">
