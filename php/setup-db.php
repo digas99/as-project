@@ -81,6 +81,19 @@ $tables = array(
         userId VARCHAR(255) NOT NULL ,
         gameId VARCHAR(255) NOT NULL ,
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+    )",
+    "CREATE TABLE `gamebet`.`RegisteredTickets`(
+        userId VARCHAR(255) NOT NULL ,
+ 				ticketType SET('Simple','Multiple','Group') NOT NULL ,
+        odds VARCHAR(255) NOT NULL ,
+        ticketValue VARCHAR(255) NOT NULL ,
+        wins VARCHAR(255) NOT NULL ,
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+    )",
+    "CREATE TABLE `gamebet`.`RegisteredTicketBets`(
+        betId VARCHAR(255) NOT NULL ,
+        ticketId VARCHAR(255) NOT NULL ,
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
     )"
 );
 

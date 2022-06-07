@@ -104,7 +104,7 @@ if ($method === 'GET') {
 else if ($method === 'POST') {
     $newData = json_decode(file_get_contents('php://input'), true);
     if ($_GET["mode"] == "favorite") {
-        if ($newData["userId"] && $newData["gameId"]) {
+        if (isset($newData["userId"]) && isset($newData["gameId"])) {
             if ($_GET["action"] == "add")
                 $query = "INSERT INTO UserFavoriteGames (userId, gameId) VALUES ('".$newData["userId"]."', '".$newData["gameId"]."');";
 
@@ -113,5 +113,18 @@ else if ($method === 'POST') {
             
             $result = mysqli_query($conn, $query);
         }
+    }
+    else if ($_GET["mode"] == "balance") {
+    	if (isset($newData["id"])) {
+    		if (isset($newData["money"])) {
+					$query = "UPDATE Users SET money='".$newData["money"]."' WHERE id = '".$newData["id"]."'";
+          $result = mysqli_query($conn, $query);
+    		}
+    	
+    	  if (isset($newData["points"])) {
+    			$query = "UPDATE Users SET points='".$newData["points"]."' WHERE id = '".$newData["id"]."'";
+          $result = mysqli_query($conn, $query);
+    		}
+    	}
     }
 }

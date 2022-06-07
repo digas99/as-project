@@ -1,8 +1,10 @@
-const postRequest = (endpoint, json) => {
+const postRequest = (endpoint, json, callback) => {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", endpoint, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(json));
+
+    if (callback) callback();
 }
 
 const insertUrlParam = (key, value) => {

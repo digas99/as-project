@@ -21,7 +21,7 @@
 		<a href="deposit">
 		<div class="balance-box">
 			<div>
-				<div><?php echo $_SESSION["userMoney"] ?> €</div>
+				<div id="navbar-money"><?php echo apiFetch("http://localhost/api/users?keys=money&id=".$_SESSION["userId"])["data"][0]["money"]; ?> €</div>
 			</div>
 			<div>
 				<div></div>
@@ -32,7 +32,7 @@
 		<a href="points">
 		<div class="balance-box">
 			<div>
-				<div><?php echo $_SESSION["userPoints"] ?></div>
+				<div id="navbar-points"><?php echo apiFetch("http://localhost/api/users?keys=points&id=".$_SESSION["userId"])["data"][0]["points"]; ?></div>
 				<img style="width: 19px;
 					filter: invert(1);
 					margin-left: 5px;
@@ -45,9 +45,19 @@
 			</div>
 		</div>
 		</a>
-		<a style="position: relative;" href="#ticketNavbar">
+		<a style="position: relative;" href="#">
 			<img id="ticketNavbarImg" src="/images/ticket.png">
-			<div class="ticketNavbar-counter"><div>0</div></div>
+			<div class="ticketNavbar-counter">
+				<div>
+					<?php 
+						require $_SERVER['DOCUMENT_ROOT'].'/php/connect.php';
+					
+						$query = "SELECT id FROM RegisteredTickets";
+						$result = mysqli_query($conn, $query);
+						echo mysqli_num_rows($result);
+					?>
+				</div>
+			</div>
 		</a>
 		<a id="username" style="font-size: 16px;"><?php echo $_SESSION["userUsername"] ?></a>
 		<div class="burger-menu">

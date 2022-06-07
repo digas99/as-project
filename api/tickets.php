@@ -95,6 +95,17 @@ else if ($method === 'POST') {
             }
         }
     }
+    else if ($_GET["mode"] == "delete") {
+        if ($newData["id"]) {
+            // remove bets related to that ticket
+            $query = "DELETE FROM TicketBets WHERE ticketId = '".$newData["id"]."'";   
+            $result = mysqli_query($conn, $query);
+             
+            // reset ticket
+            $query = "UPDATE Tickets SET odds='0', ticketValue='10', wins='0' WHERE id = '".$newData["id"]."'";
+            $result = mysqli_query($conn, $query);
+        }
+    }
     else if ($_GET["mode"] == "increase") {
         // check if it exists
         $query = "SELECT * FROM TicketBets WHERE betID = '".$newData["betId"]."' AND ticketId = '".$newData["ticketId"]."';";
@@ -111,5 +122,22 @@ else if ($method === 'POST') {
             $query = "DELETE FROM TicketBets WHERE betID = '".$newData["betId"]."' AND ticketId = '".$newData["ticketId"]."';";
             $result = mysqli_query($conn, $query);
         }
+    }
+    else if ($_GET["mode"] == "register") {
+    	if (isset($newData["userId"]) && isset($newData["ticketType"]) && isset($newData["odds"]) && isset($newData["ticketValue"]) && isset($newData["wins"]) && isset($newData["bets"])) {
+				// add new registered ticket
+				$query = "INSERT INTO RegisteredTickets (userId, ticketType, odds, ticketValue, wins) VALUES ('".$newData["userId"]."', '".$newData["ticketType"]."', '".$newData["odds"]."', '".$newData["ticketValue"]."', '".$newData["wins"]."');";				
+				$result = mysqli_query($conn, $query);
+
+				$query = "SELECT id FROM RegisteredTickets ORDER BY id DESC LIMIT 1;";
+				$result = mysqli_query($conn, $query);
+				$ticketId = mysqli_fetch_assoc($result)["id"];
+	
+				forEach($newData["bets"] as $bet) {
+					// add bets to registered ticket
+		      $query = "INSERT INTO RegisteredTicketBets (betId, ticketId) VALUES ('".$bet."', '".$ticketId."');";
+					$result = mysqli_query($conn, $query);
+				}
+    	}
     }
 }

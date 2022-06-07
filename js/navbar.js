@@ -10,3 +10,11 @@ if (balanceBoxes) {
         widthElem.style.width = (valueWidth + plusWidth + imgWidth + 5)+"px";
     });
 }
+
+let userBalance = [];
+
+fetch("api/users?keys=money,points&id="+userSession["userId"])
+	.then(response => response.json())
+	.then(data => {
+		userBalance = data["data"][0]; 
+	});

@@ -21,7 +21,10 @@
 </head>
 
 <body>
-
+<script>
+	const userSession = <?php echo json_encode($_SESSION); ?>;
+	const userBets = <?php echo json_encode(apiFetch("http://localhost/api/tickets?keys=bets&userId=".$_SESSION["userId"])["data"]); ?>;
+</script>
 <?php include "templates/navbar.php"?>
 
 <div style="position: relative;
@@ -74,11 +77,6 @@
     <div class="absolute-centered"></div>
   </div>
 </div>
-
-<script>
-	const userSession = <?php echo json_encode($_SESSION); ?>;
-	const userBets = <?php echo json_encode(apiFetch("http://localhost/api/tickets?keys=bets&userId=".$_SESSION["userId"])["data"]); ?>;
-</script>
 
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/game.js"></script>

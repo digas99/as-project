@@ -13,20 +13,31 @@ const streamBox = data => {
                 "betId": target.dataset.id,
                 "ticketId": userSession["userTickets"]["Multiple"]
             });
-            const oldPopup = document.getElementsByClassName("ticket-popup")[0];
-            if (oldPopup) {
-                fetch(`api/tickets?ticketType=Multiple&userId=${userSession["userId"]}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const ticketData = data["data"][0];
-                        const popup = ticketPopup(ticketData);
-                        document.body.insertBefore(popup, oldPopup);
-                        popup.classList.remove("ticket-popup-closed");
-                        // remove old popup
-                        setTimeout(() => oldPopup.remove(), 50);
+
+            fetch("api/tickets?keys=odds&id="+userSession["userTickets"]["Multiple"])
+                .then(response => response.json())
+                .then(dataOdds => {
+                    const newOddsValue = Number(dataOdds["data"][0]["odds"]) == 0 ? Number(target.parentElement.previousElementSibling.innerText) : Number(dataOdds["data"][0]["odds"]) * Number(target.parentElement.previousElementSibling.innerText);
+                    postRequest("api/tickets?mode=update", {
+                        "id": userSession["userTickets"]["Multiple"],
+                        "odds": newOddsValue.toFixed(2)
                     });
-            }
-            updateTicketButton(1, false);
+
+                    const oldPopup = document.getElementsByClassName("ticket-popup")[0];
+                    if (oldPopup) {
+                        fetch(`api/tickets?ticketType=Multiple&userId=${userSession["userId"]}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const ticketData = data["data"][0];
+                                const popup = ticketPopup(ticketData);
+                                document.body.insertBefore(popup, oldPopup);
+                                popup.classList.remove("ticket-popup-closed");
+                                // remove old popup
+                                setTimeout(() => oldPopup.remove(), 50);
+                            });
+                    }
+                    updateTicketButton(1, false);
+                });
         }
     });
 
