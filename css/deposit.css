@@ -35,10 +35,11 @@
     cursor: pointer;
 }
 
-.deposit-values > div > button:focus{
-    background:var(--pink);
+.deposit-values-selected {
+    background-color: var(--pink) !important;
     color: white;
 }
+
 
 .input-field{
     position: absolute;
@@ -91,14 +92,12 @@
 }
 
 .pay > button{
-    width: 300px;
-    height: 40px;
-    background-color: var(--pink);
-    color: white;
-    border: none;
-    border-radius: 15px;
-    font-weight: bold;
-    font-size: 20px;
-    cursor: pointer;
-    
+	background-color: var(--pink);
+	color: white;
+	border: none;
+	border-radius: 45px;
+	font-weight: bold;
+	font-size: 30px;
+	cursor: pointer;
+	padding: 15px 140px; 
 }

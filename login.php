@@ -53,8 +53,6 @@ if ($method === 'POST') {
                         $_SESSION['userId'] = $userData["id"];
                         $_SESSION['userUsername'] = $userData["username"];
                         $_SESSION['userStreamer'] = $userData["streamer"];
-                        $_SESSION['userPoints'] = $userData["points"];
-                        $_SESSION['userMoney'] = $userData["money"];
                         $_SESSION['userTickets'] = $userData["tickets"];
 
                         header("Location: login?submit=login");

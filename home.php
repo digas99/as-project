@@ -20,7 +20,13 @@
 </head>
 
 <body>
-  <?php include "templates/navbar.php"?>
+
+<script> 
+	const userSession = <?php echo json_encode($_SESSION); ?>;
+	let userFavoriteGames = <?php echo json_encode(apiFetch("http://localhost/api/users?keys=favoriteGames&id=".$_SESSION["userId"])["data"][0]["favoriteGames"]); ?>;
+</script>
+
+<?php include "templates/navbar.php"?>
 
 <div style="position: relative;
 				height: 70px;">
@@ -73,11 +79,6 @@
     	<div class="absolute-centered"></div>
   	</div>
 </div>
-
-<script> 
-	const userSession = <?php echo json_encode($_SESSION); ?>;
-	let userFavoriteGames = <?php echo json_encode(apiFetch("http://localhost/api/users?keys=favoriteGames&id=".$_SESSION["userId"])["data"][0]["favoriteGames"]); ?>;
-</script>
 
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/home.js"></script>

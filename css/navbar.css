@@ -147,11 +147,61 @@ body {
 	row-gap: 5px;
 	margin: 10px;
 	display: none;
+	cursor: pointer;
 }
 
 .burger-menu > div {
 	background-color: white;
 	height: 3px;
+	pointer-events: none;
+	transition: 0.3s;
+}
+
+.burger-menu-opened > div:nth-child(2) {
+	display: none;
+}
+
+.burger-menu-opened > div:nth-child(1) {
+	transform: rotate(45deg) translateY(5px);
+}
+
+.burger-menu-opened > div:nth-child(3) {
+	transform: rotate(-45deg) translateY(-5px);
+}
+
+.side-navbar {
+	position: fixed;
+	right: 0;
+	width: 300px;
+	background-color: var(--pink);
+	color: white;
+	height: 93%;
+	z-index: 3;
+	top: 70px;
+	box-shadow: 2px 4px 5px 0px black;
+	transition: 0.3s;
+	transform: translateX(0px);
+}
+
+.side-navbar > div {
+	top: 100px;
+	height: fit-content;
+	margin: auto;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+}
+
+.side-navbar > div > div {
+	font-size: 22px;
+	width: 100%;
+	padding: 10px 0;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.side-navbar-hidden {
+	transform: translateX(300px);
 }
 
 @media only screen and (max-width: 1615px) {
@@ -175,6 +225,12 @@ body {
 
 	#gamebet > img {
 		display: unset;
+	}
+}
+
+@media only screen and (min-width: 1271px) {
+	.side-navbar {
+		display: none;
 	}
 }
 
@@ -213,5 +269,11 @@ body {
 @media only screen and (max-width: 650px) {
 	#username {
 		display: none !important;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.side-navbar {
+		width: 100%;
 	}
 }

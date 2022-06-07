@@ -1,4 +1,7 @@
-<?php require $_SERVER['DOCUMENT_ROOT'].'/php/check-session.php'; ?>
+<?php 
+header("Location: home");
+exit();
+?>
 
 <!doctype html>
 
@@ -13,6 +16,7 @@
 </head>
 
 <body>
+
     <nav class="nav">
         <a href="home" class="nav__link" link>Home</a>
         <a href="wallet" class="nav__link" link>Wallet</a>
