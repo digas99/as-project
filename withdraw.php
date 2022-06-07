@@ -10,46 +10,32 @@
   <link rel="stylesheet" href="css/deposit.css"/>
   <link rel="stylesheet" href="css/essentials.css"/>
   <link rel="icon" href="/images/GameBetLogo-square.png">
-  <title>Deposit - Gamebet</title>
+  <title>Withdraw - Gamebet</title>
 </head>
 
 <body>
   <?php include "templates/navbar.php"?>
 
   <div class="title">
-    <h1>Deposit</h1>
-  </div>
-
-  <div class="deposit-values">
-    <div>
-      <button type="button">10€</button>
-      <button type="button">20€</button>
-    </div>
-    <div>
-      <button type="button">50€</button>
-      <button type="button">100€</button>
-    </div>
-    <div>
-      <button type="button">200€</button>
-      <button type="button">500€</button>
-    </div>
-  </div>
-
-  <div class="input-field">
-    <input type="text" placeholder="Outro Valor (min. 5€)">
+    <h1>Withdrawal</h1>
   </div>
 
   <div class="image">
-    <img src="images/pagamento.png">
+    <!-- image -->
   </div>
 
-  <div class="pay">
-    <button type="button">Pay Now</button>
+  <div class="input-field">
+    <input type="text" placeholder="Withdrawl Account">
   </div>
 
-  <script type="text/javascript" src="js/deposit.js"></script>
+  <div class="withdraw-money">
+    <button type="button">Start Withdrawing Money</button>
+  </div>
+
+
+
+
+
+  <script type="text/javascript" src="js/withdraw.js"></script>
 </body>
 </html>
-
-
-
