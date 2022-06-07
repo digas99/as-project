@@ -1,3 +1,8 @@
+<?php 
+header("Location: home");
+exit();
+?>
+
 <!doctype html>
 
 <html lang="pt">
@@ -11,6 +16,7 @@
 </head>
 
 <body>
+
     <nav class="nav">
         <a href="home" class="nav__link" link>Home</a>
         <a href="wallet" class="nav__link" link>Wallet</a>

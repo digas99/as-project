@@ -33,3 +33,14 @@ if (depositValues) {
 		});
 	});
 }
+
+let lastInputValue = "";
+const inputField = document.getElementsByClassName("input-field")[0].children[0];
+if (inputField) {
+	inputField.addEventListener("input", () => {
+		Array.from(document.getElementsByClassName("deposit-values-selected")).forEach(deposit => deposit.classList.remove("deposit-values-selected"));	
+		inputField.value = (!isNaN(inputField.value) ? inputField.value : lastInputValue).trim();
+		pay.dataset.value = inputField.value;
+		lastInputValue = inputField.value;
+	});
+}

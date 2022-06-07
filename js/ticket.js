@@ -1,4 +1,5 @@
 let ticketData = {};
+let lastInputValue = "";
 
 const ticketPopup = data => {
 	const wrapper = document.createElement("div");
@@ -165,27 +166,27 @@ const ticketPopup = data => {
 				}, 200);
 			}
 			else {
-				betsPlacedMessage("Insuficient funds to register ticket!", "red");
+				betsPlacedMessage("Insuficient funds to register ticket! <a style='text-decoration: underline;' href='deposit'>DEPOSIT</a>", "red");
 			}
 		}
 	});
 
     valueInput.addEventListener("input", () => {
-    	if (isNaN(valueInput.value) || valueInput.value == "") valueInput.value = 0;
-      ticketData["ticketValue"] = valueInput.value;
+    	valueInput.value = (!isNaN(valueInput.value) ? valueInput.value : lastInputValue).trim()
+      	ticketData["ticketValue"] = valueInput.value;
+		lastInputValue = ticketData["ticketValue"];
 
+		postRequest("api/tickets?mode=update", ticketData);
+
+		fetch("api/tickets?keys=odds&id="+userSession["userTickets"]["Multiple"])
+		.then(response => response.json())
+		.then(dataOdds => {
+			ticketData["wins"] = Number(valueInput.value)*Number(dataOdds["data"][0]["odds"]);
+			valuesWin.innerText = ticketData["wins"].toFixed(2)+"€";
+			
+			ticketData["odds"] = dataOdds["data"][0]["odds"];
 			postRequest("api/tickets?mode=update", ticketData);
-
-			fetch("api/tickets?keys=odds&id="+userSession["userTickets"]["Multiple"])
-			.then(response => response.json())
-			.then(dataOdds => {
-				ticketData["wins"] = Number(valueInput.value)*Number(dataOdds["data"][0]["odds"]);
-				valuesWin.innerText = ticketData["wins"].toFixed(2)+"€";
-				
-				ticketData["odds"] = dataOdds["data"][0]["odds"];
-				postRequest("api/tickets?mode=update", ticketData);
-			});
-
+		});
     });
 
 	return wrapper;
@@ -329,7 +330,7 @@ const betsPlacedMessage = (text, color) => {
 	if (updatedWrapper) {
 		updatedWrapper.appendChild(message);
 		message.classList.add("ticket-message");
-		message.innerText = text;
+		message.innerHTML = text;
 		message.style.backgroundColor = color;
 		setTimeout(() => {
 			message.style.height = "190px";
