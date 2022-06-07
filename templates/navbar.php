@@ -17,7 +17,6 @@
 			align-items: center;
 			position: absolute;
 			right: 10px;">
-		<a href="searchNavbar"><i class="fa fa-fw fa-search" style="font-size: 25px; padding: 5px;"></i> </a>
 		<a href="deposit">
 		<div class="balance-box">
 			<div>
@@ -66,5 +65,18 @@
 			<div></div>
 		</div>
   	</div>
+</div>
+
+<div style="display:none" class="side-navbar side-navbar-hidden">
+	<div>
+		<div><a href="wallet">Wallet</a></div>
+		<div><a href="points">Points</a></div>
+		<div><a href="friends">Friends</a></div>
+		<div><a href="profile">Profile</a></div>
+		<div><a href="statistics">Stats</a></div>
+		<div><a href="settings">Settings</a></div>
+		<div><a href="faq">FAQ</a></div>
+		<div><a href="login?submit=logout">Logout</a></div>
+	</div>
 </div>
 <script type="text/javascript" src="js/navbar.js"></script>

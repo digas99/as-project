@@ -8,7 +8,7 @@ if (pay) {
 					postRequest("api/users?mode=balance", {
 						"id": userSession["userId"],
 						"money": Number(data["data"][0]["money"])+Number(pay.dataset.value)
-					}, () => window.location.reload());
+					}, setTimeout(() => window.location.reload(), 200));
 				});
 		}
 	});
