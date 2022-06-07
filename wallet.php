@@ -27,6 +27,7 @@
     <h1>Wallet</h1>
   </div>
 
+  
   <div class="middle-buttons">
     <div>
       <div>
@@ -34,12 +35,10 @@
         <a href="deposit"><button type="button">Deposit</button></a>
         <a href="withdraw"><button type="button">Withdraw</button></a>
       </div>
-      <!-- Diogo, backend aqui sff (mostrar pontos) -->
       <div> 
         <div><?php echo apiFetch("http://localhost/api/users?keys=points&id=".$_SESSION["userId"])["data"][0]["points"]; ?> <img src="/images/gp-logo.png" 
           style="width: 42px; filter: invert(27%) sepia(33%) 
           saturate(811%) hue-rotate(86deg) brightness(88%) contrast(87%);"></div>
-          <!-- O invert não dá a cor exata, mas os valores são esses, não sei -->
         <a href="points"><button type="button">Win GameBet Points</button></a>
       </div>
     </div>

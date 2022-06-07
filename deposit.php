@@ -23,35 +23,38 @@
 	
   <?php include "templates/navbar.php"?>
 
-  <div class="title">
-    <h1>Deposit</h1>
-  </div>
 
-  <div class="deposit-values">
-    <div>
-      <button type="button">10€</button>
-      <button type="button">20€</button>
+  <div class="absolute-centered">
+    <div class="title">
+      <h1>Deposit</h1>
     </div>
-    <div>
-      <button type="button">50€</button>
-      <button type="button">100€</button>
+
+    <div class="deposit-values">
+      <div>
+        <button type="button">10€</button>
+        <button type="button">20€</button>
+      </div>
+      <div>
+        <button type="button">50€</button>
+        <button type="button">100€</button>
+      </div>
+      <div>
+        <button type="button">200€</button>
+        <button type="button">500€</button>
+      </div>
     </div>
-    <div>
-      <button type="button">200€</button>
-      <button type="button">500€</button>
+
+    <div class="input-field">
+      <input type="text" placeholder="Outro Valor (min. 5€)">
     </div>
-  </div>
 
-  <div class="input-field">
-    <input type="text" placeholder="Outro Valor (min. 5€)">
-  </div>
+    <div class="image">
+      <img src="images/pagamento.png">
+    </div>
 
-  <div class="image">
-    <img src="images/pagamento.png">
-  </div>
-
-  <div class="pay">
-    <button type="button" id="pay">Pay Now</button>
+    <div class="pay">
+      <button type="button" id="pay">Pay Now</button>
+    </div>
   </div>
 
 	<script type="text/javascript" src="js/functions.js"></script>
