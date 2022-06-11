@@ -57,6 +57,9 @@ const streamBox = data => {
     // top bar
     const topBar = document.createElement("div");
     rightContainer.appendChild(topBar);
+    const streamerForSmallerScreens = document.createElement("div");
+    topBar.appendChild(streamerForSmallerScreens);
+    streamerForSmallerScreens.appendChild(document.createTextNode(data["user"]["username"]));
     const date = document.createElement("div");
     topBar.appendChild(date);
     date.appendChild(document.createTextNode(data["matchBeginning"]));

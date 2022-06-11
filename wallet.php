@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -31,12 +32,12 @@
   <div class="middle-buttons">
     <div>
       <div>
-        <div><?php echo apiFetch("http://localhost/api/users?keys=money&id=".$_SESSION["userId"])["data"][0]["money"]; ?>€</div>
+        <div><?php echo apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=money&id=".$_SESSION["userId"])["data"][0]["money"]; ?>€</div>
         <a href="deposit"><button type="button">Deposit</button></a>
         <a href="withdraw"><button type="button">Withdraw</button></a>
       </div>
       <div> 
-        <div><?php echo apiFetch("http://localhost/api/users?keys=points&id=".$_SESSION["userId"])["data"][0]["points"]; ?> <img src="/images/gp-logo.png" 
+        <div><?php echo apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=points&id=".$_SESSION["userId"])["data"][0]["points"]; ?> <img src="/images/gp-logo.png" 
           style="width: 42px; filter: invert(27%) sepia(33%) 
           saturate(811%) hue-rotate(86deg) brightness(88%) contrast(87%);"></div>
         <a href="points"><button type="button">Win GameBet Points</button></a>

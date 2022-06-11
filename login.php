@@ -45,7 +45,7 @@ if ($method === 'POST') {
                 $pwd_check = password_verify($pwd, $row['pwd']);
                 if ($pwd_check == true){
                     // get user data
-                    $userData = apiFetch("http://localhost/api/users?email=". $email)["data"][0];
+                    $userData = apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?email=". $email)["data"][0];
                     
                     if ($userData) {
                         session_start();
@@ -84,6 +84,7 @@ if ($method === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/login.css"/>
     <link rel="stylesheet" href="css/essentials.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">

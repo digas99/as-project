@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/game.css"/>
   <link rel="stylesheet" href="css/essentials.css"/>
   <link rel="stylesheet" href="css/navbar.css"/>
@@ -23,7 +24,7 @@
 <body>
 <script>
 	const userSession = <?php echo json_encode($_SESSION); ?>;
-	const userBets = <?php echo json_encode(apiFetch("http://localhost/api/tickets?keys=bets&userId=".$_SESSION["userId"])["data"]); ?>;
+	const userBets = <?php echo json_encode(apiFetch("http://".$_SERVER['SERVER_NAME']."/api/tickets?keys=bets&userId=".$_SESSION["userId"])["data"]); ?>;
 </script>
 
 <?php include "templates/navbar.php"?>

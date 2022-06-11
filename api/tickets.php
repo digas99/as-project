@@ -18,7 +18,7 @@ if ($method === 'GET') {
 
     if (isset($_GET["keys"])) {
         // get Tickets columns
-        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Tickets' AND TABLE_SCHEMA = 'gamebet'";
+        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Tickets' AND TABLE_SCHEMA = '$db_name'";
         $result = mysqli_query($conn, $query);
         $ticketsColumns = array();
         while($row = mysqli_fetch_assoc($result)) {
@@ -80,7 +80,7 @@ else if ($method === 'POST') {
             $unmutableKeys = array("userId", "ticketType", "id");
     
             // get Tickets columns
-            $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Tickets' AND TABLE_SCHEMA = 'gamebet'";
+            $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Tickets' AND TABLE_SCHEMA = '$db_name'";
             $result = mysqli_query($conn, $query);
             $ticketsColumns = array();
             while($row = mysqli_fetch_assoc($result)) {
