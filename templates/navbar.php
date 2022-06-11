@@ -20,7 +20,7 @@
 		<a href="deposit">
 		<div class="balance-box">
 			<div>
-				<div id="navbar-money"><?php echo apiFetch("http://localhost/api/users?keys=money&id=".$_SESSION["userId"])["data"][0]["money"]; ?> €</div>
+				<div id="navbar-money"><?php echo apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=money&id=".$_SESSION["userId"])["data"][0]["money"]; ?> €</div>
 			</div>
 			<div>
 				<div></div>
@@ -31,7 +31,7 @@
 		<a href="points">
 		<div class="balance-box">
 			<div>
-				<div id="navbar-points"><?php echo apiFetch("http://localhost/api/users?keys=points&id=".$_SESSION["userId"])["data"][0]["points"]; ?></div>
+				<div id="navbar-points"><?php echo apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=points&id=".$_SESSION["userId"])["data"][0]["points"]; ?></div>
 				<img style="width: 19px;
 					filter: invert(1);
 					margin-left: 5px;
@@ -69,6 +69,7 @@
 
 <div style="display:none" class="side-navbar side-navbar-hidden">
 	<div>
+		<div><a href="home">Home</a></div>
 		<div><a href="wallet">Wallet</a></div>
 		<div><a href="points">Points</a></div>
 		<div><a href="friends">Friends</a></div>
