@@ -368,3 +368,20 @@ window.onresize = () => {
 	updateBetsContainerHeight();
 	updateBetsWidth(window.innerWidth);
 }
+
+window.addEventListener("swiped-left", e => {
+	const popup = document.getElementsByClassName("ticket-popup")[0];
+	if (!popup) {
+	 	const ticketButton = document.getElementsByClassName("ticket-button")[0]
+	    if (ticketButton) ticketButton.click();   
+	}
+});
+
+	
+window.addEventListener("swiped-right", e => {
+	const popup = document.getElementsByClassName("ticket-popup")[0];
+	if (popup) {
+	    const closePopup = popup.getElementsByClassName("clickable")[0];
+	    closePopup.click();
+	}
+});

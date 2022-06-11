@@ -81,6 +81,7 @@
   	</div>
 </div>
 
+<script type="text/javascript" src="vendor/swiped-events/swiped-events.min.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/home.js"></script>
 <script type="text/javascript" src="js/ticket.js"></script>

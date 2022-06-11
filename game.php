@@ -80,6 +80,7 @@
   </div>
 </div>
 
+<script type="text/javascript" src="vendor/swiped-events/swiped-events.min.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/game.js"></script>
 <script type="text/javascript" src="js/stream.js"></script>
