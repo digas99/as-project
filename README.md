@@ -7,21 +7,27 @@ Departamento de Electrónica, Telecomunicações e Informática - Universidade d
 ## [API Documentation](/api/README.md)
 
 ## Setup
+To setup the app, first make sure to have [Docker](https://www.docker.com/) running on your machine. [[How to here]](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
+
+
 - Configure the database on **db-config.json** (this file must be present)
 ```json5
 {
-    "db_credentials": {
-        "host": "<host of MySQL>", // (localhost, etc)
-        "username": "<MySQL user>", // (root, etc)
-        "password": "<password of user>",
-        "name": "<name of database to create>" // (gamebet, etc)
-    },
-    "db_size": "<size of data set>" // (small, medium or large)
+    "host": "<host of MySQL>", // (localhost, etc)
+    "username": "<MySQL user>", // (root, etc)
+    "password": "<password of user>",
 }
 ```
 
-- Initialize database
+- Create **secret.php** file
+```bash
+$ sudo chmod +x secret.sh
+$ ./secret.sh
 ```
-$ sudo chmod +x db-init.sh
-$ ./db-init.sh
+
+- Assemble and run the necessary containers
+```bash
+$ docker-compose up --build
 ```
+
+The web server will, then, be running on localhost:80.

@@ -4,6 +4,5 @@
         "username": "root",
         "password": "",
         "name": "gamebet"
-    },
-    "db_size": "small"
+    }
 }
