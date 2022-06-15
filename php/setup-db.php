@@ -154,11 +154,11 @@ if (mysqli_fetch_assoc($result)["row_exists"] == 0) {
     // get all users ids that are streamers
     $usersIds = array_map(function ($elem) {
         return $elem["id"];
-    }, apiFetch("http://localhost/api/users?keys=id&streamer=true")["data"]);
+    }, apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=id&streamer=true")["data"]);
     // get all games ids
     $gamesIds = array_map(function ($elem) {
             return $elem["id"];
-    }, apiFetch("http://localhost/api/games?keys=id")["data"]);
+    }, apiFetch("http://".$_SERVER['SERVER_NAME']."/api/games?keys=id")["data"]);
 
     foreach($usersIds as $userId) {
         // get n random games
@@ -218,7 +218,7 @@ $result = mysqli_query($conn, "SELECT EXISTS (SELECT 1 FROM Bets) as `row_exists
 if (mysqli_fetch_assoc($result)["row_exists"] == 0) { 
     echo "Adding fake Bets data...<br>";
     // get all streams
-    $streams = apiFetch("http://localhost/api/streams?keys=id,teamA,teamB")["data"];
+    $streams = apiFetch("http://".$_SERVER['SERVER_NAME']."/api/streams?keys=id,teamA,teamB")["data"];
 
     $max_bets_per_stream = 12;
     $queryValues = array();

@@ -19,7 +19,7 @@ if ($method === 'GET') {
 
     if (isset($_GET["keys"])) {
         // get Users columns
-        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Users' AND TABLE_SCHEMA = 'gamebet'";
+        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'Users' AND TABLE_SCHEMA = '$db_name'";
         $result = mysqli_query($conn, $query);
         $usersColumns = array();
         while($row = mysqli_fetch_assoc($result)) {

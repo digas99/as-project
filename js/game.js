@@ -66,3 +66,9 @@ if (input) {
 		searchStreamers("api/streams?gameId="+gameId+"&user="+value);
 	}); 
 }
+
+if (window.location.hash == "#cart") {
+	const ticketButton = document.getElementsByClassName("ticket-button")[0];
+	console.log(ticketButton);
+	if (ticketButton) setTimeout(() => ticketButton.click(), 50);
+}

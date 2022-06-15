@@ -1,7 +1,25 @@
 let ticketData = {};
 let lastInputValue = "";
 
+let lowerContainer, betsContainer;
+const updateBetsContainerHeight = () => {
+	if (lowerContainer && betsContainer) {
+		setTimeout(() => betsContainer.style.height = (window.innerHeight-betsContainer.offsetTop-lowerContainer.offsetHeight-90)+"px", 50);
+	}
+}
+
+const updateBetsWidth = windowWidth => {
+	if (windowWidth <= 680 && windowWidth >= 410)
+		document.documentElement.style.setProperty('--bet-width', (windowWidth-110)+"px");
+	else if (windowWidth < 410)
+				document.documentElement.style.setProperty('--bet-width', "unset");
+	else
+			document.documentElement.style.setProperty('--bet-width', "330px");
+}
+
 const ticketPopup = data => {
+	window.location.hash = "#cart";
+	
 	const wrapper = document.createElement("div");
 	wrapper.classList.add("ticket-popup", "ticket-popup-closed");
 
@@ -13,6 +31,7 @@ const ticketPopup = data => {
 	upperContainer.appendChild(closeWrapper);
 	closeWrapper.classList.add("clickable");
 	closeWrapper.addEventListener("click", () => {
+		history.replaceState(null, null, ' ');
 		wrapper.classList.add("ticket-popup-closed");
 		setTimeout(() => wrapper.remove(), 500);
 		// extend list of streams
@@ -56,9 +75,9 @@ const ticketPopup = data => {
 		});
 	});
 
+	betsContainer = document.createElement("div");
 	if (data["bets"].length > 0) {
 		// put all bets
-		const betsContainer = document.createElement("div");
 		upperContainer.appendChild(betsContainer);
 		fetch("api/bets?id="+data["bets"].join(","))
 			.then(response => response.json())
@@ -66,14 +85,13 @@ const ticketPopup = data => {
 	}
 	else {
 		// no bets yet
-		const noBets = document.createElement("div");
-		upperContainer.appendChild(noBets);
-		noBets.classList.add("no-bets");
-		noBets.appendChild(document.createTextNode("No bets yet!"));
+		upperContainer.appendChild(betsContainer);
+		betsContainer.classList.add("no-bets");
+		betsContainer.appendChild(document.createTextNode("No bets yet!"));
 	}
 
 	// lower part
-	const lowerContainer = document.createElement("div");
+	lowerContainer = document.createElement("div");
 	wrapper.appendChild(lowerContainer);
 	// values
 	const valuesWrapper = document.createElement("div");
@@ -188,6 +206,9 @@ const ticketPopup = data => {
 			postRequest("api/tickets?mode=update", ticketData);
 		});
     });
+
+	updateBetsContainerHeight();
+	updateBetsWidth(window.innerWidth);
 
 	return wrapper;
 }
@@ -309,6 +330,7 @@ window.addEventListener("click", e => {
 	// click outside to close cart popup
 	const ticketPopup = document.getElementsByClassName("ticket-popup")[0];
 	if (ticketPopup && !target.closest(".ticket-popup") && !target.closest(".ticket-button") && window.getComputedStyle(target)["cursor"] !== "pointer") {
+		history.replaceState(null, null, ' ');
 		ticketPopup.classList.add("ticket-popup-closed");
 		setTimeout(() => ticketPopup.remove(), 500);
 
@@ -341,3 +363,25 @@ const betsPlacedMessage = (text, color) => {
 		}, 50);
 	}
 }
+
+window.onresize = () => {
+	updateBetsContainerHeight();
+	updateBetsWidth(window.innerWidth);
+}
+
+window.addEventListener("swiped-left", e => {
+	const popup = document.getElementsByClassName("ticket-popup")[0];
+	if (!popup) {
+	 	const ticketButton = document.getElementsByClassName("ticket-button")[0]
+	    if (ticketButton) ticketButton.click();   
+	}
+});
+
+	
+window.addEventListener("swiped-right", e => {
+	const popup = document.getElementsByClassName("ticket-popup")[0];
+	if (popup) {
+	    const closePopup = popup.getElementsByClassName("clickable")[0];
+	    closePopup.click();
+	}
+});

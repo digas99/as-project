@@ -133,6 +133,12 @@ else {
 	searchGames("api/games");
 }	
 
+if (window.location.hash == "#cart") {
+	const ticketButton = document.getElementsByClassName("ticket-button")[0];
+	console.log(ticketButton);
+	if (ticketButton) setTimeout(() => ticketButton.click(), 50);
+}
+
 if (input) {
 	input.addEventListener("input", e => {
 		const value = e.target.value;

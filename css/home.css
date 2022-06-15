@@ -154,11 +154,11 @@
 
 @media only screen and (max-width: 1149px) {
   .games-list {
-    grid-template-columns: repeat(auto-fill,minmax(190px,1fr));
+    grid-template-columns: repeat(auto-fill,minmax(175px,1fr));
   }
 
   .games-list .game li:first-child img {
-    width: 180px;;
+    width: 165px;;
   }
 
   .games-list .game li:nth-child(2) {

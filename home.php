@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/home.css"/>
 	<link rel="stylesheet" href="css/navbar.css"/> 
 	<link rel="stylesheet" href="css/essentials.css"/>
@@ -23,7 +24,7 @@
 
 <script> 
 	const userSession = <?php echo json_encode($_SESSION); ?>;
-	let userFavoriteGames = <?php echo json_encode(apiFetch("http://localhost/api/users?keys=favoriteGames&id=".$_SESSION["userId"])["data"][0]["favoriteGames"]); ?>;
+	let userFavoriteGames = <?php echo json_encode(apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=favoriteGames&id=".$_SESSION["userId"])["data"][0]["favoriteGames"]); ?>;
 </script>
 
 <?php include "templates/navbar.php"?>
@@ -80,6 +81,7 @@
   	</div>
 </div>
 
+<script type="text/javascript" src="vendor/swiped-events/swiped-events.min.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/home.js"></script>
 <script type="text/javascript" src="js/ticket.js"></script>

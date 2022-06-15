@@ -1,3 +1,7 @@
+:root {
+	--bet-width: 330px;
+}
+
 .disabled {
   pointer-events: none;
   opacity: 0.7;
@@ -60,7 +64,7 @@
   right: 0;
   width: 440px;
   background-color: white;
-  height: 93%;
+  height: 100%;
   z-index: 2;
   top: 70px;
   box-shadow: 2px 4px 5px 0px black;
@@ -168,7 +172,7 @@
   background-color: var(--pink);
   height: 140px;
   position: absolute;
-  bottom: 0;
+  bottom: 70px;
   border-radius: 10px 10px 0px 0px;
   color: white;
   font-weight: bold;
@@ -309,7 +313,7 @@
   padding: 10px;
   background-color: #F1F1F1;
   border-bottom-left-radius: 20px;
-  width: 330px;
+  width: var(--bet-width);
   position: relative;
 }
 
@@ -352,4 +356,31 @@
   .ticket-popup {
     width: 100%;
   }
+  
+  .ticket-bet {
+    display: flex;
+    margin: 20px auto;
+    width: fit-content;
+	}
+}
+
+@media only screen and (max-width: 410px) {
+	.ticket-bet > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) {
+		font-size: 14px;
+	}
+	
+	.ticket-bet {
+    margin: 20px 10px;
+	}
+}
+
+@media only screen and (max-height: 680px) {
+  .ticket-popup > div:nth-child(1) > div:nth-child(2) {
+    font-size: 20px;
+    padding: 20px;
+  }
+  
+  .ticket-popup > div:nth-child(1) {
+    margin-top: 10px;
+	}
 }
