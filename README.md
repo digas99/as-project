@@ -29,3 +29,5 @@ $ ./secret.sh
 ```bash
 $ docker-compose up --build
 ```
+
+The server will, then, be running on [localhost:80](http://localhost:80).
