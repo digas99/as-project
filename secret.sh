@@ -18,7 +18,7 @@ NAME="gamebet"
 
 echo "Creating secret.php file..."
 
-SECRET_FILE=php/secret.php
+SECRET_FILE=app/php/secret.php
 touch ${SECRET_FILE}
 
 echo "<?php" > ${SECRET_FILE}

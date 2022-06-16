@@ -4,7 +4,7 @@
 
 Departamento de Electrónica, Telecomunicações e Informática - Universidade de Aveiro
 
-## [API Documentation](/api/README.md)
+## [API Documentation](app/api/README.md)
 
 ## Setup
 To setup the app, first make sure to have [Docker](https://www.docker.com/) running on your machine. [[How to here]](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
@@ -29,5 +29,3 @@ $ ./secret.sh
 ```bash
 $ docker-compose up --build
 ```
-
-The web server will, then, be running on localhost:80.
