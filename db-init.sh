@@ -14,9 +14,10 @@ if [ ! -z "$1" ]; then
     SERVER=$1
 fi
 
-until data=$(curl --output /dev/null --silent --head --fail -sX GET $SERVER/php/setup-db\?size=$DB_SIZE); do
+until $(curl --output /dev/null --silent --head --fail -sX GET $SERVER/php/setup-db); do
     echo "Trying $SERVER..."
     sleep 3
 done
 
 echo "Database is ready"
+echo "Server running on http://$SERVER"
