@@ -44,3 +44,16 @@ if (inputField) {
 		lastInputValue = inputField.value;
 	});
 }
+
+window.addEventListener("click", e => {
+	const target = e.target;
+	if (target.closest(".image") && target.tagName == "IMG") {
+		if (!target.classList.contains("image-clicked")) {
+			Array.from(target.closest(".image").children).forEach(child => child.classList.remove("image-clicked"));
+			target.classList.add("image-clicked");
+		}
+		else {
+			target.classList.remove("image-clicked");
+		}
+	}
+});

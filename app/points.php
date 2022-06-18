@@ -31,7 +31,7 @@
 	 			<div>
 	 				<div>Balance:</div>
 	 				<div>
-	 					<div>0</div>
+	 					<div><?php echo apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=points&id=".$_SESSION["userId"])["data"][0]["points"]; ?></div>
 	 					<div><img src="/images/gp-logo.png"></div>
 	 				</div>
 	 			</div>
@@ -147,13 +147,13 @@
 		if (window.innerWidth < 1050)
 			document.body.style.height = document.body.scrollHeight+"px";
 		else
-			document.body.style.height = window.outerHeight+"px";
+			document.body.style.height = window.innerHeight+"px";
 		
 		window.onresize = () => {
 			if (window.innerWidth < 1050)
 				document.body.style.height = document.body.scrollHeight+"px";
 			else
-				document.body.style.height = window.outerHeight+"px";
+				document.body.style.height = window.innerHeight+"px";
 		}
 	</script>
 

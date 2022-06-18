@@ -50,7 +50,10 @@
     </div>
 
     <div class="image">
-      <img src="images/pagamento.png">
+      <img style="width: 60px" src="images/pagamento-mb.png">
+      <img style="width: 140px" src="images/pagamento-mbway.png">
+      <img style="width: 100px" src="images/pagamento-visa.png">
+      <img style="width: 100px" src="images/pagamento-mastercard.png">
     </div>
 
     <div class="pay">
