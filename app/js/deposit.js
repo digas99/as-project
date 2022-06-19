@@ -45,15 +45,73 @@ if (inputField) {
 	});
 }
 
+const paymentPopup = (imgSrc, inputs, size) => {
+	// clear all payment popups
+	Array.from(document.getElementsByClassName("payment-popup")).forEach(popup => popup.parentElement.remove());
+
+	const outerWrapper = document.createElement("div");
+	outerWrapper.classList.add("absolute-centered");
+	const wrapper = document.createElement("div");
+	outerWrapper.appendChild(wrapper);
+	wrapper.classList.add("payment-popup");
+	wrapper.style.width = size[0]+"px";
+	wrapper.style.height = size[1]+"px";
+	const innerWrapper = document.createElement("div");
+	wrapper.appendChild(innerWrapper);
+	innerWrapper.classList.add("absolute-centered");
+	const img = document.createElement("img");
+	innerWrapper.appendChild(img);
+	img.src = imgSrc;
+	const depositValue = document.createElement("div");
+	innerWrapper.appendChild(depositValue);
+	const money = pay ? Number(pay.dataset.value) : 0;
+	depositValue.appendChild(document.createTextNode("Deposit value: "+(money ? money : 0)+"€"));
+	inputs.forEach(input => {
+		const field = document.createElement("input");
+		innerWrapper.appendChild(field);
+		field.placeholder = input;
+	});
+	const save = document.createElement("div");
+	save.appendChild(document.createTextNode("Save"));
+	innerWrapper.appendChild(save);
+	save.addEventListener("click", () => outerWrapper.remove());
+
+	return outerWrapper;
+}
+
 window.addEventListener("click", e => {
 	const target = e.target;
 	if (target.closest(".image") && target.tagName == "IMG") {
 		if (!target.classList.contains("image-clicked")) {
 			Array.from(target.closest(".image").children).forEach(child => child.classList.remove("image-clicked"));
 			target.classList.add("image-clicked");
+			let inputs = [];
+			let size = [];
+			switch(target.src.split("/images/")[1]) {
+				case "pagamento-mb.png":
+					inputs = [];
+					break;
+				case "pagamento-mbway.png":
+					inputs = ["Phone Number"];
+					size = [400, 400];
+					break;
+				case "pagamento-visa.png":
+					inputs = ["Name", "Card Number", "Expiration Date", "CVC"];
+					size = [400, 600];
+					break;
+				case "pagamento-mastercard.png":
+					inputs = ["Name", "Card Number", "Expiration Date", "CVC"];
+					size = [400, 600];
+					break;
+			}
+			document.body.appendChild(paymentPopup(target.src, inputs, size));
 		}
-		else {
+		else
 			target.classList.remove("image-clicked");
-		}
+	}
+
+	if (!target.closest(".image") && document.getElementsByClassName("payment-popup")[0] && !target.closest(".payment-popup")) {
+		Array.from(document.getElementsByClassName("image")[0].children).forEach(child => child.classList.remove("image-clicked"));
+		document.getElementsByClassName("payment-popup")[0].remove();
 	}
 });

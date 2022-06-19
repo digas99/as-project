@@ -1,8 +1,8 @@
 body {
-    background: rgb(245,0,131);
-    background: -moz-linear-gradient(180deg, rgba(245,0,131,1) 10%, rgba(245,87,71,1) 60%, rgba(245,191,0,1) 100%);
-    background: -webkit-linear-gradient(180deg, rgba(245,0,131,1) 10%, rgba(245,87,71,1) 60%, rgba(245,191,0,1) 100%);
-    background: linear-gradient(180deg, rgba(245,0,131,1) 10%, rgba(245,87,71,1) 60%, rgba(245,191,0,1) 100%);
+    background: var(--pink);
+    background: -moz-linear-gradient(180deg, var(--pink) 10%, rgba(245,87,71,1) 60%, rgba(245,191,0,1) 100%);
+    background: -webkit-linear-gradient(180deg, var(--pink) 10%, rgba(245,87,71,1) 60%, rgba(245,191,0,1) 100%);
+    background: linear-gradient(180deg, var(--pink) 10%, rgba(245,87,71,1) 60%, rgba(245,191,0,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f50083",endColorstr="#f5bf00",GradientType=1);
     background-repeat: no-repeat;
     padding-bottom: 30px;
