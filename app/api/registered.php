@@ -89,7 +89,7 @@ else if ($method === 'POST') {
     
             foreach($newData as $key => $value) {
                 if (in_array($key, $ticketsColumns) && !in_array($key, $unmutableKeys)) {
-                    $query = "UPDATE Registered SET ".$key." = '".$value."' WHERE id = '".$newData["id"]."'";
+                    $query = "UPDATE RegisteredTickets SET ".$key." = '".$value."' WHERE id = '".$newData["id"]."'";
                     $result = mysqli_query($conn, $query);
                 }
             }
