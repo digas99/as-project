@@ -177,13 +177,15 @@ const ticketPopup = data => {
 						
 						// re activate all bet buttons
 						Array.from(document.getElementsByClassName("bet-button-inactive")).forEach(button => button.classList.remove("bet-button-inactive"));
-						
+					
+						console.log("Bets placed!",);
 						// bets placed message
 						betsPlacedMessage("Bets placed!", "#55d955");
 					});
 				}, 200);
 			}
 			else {
+				console.log("Insuficient funds to register ticket!");
 				betsPlacedMessage("Insuficient funds to register ticket! <a style='text-decoration: underline;' href='deposit'>DEPOSIT</a>", "red");
 			}
 		}
@@ -355,7 +357,7 @@ const betsPlacedMessage = (text, color) => {
 		message.innerHTML = text;
 		message.style.backgroundColor = color;
 		setTimeout(() => {
-			message.style.height = "190px";
+			message.style.height = "260px";
 			setTimeout(() => {
 				message.style.height = "0";
 				setTimeout(() => message.remove(), 500);
