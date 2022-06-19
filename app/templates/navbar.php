@@ -44,14 +44,14 @@
 			</div>
 		</div>
 		</a>
-		<a style="position: relative;" href="#">
+		<a style="position: relative;" href="tickets">
 			<img id="ticketNavbarImg" src="/images/ticket.png">
 			<div class="ticketNavbar-counter">
 				<div>
 					<?php 
 						require $_SERVER['DOCUMENT_ROOT'].'/php/connect.php';
 					
-						$query = "SELECT id FROM RegisteredTickets";
+						$query = "SELECT id FROM RegisteredTickets WHERE userId=".$_SESSION["userId"];
 						$result = mysqli_query($conn, $query);
 						echo mysqli_num_rows($result);
 					?>

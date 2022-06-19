@@ -88,7 +88,8 @@ $tables = array(
         odds VARCHAR(255) NOT NULL ,
         ticketValue VARCHAR(255) NOT NULL ,
         wins VARCHAR(255) NOT NULL ,
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
     )",
     "CREATE TABLE `gamebet`.`RegisteredTicketBets`(
         betId VARCHAR(255) NOT NULL ,
