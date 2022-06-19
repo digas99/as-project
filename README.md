@@ -33,9 +33,9 @@ $ docker-compose up --build
 The server will, then, be running on [localhost:80](http://localhost:80).
 
 ## Contributors
-| Name | Email |   
-|------|-------|
-| Diana Rocha | rochadc00@ua.pt |
-| Diogo Correia | diogo.correia99@ua.pt |
-| Gil Fernandes | email@ua.pt |
-| Gonçalo Maranhão | goncalo.rodrigues@ua.pt |
+| Name | Github | Email |   
+|------|--------|-------|
+| Diana Rocha | [rochadc00](https://github.com/rochadc00) | rochadc00@ua.pt |
+| Diogo Correia | [digas99](https://github.com/digas99) | diogo.correia99@ua.pt |
+| Gil Fernandes | [GilFernandes2000](https://github.com/GilFernandes2000) | joaogilfernandes@ua.pt |
+| Gonçalo Maranhão | [GoncaloMaranhao](https://github.com/GoncaloMaranhao) | goncalo.rodrigues@ua.pt |
