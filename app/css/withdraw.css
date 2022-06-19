@@ -12,7 +12,7 @@
 
 .withdraw-money{
     position: absolute;
-    top: 0;
+    top: 650px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -22,8 +22,8 @@
 }
 
 .withdraw-money > button{
-    width: 300px;
-    height: 40px;
+    width: 350px;
+    height: 50px;
     background-color: var(--pink);
     color: white;
     border: none;
@@ -32,3 +32,32 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+.image > img{
+  bottom: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+  height: 400px;
+}
+
+.input-field{
+    width: fit-content;
+    margin: auto;
+    margin-top: 670px;
+}
+
+.input-field > input{
+    width: 400px;
+    height: 55px;
+    background-color: var(--background-light-gray);
+    color: #2e2e2e;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;   
+}
+

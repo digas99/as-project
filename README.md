@@ -38,4 +38,4 @@ The server will, then, be running on [localhost:80](http://localhost:80).
 | Diana Rocha | rochadc00@ua.pt |
 | Diogo Correia | diogo.correia99@ua.pt |
 | Gil Fernandes | email@ua.pt |
-| Gonçalo Maranhão | email@ua.pt |
+| Gonçalo Maranhão | goncalo.rodrigues@ua.pt |
