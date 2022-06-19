@@ -31,3 +31,11 @@ $ docker-compose up --build
 ```
 
 The server will, then, be running on [localhost:80](http://localhost:80).
+
+## Contributors
+| Name | Email |   
+|------|-------|
+| Diana Rocha | rochadc00@ua.pt |
+| Diogo Correia | diogo.correia99@ua.pt |
+| Gil Fernandes | email@ua.pt |
+| Gonçalo Maranhão | email@ua.pt |
