@@ -7,7 +7,7 @@ Departamento de Electrónica, Telecomunicações e Informática - Universidade d
 ## [API Documentation](app/api/README.md)
 
 ## Setup
-To setup the app, first make sure to have [Docker](https://www.docker.com/) running on your machine. [[How to here]](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
+To setup the app, first make sure to have **Docker** [[How to here]](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) and **Docker Compose** [[How to here]](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04) running on your machine.
 
 
 - Configure the database on **db-config.json** (this file must be present)
@@ -33,9 +33,9 @@ $ docker-compose up --build
 The server will, then, be running on [localhost:80](http://localhost:80).
 
 ## Contributors
-| Name | Email |   
-|------|-------|
-| Diana Rocha | rochadc00@ua.pt |
-| Diogo Correia | diogo.correia99@ua.pt |
-| Gil Fernandes | joaogilfernandes@ua.pt |
-| Gonçalo Maranhão | goncalo.rodrigues@ua.pt |
+| Name | Github | Email |   
+|------|--------|-------|
+| Diana Rocha | [rochadc00](https://github.com/rochadc00) | rochadc00@ua.pt |
+| Diogo Correia | [digas99](https://github.com/digas99) | diogo.correia99@ua.pt |
+| Gil Fernandes | [GilFernandes2000](https://github.com/GilFernandes2000) | joaogilfernandes@ua.pt |
+| Gonçalo Maranhão | [GoncaloMaranhao](https://github.com/GoncaloMaranhao) | goncalo.rodrigues@ua.pt |
