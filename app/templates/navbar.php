@@ -72,10 +72,10 @@
 		<div><a href="home">Home</a></div>
 		<div><a href="wallet">Wallet</a></div>
 		<div><a href="points">Points</a></div>
-		<div><a href="friends">Friends</a></div>
-		<div><a href="profile">Profile</a></div>
-		<div><a href="statistics">Stats</a></div>
-		<div><a href="settings">Settings</a></div>
+		<div><a href="home">Friends</a></div>
+		<div><a href="home">Profile</a></div>
+		<div><a href="home">Stats</a></div>
+		<div><a href="home">Settings</a></div>
 		<div><a href="faq">FAQ</a></div>
 		<div><a href="login?submit=logout">Logout</a></div>
 	</div>

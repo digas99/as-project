@@ -24,37 +24,40 @@
 	
   <?php include "templates/navbar.php"?>
    
-  <div class="title">
-    <h1>Wallet</h1>
-  </div>
+  <div class="absolute-centered">
+    <div class="title">
+      <h1>Wallet</h1>
+    </div>
+  
 
   
-  <div class="middle-buttons">
-    <div>
+    <div class="middle-buttons">
       <div>
-        <div><?php echo apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=money&id=".$_SESSION["userId"])["data"][0]["money"]; ?>€</div>
-        <a href="deposit"><button type="button">Deposit</button></a>
-        <a href="withdraw"><button type="button">Withdraw</button></a>
+        <div>
+          <div><?php echo apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=money&id=".$_SESSION["userId"])["data"][0]["money"]; ?>€</div>
+          <a href="deposit"><button type="button">Deposit</button></a>
+          <a href="withdraw"><button type="button">Withdraw</button></a>
+        </div>
+        <div> 
+          <div><?php echo apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=points&id=".$_SESSION["userId"])["data"][0]["points"]; ?> <img src="/images/gp-logo.png" 
+            style="width: 42px; filter: invert(27%) sepia(33%) 
+            saturate(811%) hue-rotate(86deg) brightness(88%) contrast(87%);"></div>
+          <a href="points"><button type="button">Win GameBet Points</button></a>
+        </div>
       </div>
-      <div> 
-        <div><?php echo apiFetch("http://".$_SERVER['SERVER_NAME']."/api/users?keys=points&id=".$_SESSION["userId"])["data"][0]["points"]; ?> <img src="/images/gp-logo.png" 
-          style="width: 42px; filter: invert(27%) sepia(33%) 
-          saturate(811%) hue-rotate(86deg) brightness(88%) contrast(87%);"></div>
-        <a href="points"><button type="button">Win GameBet Points</button></a>
-      </div>
+    </div> 
+
+    <hr id="line">
+
+    <div class="bottom-buttons">
+      <a href="balance"><button type="button">Balance History</button></a>
+      <a href="account"><button type="button">My Account</button></a>
+      <a href="bets"><button type="button">Bets</button></a>
+      <a href="#">
+        <button type="button">Invite Friend</button>
+        <div><button type="button">+ 10€</button></div>
+      </a>
     </div>
-  </div> 
-
-  <hr id="line">
-
-  <div class="bottom-buttons">
-    <a href="balance"><button type="button">Balance History</button></a>
-    <a href="account"><button type="button">My Account</button></a>
-    <a href="bets"><button type="button">Bets</button></a>
-    <a href="#">
-      <button type="button">Invite Friend</button>
-      <div><button type="button">+ 10€</button></div>
-    </a>
   </div>
 
   <script type="text/javascript" src="js/home.js"></script>

@@ -48,6 +48,7 @@ body {
 	position: fixed;
 	top: 0;
 	width: 100%;
+	margin: auto;
 }
         
 .sticky + .content {
@@ -276,4 +277,45 @@ body {
 	.side-navbar {
 		width: 100%;
 	}
+}
+
+@media only screen and (max-width: 385px){
+	#gamebet > img {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 321px){
+	#ticketNavbarImg {
+		width: 24px;
+	}
+
+	.ticketNavbar-counter {
+		width: 14px;
+		height: 20px;
+	}
+
+	.ticketNavbar-counter > div {
+		font-size: 15px;
+	}
+
+	.balance-box > div:first-child {
+		height: 30px;
+	}
+
+	.balance-box > div:last-child {
+		width: 30px;
+		height: 30px;
+	}
+
+	#navbar > a:not(:first-child) {
+		display: none;	
+	}
+
+	.burger-menu {
+		display: flex;
+		width: 25px;
+	}
+
+
 }
