@@ -24,6 +24,7 @@
 	
   <?php include "templates/navbar.php"?>
 
+<div class="absolute-centered">
   <div class="title">
     <h1>Withdrawal</h1>
   </div>
@@ -39,6 +40,7 @@
   <div class="withdraw-money">
     <button type="button">Start Withdrawing Money</button>
   </div>
+</div>
 
 
   <script type="text/javascript" src="js/withdraw.js"></script>
