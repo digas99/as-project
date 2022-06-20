@@ -14,6 +14,7 @@
     margin: 30px 70px;
     border-bottom: 1px solid silver;
     padding-bottom: 35px;
+    transition: 0.3s;
 }
 
 .ticket-row > div:nth-child(1) {
@@ -60,4 +61,14 @@
 
 .ticket-bet > div:nth-child(1) > div:nth-child(2) {
     width: unset !important;
+}
+
+@media only screen and (max-width: 680px) {
+	.ticket-bet {
+		width: unset !important;
+	}
+	
+	.ticket-row {
+	    margin: 30px 10px !important;
+	}
 }
