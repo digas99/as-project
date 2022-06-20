@@ -7,7 +7,7 @@ Departamento de Electrónica, Telecomunicações e Informática - Universidade d
 ## [API Documentation](app/api/README.md)
 
 ## Setup
-To setup the app, first make sure to have [Docker](https://www.docker.com/) running on your machine. [[How to here]](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
+To setup the app, first make sure to have **Docker** [[How to here]](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) and **Docker Compose** [[How to here]](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04) running on your machine.
 
 
 - Configure the database on **db-config.json** (this file must be present)
