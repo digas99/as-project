@@ -2,6 +2,7 @@ FROM tomsik68/xampp:latest
 
 RUN rm -R /opt/lampp/htdocs/*
 COPY app /opt/lampp/htdocs
+RUN chmod -R a+rwx /opt/lampp/htdocs/
 
 # create database
 WORKDIR /opt/lampp/var/mysql/
